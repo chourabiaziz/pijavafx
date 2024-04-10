@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import tn.esprit.models.Contrat;
 import tn.esprit.services.ContratService;
 
@@ -13,11 +15,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ContratIndex  implements Initializable {
+public class ContratIndex implements Initializable {
 
     @FXML
-    private Label client;
-
+    private HBox card;
     @FXML
     private Label couverture;
 
@@ -29,11 +30,11 @@ public class ContratIndex  implements Initializable {
 
     private ContratService contratService;
 
-    private void afficherContrats() {
+   private void afficherContrats() {
         List<Contrat> listContrat = contratService.getAll();
 
         // Clear existing labels
-        client.setText("");
+      //  client.setText("");
         couverture.setText("");
         engagement.setText("");
         prix.setText("");
@@ -45,6 +46,12 @@ public class ContratIndex  implements Initializable {
                 prix.setText(prix.getText() + contrat.getPrix() );// Assuming there's a method getPrix() in Contrat class
         }}
     }
+
+
+
+
+
+
 
 
     @Override

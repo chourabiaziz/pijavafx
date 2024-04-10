@@ -21,7 +21,7 @@ public class MainFx extends Application {
             Parent root = loader.load();
             Scene scene = new Scene(root );
 
-            primaryStage.setTitle("Gestion Personne");
+            primaryStage.setTitle("AssureEase");
             primaryStage.setScene(scene);
             primaryStage.show();
 
