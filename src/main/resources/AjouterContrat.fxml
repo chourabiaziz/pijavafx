@@ -23,14 +23,14 @@
       <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
       <MenuBar layoutY="-2.0" prefHeight="31.0" prefWidth="600.0">
         <menus>
-          <Menu mnemonicParsing="false" style="font-size: 50px;" text="Contrat">
+          <Menu mnemonicParsing="false" style="font-size: 50px;" text="Menu">
             <items>
               <MenuItem mnemonicParsing="false" text="Contrat" />
                   <MenuItem mnemonicParsing="false" text="Facture" />
                   <MenuItem mnemonicParsing="false" text="fermer" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Aide">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
