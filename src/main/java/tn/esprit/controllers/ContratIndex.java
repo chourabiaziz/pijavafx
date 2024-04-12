@@ -5,53 +5,35 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Node;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 import tn.esprit.models.Contrat;
 import tn.esprit.services.ContratService;
-
 import javafx.event.ActionEvent;
+
 import java.io.IOException;
 import java.net.URL;
-
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ContratIndex  implements Initializable {
+public class ContratIndex implements Initializable {
 
     @FXML
     private ListView<Contrat> listView;
-    @FXML
-    private Label couverture;
-
-    @FXML
-    private Label engagement;
-
-    @FXML
-    private Label prix;
-    @FXML
-    private ListView<Contrat> listview;
-
-
 
     private ContratService contratService;
-     private List<Contrat> listContrat;
+    private List<Contrat> listContrat;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contratService = new ContratService();
@@ -59,11 +41,10 @@ public class ContratIndex  implements Initializable {
         afficherContrats();
     }
 
-////class  one cell
+    ////class one cell
 
-    private static class ContratListCell extends ListCell<Contrat> {
-
-        @Override
+    private class ContratListCell extends ListCell<Contrat> {
+   @Override
         protected void updateItem(Contrat contrat, boolean empty) {
             super.updateItem(contrat, empty);
 
@@ -74,31 +55,56 @@ public class ContratIndex  implements Initializable {
                 // Create an HBox to hold the contract details
                 HBox card = new HBox();
                 card.setStyle("-fx-background-color: #808080; -fx-padding: 10px; -fx-spacing: 10px;");
-
-                // Create Labels for each contract detail
-                Label idLabel = new Label("Contrat N°"+contrat.getId());
-
-                Label couvertureLabel = new Label("-- " + contrat.getCouverture());
-                Label debutLabel = new Label("De " + contrat.getDebut().toString());
-                Label finLabel = new Label("Jusqu'a " + contrat.getFin().toString());
-                Label prixLabel = new Label(contrat.getPrix()+" DT");
+                Label idLabel = new Label("Contrat N°" + contrat.getId());
+                String couvertureText = contrat.getCouverture() != null ? contrat.getCouverture() : "";
+                Label couvertureLabel = new Label("-- " + couvertureText);
+                String debutText = contrat.getDebut() != null ? contrat.getDebut().toString() : "";
+                Label debutLabel = new Label("De " + debutText);
+                String finText = contrat.getFin() != null ? contrat.getFin().toString() : "";
+                Label finLabel = new Label("Jusqu'a " + finText);
+                Label prixLabel = new Label(contrat.getPrix() + " DT");
                 prixLabel.setStyle("-fx-font-weight: bold;");
-
-
                 Button button1 = new Button("Edit");
                 Button button2 = new Button("Delete");
                 HBox buttonBox = new HBox(button1, button2);
                 buttonBox.setAlignment(Pos.CENTER_RIGHT);
-                // Add the Labels to the HBox
-                card.getChildren().addAll(idLabel, prixLabel, couvertureLabel, debutLabel, finLabel ,buttonBox);
+                card.getChildren().addAll(idLabel, prixLabel, couvertureLabel, debutLabel, finLabel, buttonBox);
+//buttons actions
+                button1.setOnAction(event -> {
 
-                // Set the HBox as the graphic for the cell
+                    System.out.println("button 1");
+                    int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
+                    int prix = contrat.getPrix() ;
+                    Date debut= contrat.getDebut();
+                    gotoedit(event, id ,couverture,engagement, debut,prix);
+                });
+                button2.setOnAction(event -> {
+                    System.out.println("button 2");
+                    System.out.println(contrat);
+                    System.out.println(contrat.getId());
+                });
                 setGraphic(card);
             }
+        }}
+
+    void gotoedit(ActionEvent event , int id , String couverture, int engagement ,Date debut , int prix) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratEdit.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ContratEdit controller = loader.getController();
+            controller.setId(id ,couverture , engagement , debut,prix);
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Modifier Contrat");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-
     }
+
 
 
 
@@ -107,43 +113,24 @@ public class ContratIndex  implements Initializable {
         listContrat.addAll(contrats);
         ObservableList<Contrat> observableList = FXCollections.observableList(listContrat);
         listView.setItems(observableList);
-
-        // Utilisez la cellule personnalisée pour afficher chaque élément de la liste
         listView.setCellFactory(param -> new ContratListCell());
     }
 
-  /* private void afficherContrats() {
-        List<Contrat> contrats = contratService.getAll();
-       listContrat.addAll(contrats);
-       ObservableList<Contrat> observableList = FXCollections.observableList(listContrat);
-       listView.setItems(observableList);
-
-   }*/
-
-
     @FXML
-    void changeroute(ActionEvent event)  {
+    void changeroute(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
         Parent root = null;
         try {
-            Node  source = (Node) event.getSource();
-
+            Node source = (Node) event.getSource();
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
             AjouterContrat controller = loader.getController();
             Stage stage = (Stage) source.getScene().getWindow();
-
             stage.setTitle("Ajouter Contrat");
             stage.setScene(new Scene(root));
             stage.show();
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
-
-
 }
-

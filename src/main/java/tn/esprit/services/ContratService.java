@@ -118,8 +118,9 @@ public class ContratService implements IContrat<Contrat> {
     @Override
     public Contrat getById(int id) {
         String req = "SELECT * FROM contrat WHERE id = ?";
-        Contrat contrat = null;
 
+
+        Contrat contrat = null;
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setInt(1, id); // Set the value of the id parameter
             ResultSet rs = ps.executeQuery();
