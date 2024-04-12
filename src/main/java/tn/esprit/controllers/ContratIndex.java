@@ -75,7 +75,7 @@ public class ContratIndex implements Initializable {
                     System.out.println("button 1");
                     int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
                     int prix = contrat.getPrix() ;
-                    Date debut= contrat.getDebut();
+                    String debut= contrat.getDebut().toString();
                     gotoedit(event, id ,couverture,engagement, debut,prix);
                 });
                 button2.setOnAction(event -> {
@@ -87,7 +87,7 @@ public class ContratIndex implements Initializable {
             }
         }}
 
-    void gotoedit(ActionEvent event , int id , String couverture, int engagement ,Date debut , int prix) {
+    void gotoedit(ActionEvent event , int id , String couverture, int engagement ,String debut , int prix) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratEdit.fxml"));
         Parent root = null;
         try {

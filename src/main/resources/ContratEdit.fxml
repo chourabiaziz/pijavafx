@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="tn.esprit.controllers.ContratEdit"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ContratEdit">
     <children>
     <MenuBar layoutX="2.0" layoutY="6.0" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="600.0" AnchorPane.leftAnchor="1.811320819902221" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
         <menus>
@@ -36,8 +35,8 @@
         <TextField fx:id="couverture" layoutX="213.0" layoutY="86.0" />
         <TextField fx:id="engagement" layoutX="213.0" layoutY="124.0" />
         <TextField fx:id="prix" layoutX="213.0" layoutY="206.0" />
-        <DatePicker fx:id="datedebut" layoutX="213.0" layoutY="163.0" prefHeight="25.0" prefWidth="147.0" />
         <Button layoutX="108.0" layoutY="253.0" mnemonicParsing="false" text="Annuler" />
         <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
+      <TextField fx:id="datedebut" layoutX="213.0" layoutY="163.0" />
     </children>
 </AnchorPane>
