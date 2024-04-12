@@ -3,14 +3,17 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import tn.esprit.models.Contrat;
 import tn.esprit.services.ContratService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -46,6 +49,26 @@ public class ContratEdit implements Initializable  {
     @FXML
     void submit(ActionEvent event) {
         send(id);
+    }
+    @FXML
+    private Button annuler;
+
+    @FXML
+    void goToContratList(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndex.fxml"));
+        Parent root ;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ContratIndex controller = loader.getController();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Modifier Contrat");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void send(int id) {
@@ -92,9 +115,14 @@ try {
 
         updateUI();
     }
-
+    @FXML
+    private Button btn1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btn1.setOnAction(this::goToContratList);
+        annuler.setOnAction(this::goToContratList);
+
         updateUI();
     }
     private void updateUI() {

@@ -76,17 +76,25 @@ public class ContratIndex implements Initializable {
                     int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
                     int prix = contrat.getPrix() ;
                     String debut= contrat.getDebut().toString();
+
                     gotoedit(event, id ,couverture,engagement, debut,prix);
+
                 });
                 button2.setOnAction(event -> {
-                    System.out.println("button 2");
-                    System.out.println(contrat);
-                    System.out.println(contrat.getId());
+                   contratService.delete(contrat.getId());
+                    refreshContrats();
+
                 });
                 setGraphic(card);
             }
         }}
-
+    private void refreshContrats() {
+        listView.getItems().clear(); // Clear the existing items
+        listContrat.clear(); // Clear the list of contracts
+        listContrat.addAll(contratService.getAll()); // Get the updated list of contracts
+        ObservableList<Contrat> observableList = FXCollections.observableList(listContrat);
+        listView.setItems(observableList); // Set the updated list to the ListView
+    }
     void gotoedit(ActionEvent event , int id , String couverture, int engagement ,String debut , int prix) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratEdit.fxml"));
         Parent root = null;
@@ -121,7 +129,7 @@ public class ContratIndex implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
         Parent root = null;
         try {
-            Node source = (Node) event.getSource();
+             Node source = (Node) event.getSource();
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
             AjouterContrat controller = loader.getController();

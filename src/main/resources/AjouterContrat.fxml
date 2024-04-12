@@ -3,9 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -21,21 +18,7 @@
       <DatePicker fx:id="datedebut" layoutX="213.0" layoutY="163.0" prefHeight="25.0" prefWidth="147.0" />
       <Button layoutX="108.0" layoutY="253.0" mnemonicParsing="false" text="Annuler" />
       <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
-      <MenuBar layoutY="-2.0" prefHeight="31.0" prefWidth="600.0">
-        <menus>
-          <Menu mnemonicParsing="false" style="font-size: 50px;" text="Menu">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Contrat" />
-                  <MenuItem mnemonicParsing="false" text="Facture" />
-                  <MenuItem mnemonicParsing="false" text="fermer" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Aide">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <Button fx:id="btn1" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToContratList" text="Contrat" />
+       <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false" text="Facture" />
    </children>
 </AnchorPane>
