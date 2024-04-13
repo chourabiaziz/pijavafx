@@ -64,8 +64,8 @@ public class ContratIndex implements Initializable {
                 Label finLabel = new Label("Jusqu'a " + finText);
                 Label prixLabel = new Label(contrat.getPrix() + " DT");
                 prixLabel.setStyle("-fx-font-weight: bold;");
-                Button button1 = new Button("Edit");
-                Button button2 = new Button("Delete");
+                Button button1 = new Button("Modifier");
+                Button button2 = new Button("Supprimer");
                 HBox buttonBox = new HBox(button1, button2);
                 buttonBox.setAlignment(Pos.CENTER_RIGHT);
                 card.getChildren().addAll(idLabel, prixLabel, couvertureLabel, debutLabel, finLabel, buttonBox);
