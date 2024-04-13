@@ -75,19 +75,20 @@ public class ContratService implements IContrat<Contrat> {
     public void delete(int id) {
         String req = "DELETE FROM contrat WHERE id=?";
         try (PreparedStatement pstmt = cnx.prepareStatement(req)) {
+
             pstmt.setInt(1, id);
+            int rowsAffected = pstmt.executeUpdate();
 
-            boolean res = pstmt.execute();
 
-            if (res) {
-                System.out.println("Supprimer effectuée avec succès !");
+            if (rowsAffected > 0) {
+                System.out.println("Suppression effectuée avec succès !");
             } else {
-                System.out.println("Vérifier l' id");
+                System.out.println("Aucune ligne supprimée. Vérifiez l'ID.");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            // Handle the exception more gracefully, e.g., log the error or display a user-friendly message
+            e.printStackTrace();
         }
-
     }
 
     @Override
@@ -118,8 +119,9 @@ public class ContratService implements IContrat<Contrat> {
     @Override
     public Contrat getById(int id) {
         String req = "SELECT * FROM contrat WHERE id = ?";
-        Contrat contrat = null;
 
+
+        Contrat contrat = null;
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setInt(1, id); // Set the value of the id parameter
             ResultSet rs = ps.executeQuery();

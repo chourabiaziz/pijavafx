@@ -99,7 +99,7 @@ public class Contrat {
 
     @Override
     public String toString() {
-        return "Contrat [id=" + id + ", prix=" + prix + ", engagement=" + engagement + ", couverture=" + couverture
+        return "Contrat N°" + id + ", prix=" + prix + ", engagement=" + engagement + ", couverture=" + couverture
                 + ", debut=" + debut + ", fin=" + fin + "]";
     }
 
