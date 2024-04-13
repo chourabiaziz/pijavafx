@@ -16,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Contrat;
+import tn.esprit.navigation.Navigation;
 import tn.esprit.services.ContratService;
 import javafx.event.ActionEvent;
 
@@ -27,7 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContratIndex implements Initializable {
-
+    Navigation n = new Navigation() ;
     @FXML
     private ListView<Contrat> listView;
 
@@ -38,9 +39,14 @@ public class ContratIndex implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contratService = new ContratService();
         listContrat = new ArrayList<>();
+
+        facture.setOnAction(n::goToFactureIndex);
+        add.setOnAction(n::changeroute);
         afficherContrats();
     }
 
+    @FXML
+    private Button facture;
     ////class one cell
 
     private class ContratListCell extends ListCell<Contrat> {
@@ -72,12 +78,12 @@ public class ContratIndex implements Initializable {
 //buttons actions
                 button1.setOnAction(event -> {
 
-                    System.out.println("button 1");
+
                     int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
                     int prix = contrat.getPrix() ;
                     String debut= contrat.getDebut().toString();
 
-                    gotoedit(event, id ,couverture,engagement, debut,prix);
+                    n.gotoedit(event, id ,couverture,engagement, debut,prix);
 
                 });
                 button2.setOnAction(event -> {
@@ -95,23 +101,7 @@ public class ContratIndex implements Initializable {
         ObservableList<Contrat> observableList = FXCollections.observableList(listContrat);
         listView.setItems(observableList); // Set the updated list to the ListView
     }
-    void gotoedit(ActionEvent event , int id , String couverture, int engagement ,String debut , int prix) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratEdit.fxml"));
-        Parent root = null;
-        try {
-            Node source = (Node) event.getSource();
-            root = loader.load();
-            System.out.println("FXML file loaded successfully.");
-            ContratEdit controller = loader.getController();
-            controller.setId(id ,couverture , engagement , debut,prix);
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Modifier Contrat");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
 
 
@@ -123,22 +113,9 @@ public class ContratIndex implements Initializable {
         listView.setItems(observableList);
         listView.setCellFactory(param -> new ContratListCell());
     }
+@FXML
+Button add ;
 
-    @FXML
-    void changeroute(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
-        Parent root = null;
-        try {
-             Node source = (Node) event.getSource();
-            root = loader.load();
-            System.out.println("FXML file loaded successfully.");
-            AjouterContrat controller = loader.getController();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Ajouter Contrat");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
 }

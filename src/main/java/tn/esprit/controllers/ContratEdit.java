@@ -145,5 +145,21 @@ try {
     }
 
 
-
+    @FXML
+    void goToFactureIndex(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureIndex.fxml"));
+        Parent root ;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            FactureIndex controller = loader.getController();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture  ");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

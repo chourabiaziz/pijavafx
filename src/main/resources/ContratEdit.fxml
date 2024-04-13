@@ -20,6 +20,6 @@
         <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
       <TextField fx:id="datedebut" layoutX="213.0" layoutY="163.0" />
       <Button fx:id="btn1" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToContratList" text="Contrat" />
-      <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false" text="Facture" />
+      <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false"  onAction="#goToFactureIndex" text="Facture" />
     </children>
 </AnchorPane>
