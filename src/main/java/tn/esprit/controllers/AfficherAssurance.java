@@ -9,6 +9,7 @@ package tn.esprit.controllers;
         import javafx.scene.layout.VBox;
         import javafx.scene.text.Text;
         import tn.esprit.models.Assurance;
+        import tn.esprit.services.ServiceAssurance;
 
         import java.net.URL;
         import java.util.List;
@@ -16,6 +17,8 @@ package tn.esprit.controllers;
 
 
 public class AfficherAssurance implements Initializable {
+
+    private ServiceAssurance serviceAssurance = new ServiceAssurance();
 
     @FXML
     private GridPane gridPane;
@@ -53,14 +56,26 @@ public class AfficherAssurance implements Initializable {
         Text emailAssurance = new Text("Email: " + assurance.getEmail_assurance());
 
         Button btnSupprimer = new Button("Supprimer");
-       // btnSupprimer.setOnAction(event -> supprimerAssurance(assurance));
+        btnSupprimer.setOnAction(event -> supprimerAssurance(assurance));
 
 
         vbox.getChildren().addAll(nomAssurance, adresseAssurance, codePostalAssurance, telephoneAssurance, emailAssurance);
         return vbox;
     }
 
-
+    private void supprimerAssurance(Assurance assurance) {
+        boolean success = serviceAssurance.delete(assurance);
+        if (success) {
+            // Actualiser l'affichage des assurances après la suppression
+        } else {
+            // Afficher un message d'erreur en cas d'échec de la suppression
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur lors de la suppression de l'assurance !");
+            alert.showAndWait();
+        }
+    }
 
 
 
