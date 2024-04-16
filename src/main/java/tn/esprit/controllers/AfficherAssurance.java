@@ -12,6 +12,7 @@ package tn.esprit.controllers;
         import tn.esprit.services.ServiceAssurance;
 
         import java.net.URL;
+        import java.util.ArrayList;
         import java.util.List;
         import java.util.ResourceBundle;
 
@@ -27,21 +28,25 @@ public class AfficherAssurance implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        assurances = new ArrayList<>();
     }
 
     void afficherAssurances(String string) {
         int row = 0;
         int col = 0;
 
-        for (Assurance assurance : assurances) {
-            VBox carreau = createCarreau(assurance);
-            gridPane.add(carreau, col, row);
-            col++;
-            if (col == 3) { // Vous pouvez ajuster ce nombre pour changer le nombre de carreaux par ligne
-                col = 0;
-                row++;
+        if (assurances != null) {
+            for (Assurance assurance : assurances) {
+                VBox carreau = createCarreau(assurance);
+                gridPane.add(carreau, col, row);
+                col++;
+                if (col == 3) {
+                    col = 0;
+                    row++;
+                }
             }
+        } else {
+            System.err.println("La liste d'assurances est vide ou non initialisée.");
         }
     }
 

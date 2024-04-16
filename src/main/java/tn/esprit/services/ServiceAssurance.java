@@ -23,7 +23,7 @@ public class ServiceAssurance implements IService<Assurance> {
     public void add(Assurance assurance) {
         //1-req sql INSERT
         //2-executer req
-        String qry ="INSERT INTO `assurance`(nom_assurance, adresse_assurance, code_postal_assurance, tel_assurance, email_assurance) VALUES (?,?,?)";
+        String qry ="INSERT INTO `assurance`(nom_assurance, adresse_assurance, code_postal_assurance, tel_assurance, email_assurance) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement pstm =cnx.prepareStatement(qry);
 
@@ -32,7 +32,7 @@ public class ServiceAssurance implements IService<Assurance> {
             pstm.setString(3,assurance.getCode_postal_assurance());
             pstm.setString(4,assurance.getTel_assurance());
             pstm.setString(5,assurance.getEmail_assurance());
-            pstm.setInt(5,assurance.getId());
+          //  pstm.setInt(6,assurance.getId());
 
 
             pstm.executeUpdate();

@@ -6,6 +6,7 @@ import tn.esprit.models.Constat;
 import tn.esprit.services.ServiceAssurance;
 import tn.esprit.services.ServiceConstat;
 
+
 public class Main {
     public static void main(String[] args) {
         Assurance a = new Assurance(4,"Gprod","tunis lac 1","2011","7321544","grod@gmail.com");
