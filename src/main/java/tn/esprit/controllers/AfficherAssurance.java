@@ -5,6 +5,7 @@ package tn.esprit.controllers;
         import javafx.fxml.Initializable;
         import javafx.scene.control.Alert;
         import javafx.scene.control.Button;
+        import javafx.scene.control.Label;
         import javafx.scene.layout.GridPane;
         import javafx.scene.layout.VBox;
         import javafx.scene.text.Text;
@@ -26,9 +27,46 @@ public class AfficherAssurance implements Initializable {
 
     private List<Assurance> assurances; // Supposons que vous avez une liste d'assurances
 
+    @FXML
+    private Label nomLabel;
+
+    @FXML
+    private Label adresseLabel;
+
+    @FXML
+    private Label codePostalLabel;
+
+    @FXML
+    private Label telephoneLabel;
+
+    @FXML
+    private Label emailLabel;
+    private String nom;
+    private String adresse;
+    private String codePostal;
+    private String telephone;
+    private String email;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Initialiser la liste d'assurances
         assurances = new ArrayList<>();
+
+        // Afficher les données récupérées dans les labels correspondants
+        nomLabel.setText(nom);
+        adresseLabel.setText(adresse);
+        codePostalLabel.setText(codePostal);
+        telephoneLabel.setText(telephone);
+        emailLabel.setText(email);
+    }
+
+    // Méthode pour récupérer les données de AjouterAssurance.fxml et les affecter aux variables correspondantes
+    public void setDonnees(String nom, String adresse, String codePostal, String telephone, String email) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.telephone = telephone;
+        this.email = email;
     }
 
     void afficherAssurances(String string) {

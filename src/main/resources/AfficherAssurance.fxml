@@ -2,9 +2,6 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -15,19 +12,15 @@
                 <Font name="Arial" size="18.0" />
             </font>
         </Text>
-        <GridPane fx:id="gridPane" hgap="20.0" layoutX="50.0" layoutY="70.0" vgap="20.0">
-            <Label fx:id="nomLabel" />
-            <Label fx:id="adresseLabel" />
-            <Label fx:id="codePostalLabel" />
-            <Label fx:id="telephoneLabel" />
-            <Label fx:id="emailLabel" />
-         <columnConstraints>
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-        </GridPane>
+        <Label layoutX="67.0" layoutY="81.0" text="Nom:" fx:id="nomLabel" />
+
+        <Label layoutX="67.0" layoutY="121.0" text="Adresse:" fx:id="adresseLabel" />
+
+        <Label layoutX="63.0" layoutY="159.0" text="Code postal:" fx:id="codePostalLabel" />
+
+        <Label layoutX="67.0" layoutY="207.0" text="Téléphone:" fx:id="telephoneLabel" />
+
+        <Label layoutX="73.0" layoutY="251.0" text="Email:" fx:id="emailLabel" />
 
 
 
