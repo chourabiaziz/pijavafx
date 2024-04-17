@@ -41,7 +41,7 @@ public class ContratIndex implements Initializable {
         listContrat = new ArrayList<>();
 
         facture.setOnAction(n::goToFactureIndex);
-        add.setOnAction(n::changeroute);
+        add.setOnAction(this::changeroute);
         afficherContrats();
     }
 
@@ -103,6 +103,23 @@ public class ContratIndex implements Initializable {
     }
 
 
+    @FXML
+    public   void changeroute(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            AjouterContrat controller = loader.getController();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Ajouter Contrat");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 
