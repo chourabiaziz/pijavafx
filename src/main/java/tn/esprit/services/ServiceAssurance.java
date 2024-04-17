@@ -79,10 +79,34 @@ public class ServiceAssurance implements IService<Assurance> {
         return assurances;
     }
 
-    @Override
-    public void update(Assurance assurance) {
+    // Méthode pour modifier une assurance dans la base de données
+    public boolean update(Assurance assurance) {
+        // Mettez ici la logique pour modifier l'assurance dans la base de données
+        // Par exemple, vous pouvez utiliser une requête SQL pour mettre à jour l'assurance
 
+        try {
+            cnx = MyDataBase.getInstance().getCnx();
+            String query = "UPDATE assurance SET nom_assurance=?, adresse_assurance=?, code_postal_assurance=?, tel_assurance=?, email_assurance=? WHERE id=?";
+            PreparedStatement pstmt = cnx.prepareStatement(query);
+            pstmt.setString(1, assurance.getNom_assurance());
+            pstmt.setString(2, assurance.getAdresse_assurance());
+            pstmt.setString(3, assurance.getCode_postal_assurance());
+            pstmt.setString(4, assurance.getTel_assurance());
+            pstmt.setString(5, assurance.getEmail_assurance());
+            pstmt.setInt(6, assurance.getId());
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            // Si au moins une ligne a été affectée, cela signifie que la mise à jour a réussi
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la mise à jour de l'assurance: " + e.getMessage());
+            return false; // La mise à jour a échoué
+        }
     }
+
+
 
     @Override
     public boolean delete(Assurance assurance) {

@@ -74,12 +74,12 @@ public class ServiceConstat implements IService<Constat> {
     }
 
     @Override
-    public void update(Constat assurance) {
-
+    public boolean update(Constat constat) {
+return false ;
     }
 
     @Override
-    public boolean delete(Constat assurance) {
+    public boolean delete(Constat constat) {
         return false;
     }
 }

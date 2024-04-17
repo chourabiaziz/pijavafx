@@ -2,16 +2,21 @@
 package tn.esprit.controllers;
 
         import javafx.fxml.FXML;
+        import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
+        import javafx.scene.Parent;
+        import javafx.scene.Scene;
         import javafx.scene.control.Alert;
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
         import javafx.scene.layout.GridPane;
         import javafx.scene.layout.VBox;
         import javafx.scene.text.Text;
+        import javafx.stage.Stage;
         import tn.esprit.models.Assurance;
         import tn.esprit.services.ServiceAssurance;
 
+        import java.io.IOException;
         import java.net.URL;
         import java.util.ArrayList;
         import java.util.List;
@@ -41,6 +46,13 @@ public class AfficherAssurance implements Initializable {
 
     @FXML
     private Label emailLabel;
+
+    @FXML
+    private Button ajouterButton;
+
+    @FXML
+    private Button modifierButton;
+
     private String nom;
     private String adresse;
     private String codePostal;
@@ -58,6 +70,45 @@ public class AfficherAssurance implements Initializable {
         codePostalLabel.setText(codePostal);
         telephoneLabel.setText(telephone);
         emailLabel.setText(email);
+
+        // Ajouter un gestionnaire d'événements au bouton "Ajouter"
+        ajouterButton.setOnAction(event -> {
+            // Charger la page AjouterAssurance.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
+            try {
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+
+                // Obtenir la fenêtre principale
+                Stage stage = (Stage) ajouterButton.getScene().getWindow();
+                // Définir la nouvelle scène
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+      // Ajouter un gestionnaire d'événements au bouton "modifier"
+        modifierButton.setOnAction(event -> {
+            // Charger la page ModifierAssurance.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierAssurance.fxml"));
+            try {
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) modifierButton.getScene().getWindow();
+                // Définir la nouvelle scène
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+
+
     }
 
     // Méthode pour récupérer les données de AjouterAssurance.fxml et les affecter aux variables correspondantes
