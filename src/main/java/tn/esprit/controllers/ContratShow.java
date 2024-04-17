@@ -1,4 +1,14 @@
 package tn.esprit.controllers;
 
-public class ContratShow {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ContratShow implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
 }

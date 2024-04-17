@@ -9,10 +9,9 @@ import java.util.List;
 public class Contrat {
 
     private int id, prix, engagement;
-    private String couverture;
+    private String client, couverture;
     private Date debut, fin;
     private List<Facture> factures;
-
     public Contrat(int id, int prix, int engagement, String couverture, String debutStr, String finStr) {
         this.id = id;
         this.prix = prix;
@@ -20,7 +19,7 @@ public class Contrat {
         this.couverture = couverture;
         this.debut = convertToDate(debutStr);
         this.fin = convertToDate(finStr);
-        this.factures = new ArrayList<>();
+        this.client = client;
 
     }
 
@@ -31,7 +30,7 @@ public class Contrat {
         this.couverture = couverture;
         this.debut = debut;
         this.fin = fin;
-        this.factures = new ArrayList<>();
+
 
     }
 
