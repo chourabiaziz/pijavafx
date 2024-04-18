@@ -18,7 +18,7 @@
                 <TableColumn fx:id="typeCarburantColumn" prefWidth="75.0" text="Type de carburant" />
                 <TableColumn fx:id="numeroImmatriculationColumn" prefWidth="75.0" text="Numéro d'immatriculation" />
                 <TableColumn fx:id="kilometrageColumn" prefWidth="75.0" text="Kilométrage" />
-                <TableColumn fx:id="couleurColumn" prefWidth="75.0" text="Couleur" />
+                <TableColumn fx:id="couleurColumn"   prefWidth="75.0" text="Couleur" />
                 <TableColumn fx:id="prixAchatColumn" prefWidth="75.0" text="Prix d'achat" />
                 <TableColumn fx:id="prixActuelColumn" prefWidth="75.0" text="Prix actuel" />
                 <TableColumn fx:id="carteGriseColumn" prefWidth="75.0" text="Carte grise" />
