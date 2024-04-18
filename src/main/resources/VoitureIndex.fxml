@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.VoitureIndex">
+    <children>
+        <TableView fx:id="voitureTable" layoutX="32.0" layoutY="32.0" prefHeight="336.0" prefWidth="536.0">
+            <columns>
+                <!-- ... -->
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="marqueColumn" prefWidth="75.0" text="Marque" />
+                <TableColumn fx:id="modeleColumn" prefWidth="75.0" text="Modèle" />
+                <TableColumn fx:id="numeroSerieColumn" prefWidth="75.0" text="Numéro de série" />
+                <TableColumn fx:id="typeCarburantColumn" prefWidth="75.0" text="Type de carburant" />
+                <TableColumn fx:id="numeroImmatriculationColumn" prefWidth="75.0" text="Numéro d'immatriculation" />
+                <TableColumn fx:id="kilometrageColumn" prefWidth="75.0" text="Kilométrage" />
+                <TableColumn fx:id="couleurColumn" prefWidth="75.0" text="Couleur" />
+                <TableColumn fx:id="prixAchatColumn" prefWidth="75.0" text="Prix d'achat" />
+                <TableColumn fx:id="prixActuelColumn" prefWidth="75.0" text="Prix actuel" />
+                <TableColumn fx:id="carteGriseColumn" prefWidth="75.0" text="Carte grise" />
+                <TableColumn fx:id="nomImageColumn" prefWidth="75.0" text="Nom de l'image" />
+                <!-- ... -->
+
+            </columns>
+        </TableView>
+        <Button layoutX="205.0" layoutY="380.0" mnemonicParsing="false" onAction="#goToAjouterVoiture" text="Ajouter une voiture" />
+<!--        <Button layoutX="409.0" layoutY="316.0" mnemonicParsing="false" onAction="#goToVoitureList" text="Afficher" />-->
+<!--        <Button layoutX="290.0" layoutY="380.0" mnemonicParsing="false" onAction="#goToModifierVoiture" text="Modifier une voiture" />&ndash;&gt;-->
+        <Button layoutX="376.0" layoutY="314.0" mnemonicParsing="false" text="supprimer" />
+    </children>
+</AnchorPane>

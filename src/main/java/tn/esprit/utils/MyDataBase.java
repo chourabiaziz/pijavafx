@@ -8,7 +8,7 @@ public class MyDataBase {
 
     private static MyDataBase instance ;
 
-    private final String URL="jdbc:mysql://127.0.0.1:3306/pi";
+    private final String URL="jdbc:mysql://127.0.0.1:3306/integproject";
     private final String USERNAME ="root";
     private final String PASSWORD ="";
     private Connection cnx ;
@@ -17,7 +17,8 @@ public class MyDataBase {
 
         try {
             cnx = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-
+            System.out.println("  " +
+                    "Connected ... ");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println(" ___ Connection Failed ___");

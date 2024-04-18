@@ -1,6 +1,6 @@
 package tn.esprit.models;
 
-import javax.persistence.OneToMany;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -10,16 +10,16 @@ public class Panne {
     private String localisation, panne, description ;
     private Date date;
 
-    @OneToMany(mappedBy = "panne")
-    private List<Panne> pannes;
-
-    public List<Panne> getPannes() {
-        return pannes;
-    }
-
-    public void setPannes(List<Panne> pannes) {
-        this.pannes = pannes;
-    }
+//    @OneToMany(mappedBy = "panne")
+//    private List<Panne> pannes;
+//
+//    public List<Panne> getPannes() {
+//        return pannes;
+//    }
+//
+//    public void setPannes(List<Panne> pannes) {
+//        this.pannes = pannes;
+//    }
 
     public Panne() {
     }

@@ -1,13 +1,14 @@
 package tn.esprit.models;
 
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 
 public class Voiture {
-    private int id, annee_fabrication, kilometrage;
+    private int id;
 
-    @ManyToOne
+    private int kilometrage;
+
+//
     private Panne panne;
 
     public Panne getPanne() {
@@ -22,6 +23,23 @@ public class Voiture {
     private String marque, modele, numero_serie, type_carburant, numero_immatriculation, couleur, carte_grise, nom_image;
     private Date date_achat;
 
+    public Voiture(int id, int kilometrage, Panne panne, double prix_achat, double prix_actuel, String marque, String modele, String numero_serie, String type_carburant, String numero_immatriculation, String couleur, String carte_grise, String nom_image, Date date_achat) {
+        this.id = id;
+        this.kilometrage = kilometrage;
+        this.panne = panne;
+        this.prix_achat = prix_achat;
+        this.prix_actuel = prix_actuel;
+        this.marque = marque;
+        this.modele = modele;
+        this.numero_serie = numero_serie;
+        this.type_carburant = type_carburant;
+        this.numero_immatriculation = numero_immatriculation;
+        this.couleur = couleur;
+        this.carte_grise = carte_grise;
+        this.nom_image = nom_image;
+        this.date_achat = date_achat;
+    }
+
     public Voiture() {
     }
 
@@ -33,25 +51,12 @@ public class Voiture {
         this.id = id;
     }
 
-    public int getAnnee_fabrication() {
-        return annee_fabrication;
-    }
-
-    public void setAnnee_fabrication(int annee_fabrication) {
-        this.annee_fabrication = annee_fabrication;
-    }
-
     public int getKilometrage() {
         return kilometrage;
     }
 
     public void setKilometrage(int kilometrage) {
         this.kilometrage = kilometrage;
-    }
-
-
-    public void setPrix_achat(int prix_achat) {
-        this.prix_achat = prix_achat;
     }
 
     public double getPrix_achat() {
@@ -69,11 +74,6 @@ public class Voiture {
     public void setPrix_actuel(double prix_actuel) {
         this.prix_actuel = prix_actuel;
     }
-
-    public void setPrix_actuel(int prix_actuel) {
-        this.prix_actuel = prix_actuel;
-    }
-
 
     public String getMarque() {
         return marque;
@@ -144,23 +144,6 @@ public class Voiture {
     }
 
     public void setDate_achat(Date date_achat) {
-        this.date_achat = date_achat;
-    }
-
-    public Voiture(int id, int annee_fabrication, int kilometrage, double prix_achat, double prix_actuel, String marque, String modele, String numero_serie, String type_carburant, String numero_immatriculation, String couleur, String carte_grise, String nom_image, Date date_achat) {
-        this.id = id;
-        this.annee_fabrication = annee_fabrication;
-        this.kilometrage = kilometrage;
-        this.prix_achat = prix_achat;
-        this.prix_actuel = prix_actuel;
-        this.marque = marque;
-        this.modele = modele;
-        this.numero_serie = numero_serie;
-        this.type_carburant = type_carburant;
-        this.numero_immatriculation = numero_immatriculation;
-        this.couleur = couleur;
-        this.carte_grise = carte_grise;
-        this.nom_image = nom_image;
         this.date_achat = date_achat;
     }
 }
