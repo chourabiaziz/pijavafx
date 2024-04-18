@@ -60,7 +60,7 @@ public class Navigation {
             System.out.println("FXML file loaded successfully.");
             FactureIndex controller = loader.getController();
             Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Ajouter Contrat");
+            stage.setTitle(" Facture Index");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
