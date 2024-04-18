@@ -9,17 +9,19 @@
     <children>
 
 
-        <Label layoutX="77.0" layoutY="128.0" text="Engagement" />
-        <Label layoutX="76.0" layoutY="90.0" text="Couverture" />
-        <Label layoutX="77.0" layoutY="167.0" text="Date debut" />
-        <Label layoutX="95.0" layoutY="209.0" text="Prix" />
-        <TextField fx:id="couverture" layoutX="213.0" layoutY="86.0" />
-        <TextField fx:id="engagement" layoutX="213.0" layoutY="124.0" />
-        <TextField fx:id="prix" layoutX="213.0" layoutY="206.0" />
-        <Button fx:id="annuler" layoutX="108.0" layoutY="253.0" mnemonicParsing="false" text="Annuler" />
-        <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
-      <TextField fx:id="datedebut" layoutX="213.0" layoutY="163.0" />
+        <Label layoutX="77.0" layoutY="181.0" text="Engagement" />
+        <Label layoutX="76.0" layoutY="143.0" text="Couverture" />
+        <Label layoutX="77.0" layoutY="220.0" text="Date debut" />
+        <Label layoutX="95.0" layoutY="262.0" text="Prix" />
+        <TextField fx:id="couverture" layoutX="213.0" layoutY="139.0" />
+        <TextField fx:id="engagement" layoutX="213.0" layoutY="177.0" />
+        <TextField fx:id="prix" layoutX="213.0" layoutY="259.0" />
+        <Button fx:id="annuler" layoutX="108.0" layoutY="306.0" mnemonicParsing="false" text="Annuler" />
+        <Button fx:id="submit" layoutX="234.0" layoutY="306.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
+      <TextField fx:id="datedebut" layoutX="213.0" layoutY="216.0" />
       <Button fx:id="btn1" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToContratList" text="Contrat" />
-      <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false"  onAction="#goToFactureIndex" text="Facture" />
+      <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false" onAction="#goToFactureIndex" text="Facture" />
+      <Label layoutX="76.0" layoutY="107.0" text="Client" />
+      <TextField fx:id="client" layoutX="213.0" layoutY="103.0" />
     </children>
 </AnchorPane>

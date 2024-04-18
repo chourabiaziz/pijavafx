@@ -32,6 +32,8 @@ public class ContratEdit implements Initializable  {
 
     @FXML
     private TextField datedebut;
+    @FXML
+    private TextField client;
 
     @FXML
     private TextField engagement;
@@ -42,7 +44,7 @@ public class ContratEdit implements Initializable  {
     @FXML
     private Button submit;
     private int id, pr, eng;
-    private String cv;
+    private String cl , cv;
     private String db;
     private Contrat  contrat ;
     private  ContratService contratService ;
@@ -80,6 +82,7 @@ public class ContratEdit implements Initializable  {
         c.setCouverture(couverture.getText());
         c.setEngagement(Integer.parseInt(engagement.getText()));
         c.setPrix(Integer.parseInt(prix.getText()));
+        c.setClient(client.getText());
         String dateString = datedebut.getText();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(dateString, formatter);
@@ -106,12 +109,13 @@ try {
 
     }
 
-    public void setId(int id, String cv, int eng, String db, int pr) {
+    public void setId(int id, String cl, String cv, int eng, String db, int pr) {
         this.id = id;
         this.cv = cv;
         this.eng = eng;
         this.db = db;
         this.pr = pr;
+        this.cl = cl ;
 
         updateUI();
     }
@@ -131,11 +135,11 @@ try {
         engagement.setText(String.valueOf(eng));
         couverture.setText(cv);
 
-
+        client.setText(cl);
        datedebut.setText(db);
 
 
-        System.out.println(db);
+
 
 
 //        Instant instant = db.toInstant();

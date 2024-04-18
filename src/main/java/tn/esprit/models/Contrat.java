@@ -12,7 +12,7 @@ public class Contrat {
     private String client, couverture;
     private Date debut, fin;
     private List<Facture> factures;
-    public Contrat(int id, int prix, int engagement, String couverture, String debutStr, String finStr) {
+    public Contrat(int id, int prix, int engagement, String couverture, String debutStr, String finStr , String client) {
         this.id = id;
         this.prix = prix;
         this.engagement = engagement;
@@ -23,13 +23,22 @@ public class Contrat {
 
     }
 
-    public Contrat(int id, int prix, int engagement, String couverture, Date debut, Date fin) {
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public Contrat(int id, int prix, int engagement, String couverture, Date debut, Date fin , String client) {
         this.id = id;
         this.prix = prix;
         this.engagement = engagement;
         this.couverture = couverture;
         this.debut = debut;
         this.fin = fin;
+        this.client = client;
 
 
     }

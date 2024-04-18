@@ -37,6 +37,8 @@ public class AjouterContrat implements Initializable {
 
     @FXML
     private TextField prix;
+    @FXML
+    private TextField client;
 
     @FXML
     private Button submit;
@@ -46,6 +48,7 @@ public class AjouterContrat implements Initializable {
         Contrat c = new Contrat();
         ContratService cs = new ContratService();
         c.setCouverture(couverture.getText());
+        c.setCouverture(client.getText());
         c.setEngagement(Integer.parseInt(engagement.getText()));
         c.setPrix(Integer.parseInt(prix.getText()));
 

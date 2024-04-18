@@ -10,10 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Contrat;
@@ -28,8 +25,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FactureIndex implements Initializable {
-    @FXML
-    private Button add;
+
 
     @FXML
     private Button contrat;
@@ -43,7 +39,7 @@ public class FactureIndex implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contrat.setOnAction(this::gotofacture);
-        add.setOnAction(this::add);
+
         listContrat = new ArrayList<>();
         afficherContrats();
 
@@ -88,14 +84,17 @@ public class FactureIndex implements Initializable {
 
                 });
                 button2.setOnAction(event -> {
-//                    contratService.delete(contrat.getId());
-//                    refreshContrats();
-                    System.out.println("supprimer");
+                    factureService.delete(facture.getId());
+                    refreshContrats();
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Succès");
+                    alert.setHeaderText("facture Supprimer avec succès");
+                    alert.showAndWait();
 
                 });
                 button0.setOnAction(event -> {
-//                    contratService.delete(contrat.getId());
-//                    refreshContrats();
+
                     System.out.println("consulter");
                 });
                 setGraphic(card);
@@ -147,7 +146,7 @@ public class FactureIndex implements Initializable {
         }
     }
 
-    private void add(ActionEvent event) {
+    private void edit(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureAdd.fxml"));
         Parent root = null;
         try {

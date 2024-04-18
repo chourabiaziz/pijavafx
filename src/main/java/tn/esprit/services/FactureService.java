@@ -21,7 +21,7 @@ public class FactureService implements IFacture<Facture> {
     @Override
     public void add(Facture f) {
 
-        String sql = "INSERT INTO `facture`(`id`, `totale`, `tva`, `createdat`, `statut`, `id_contrat`) VALUES (?,?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO `facture`(`id`, `totale`, `tva`, `createdat`, `statut`, `contrat`) VALUES (?,?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = cnx.prepareStatement(sql)) {
             pstmt.setInt(1, f.getId());
@@ -29,7 +29,7 @@ public class FactureService implements IFacture<Facture> {
             pstmt.setInt(3, f.getTva());
             pstmt.setDate(4, f.getCreatedat());
             pstmt.setBoolean(5, f.isStatut());
-            pstmt.setInt(6, f.getContrat().getId());
+            pstmt.setInt(6, f.getContrat());
 
             pstmt.executeUpdate();
 

@@ -62,6 +62,7 @@ public class ContratIndex implements Initializable {
                 HBox card = new HBox();
                 card.setStyle("-fx-background-color: #808080; -fx-padding: 10px; -fx-spacing: 10px;");
                 Label idLabel = new Label("Contrat N°" + contrat.getId());
+                Label client = new Label("Contrat N°" + contrat.getClient());
                 String couvertureText = contrat.getCouverture() != null ? contrat.getCouverture() : "";
                 Label couvertureLabel = new Label("-- " + couvertureText);
                 String debutText = contrat.getDebut() != null ? contrat.getDebut().toString() : "";
@@ -71,19 +72,30 @@ public class ContratIndex implements Initializable {
                 Label prixLabel = new Label(contrat.getPrix() + " DT");
                 prixLabel.setStyle("-fx-font-weight: bold;");
                 Button button1 = new Button("Modifier");
+                Button button0 = new Button("Consulter");
                 Button button2 = new Button("Supprimer");
-                HBox buttonBox = new HBox(button1, button2);
+                HBox buttonBox = new HBox(button0,button1, button2);
                 buttonBox.setAlignment(Pos.CENTER_RIGHT);
-                card.getChildren().addAll(idLabel, prixLabel, couvertureLabel, debutLabel, finLabel, buttonBox);
+                card.getChildren().addAll(idLabel, client, prixLabel, couvertureLabel, debutLabel, finLabel, buttonBox);
 //buttons actions
                 button1.setOnAction(event -> {
 
 
                     int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
-                    int prix = contrat.getPrix() ;
+                    int prix = contrat.getPrix() ; String cliente = contrat.getClient();
                     String debut= contrat.getDebut().toString();
 
-                    n.gotoedit(event, id ,couverture,engagement, debut,prix);
+                    n.gotoedit(event, id , cliente, couverture,engagement, debut,prix);
+
+                });
+                button0.setOnAction(event -> {
+
+
+                    int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
+                    int prix = contrat.getPrix() ; String cliente = contrat.getClient();
+                    String debut= contrat.getDebut().toString();
+
+                    n.gotoshow(event, id , cliente, couverture,engagement, debut,prix);
 
                 });
                 button2.setOnAction(event -> {
