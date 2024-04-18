@@ -48,11 +48,10 @@ public class AjouterContrat implements Initializable {
         Contrat c = new Contrat();
         ContratService cs = new ContratService();
         c.setCouverture(couverture.getText());
-        c.setCouverture(client.getText());
+        c.setClient(client.getText());
         c.setEngagement(Integer.parseInt(engagement.getText()));
         c.setPrix(Integer.parseInt(prix.getText()));
-
-        c.setDebut(Date.valueOf(datedebut.getValue()));
+         c.setDebut(Date.valueOf(datedebut.getValue()));
         LocalDate finDate = c.getDebut().toLocalDate().plusMonths(c.getEngagement());
         c.setFin(Date.valueOf(finDate));
 

@@ -91,8 +91,9 @@ public class FactureService implements IFacture<Facture> {
                 int tva = res.getInt("tva");
                 boolean statut = res.getBoolean("statut");
                 Date createdat = res.getDate("createdat");
+                int contrat = res.getInt("contrat");
 
-                Facture c = new Facture(id, totale, tva, createdat, statut);
+                Facture c = new Facture(id, totale, tva, createdat, statut , contrat);
                 factures.add(c);
             }
 
@@ -118,8 +119,8 @@ public class FactureService implements IFacture<Facture> {
                 int tva = rs.getInt("tva");
                 boolean statut = rs.getBoolean("statut");
                 Date createdat = rs.getDate("createdat");
-
-                Facture c = new Facture(idfacture, totale, tva, createdat, statut);
+                int contrat = rs.getInt("contrat");
+                Facture c = new Facture(idfacture, totale, tva, createdat, statut ,contrat);
                 return c;
             }
         } catch (SQLException e) {
@@ -144,8 +145,8 @@ public class FactureService implements IFacture<Facture> {
                 int tva = rs.getInt("tva");
                 boolean statut = rs.getBoolean("statut");
                 Date createdat = rs.getDate("createdat");
-
-                Facture c = new Facture(idfacture, totale, tva, createdat, statut);
+                int contrat = rs.getInt("contrat");
+                Facture c = new Facture(idfacture, totale, tva, createdat, statut,contrat);
                 return c;
             }
         } catch (SQLException e) {

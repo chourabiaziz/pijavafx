@@ -33,7 +33,7 @@ public class FactureIndex implements Initializable {
     @FXML
     private ListView<Facture> listView;
 
-    private FactureService factureService;
+    private FactureService factureService = new FactureService() ;
     private List<Facture> listContrat;
 
     @Override
@@ -62,7 +62,7 @@ public class FactureIndex implements Initializable {
                 Label idLabel = new Label("Facture N°" + facture.getId());
                 Label totale = new Label(  facture.getTotale()+" TND");
                 Label contrat = new Label("pour contrat N°" + facture.getId());
-                Label createdat = new Label("creation en" + facture.getCreatedat());
+                Label createdat = new Label("créé en " + facture.getCreatedat());
 
                 totale.setStyle("-fx-font-weight: bold;");
                 createdat.setStyle("-fx-font-weight: bold;");
@@ -84,18 +84,20 @@ public class FactureIndex implements Initializable {
 
                 });
                 button2.setOnAction(event -> {
-                    factureService.delete(facture.getId());
-                    refreshContrats();
+
+
 
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Succès");
                     alert.setHeaderText("facture Supprimer avec succès");
                     alert.showAndWait();
-
+                    factureService.delete(facture.getId());
+                    refreshContrats();
                 });
                 button0.setOnAction(event -> {
-
-                    System.out.println("consulter");
+                    ContratService cs = new ContratService();
+                    Contrat c = cs.getById(facture.getContrat());
+                  facture(event, facture.getId() , c.getClient(), c.getCouverture(),c.getEngagement(), c.getDebut()+"",c.getFin()+"",c.getPrix() , facture.getTva() , facture.getTotale());
                 });
                 setGraphic(card);
             }
@@ -108,7 +110,11 @@ public class FactureIndex implements Initializable {
 //        listView.setItems(observableList); // Set the updated list to the ListView
 //    }
 
-
+    private void refreshContrats() {
+        listView.getItems().clear(); // Clear the existing items
+        listContrat.clear(); // Clear the list of contracts
+         afficherContrats();
+    }
     private void afficherContrats() {
         FactureService fs = new FactureService() ;
         List<Facture> factures = fs.getAll();
@@ -124,7 +130,23 @@ public class FactureIndex implements Initializable {
 
 
 
-
+    public void facture(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin , int prix , int tva,int tot) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureShow.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            FactureShow controller = loader.getController();
+            controller.setId(id , cliente, couverture , engagement , debut, fin,prix , tva ,tot);
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 

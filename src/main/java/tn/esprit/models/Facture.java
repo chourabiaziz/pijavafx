@@ -7,11 +7,10 @@ import java.util.List;
 
 public class Facture {
 
-    private int id, totale, tva;
+    private int id, totale, contrat, tva;
     private Date createdat;
     private boolean statut;
-    private int contrat;
-    private String client ;
+     private String client ;
     public Facture(int id, int totale, int tva, String debutStr, boolean statut, int contrat) {
         this.id = id;
         this.totale = totale;
@@ -22,6 +21,7 @@ public class Facture {
 
     }
 
+
     public String getClient() {
         return client;
     }
@@ -30,12 +30,13 @@ public class Facture {
         this.client = client;
     }
 
-    public Facture(int id, int totale, int tva, Date createdat, boolean statut) {
+    public Facture(int id, int totale, int tva, Date createdat, boolean statut, int contrat) {
         this.id = id;
         this.totale = totale;
         this.tva = tva;
         this.createdat = createdat;
         this.statut = statut;
+        this.contrat=contrat;
 
     }
 

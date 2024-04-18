@@ -62,7 +62,7 @@ public class ContratIndex implements Initializable {
                 HBox card = new HBox();
                 card.setStyle("-fx-background-color: #808080; -fx-padding: 10px; -fx-spacing: 10px;");
                 Label idLabel = new Label("Contrat N°" + contrat.getId());
-                Label client = new Label("Contrat N°" + contrat.getClient());
+                Label client = new Label("pour " + contrat.getClient());
                 String couvertureText = contrat.getCouverture() != null ? contrat.getCouverture() : "";
                 Label couvertureLabel = new Label("-- " + couvertureText);
                 String debutText = contrat.getDebut() != null ? contrat.getDebut().toString() : "";

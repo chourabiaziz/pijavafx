@@ -11,27 +11,10 @@ public class Contrat {
     private int id, prix, engagement;
     private String client, couverture;
     private Date debut, fin;
-    private List<Facture> factures;
-    public Contrat(int id, int prix, int engagement, String couverture, String debutStr, String finStr , String client) {
-        this.id = id;
-        this.prix = prix;
-        this.engagement = engagement;
-        this.couverture = couverture;
-        this.debut = convertToDate(debutStr);
-        this.fin = convertToDate(finStr);
-        this.client = client;
 
-    }
 
-    public String getClient() {
-        return client;
-    }
 
-    public void setClient(String client) {
-        this.client = client;
-    }
-
-    public Contrat(int id, int prix, int engagement, String couverture, Date debut, Date fin , String client) {
+    public Contrat(int id, int prix, String client, int engagement, String couverture, Date debut, Date fin ) {
         this.id = id;
         this.prix = prix;
         this.engagement = engagement;
@@ -39,8 +22,6 @@ public class Contrat {
         this.debut = debut;
         this.fin = fin;
         this.client = client;
-
-
     }
 
     public Contrat() {
@@ -83,6 +64,13 @@ public class Contrat {
 
     public String getCouverture() {
         return couverture;
+    }
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
     }
 
     public void setCouverture(String couverture) {
