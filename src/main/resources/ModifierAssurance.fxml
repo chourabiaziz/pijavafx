@@ -38,6 +38,8 @@
         <TextField layoutX="176.0" layoutY="284.0" fx:id="emailTextField" />
 
         <Button layoutX="200.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifierAssurance" text="Modifier" />
+        <Button fx:id="retourButton" text="Retour" onAction="#retourner" />
+
     </children>
 
 </AnchorPane>

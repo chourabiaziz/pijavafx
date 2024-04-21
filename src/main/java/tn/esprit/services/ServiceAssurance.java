@@ -132,7 +132,21 @@ public class ServiceAssurance implements IService<Assurance> {
 
 
     @Override
-    public boolean delete(Assurance assurance) {
-        return false;
+    public boolean delete(Assurance assurance)
+    {
+        try {
+            cnx = MyDataBase.getInstance().getCnx();
+            String query = "DELETE FROM assurance WHERE id=?";
+            PreparedStatement pstmt = cnx.prepareStatement(query);
+            pstmt.setInt(1, assurance.getId());
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            // If at least one row is affected, deletion is successful
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la suppression de l'assurance: " + e.getMessage());
+            return false; // Deletion failed
+        }
     }
 }

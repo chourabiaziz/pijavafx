@@ -2,7 +2,13 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import tn.esprit.models.Assurance;
 import tn.esprit.services.ServiceAssurance;
 
@@ -26,6 +32,9 @@ public class ModifierAssurance {
 
     @FXML
     private TextField emailTextField;
+
+    @FXML
+    private Button retourButton;
 
     private ServiceAssurance serviceAssurance;
     private Assurance assurance;
@@ -67,9 +76,42 @@ public class ModifierAssurance {
         // Update the assurance in the database
         boolean updateSuccess = serviceAssurance.update(assurance);
         if (updateSuccess) {
-            System.out.println("Assurance mise à jour avec succès.");
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Modification réussie", "La modification de l'assurance a été effectuée avec succès.");
+
         } else {
-            System.out.println("Échec de la mise à jour de l'assurance.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la modification", "La modification de l'assurance a échoué.");
+
+        }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
+
+
+    @FXML
+    void retourner(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de la page AfficherAssurance.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène avec le contenu chargé
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre actuelle et la fermer
+            Stage stage = (Stage) retourButton.getScene().getWindow();
+            stage.close();
+            // Afficher la nouvelle scène
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

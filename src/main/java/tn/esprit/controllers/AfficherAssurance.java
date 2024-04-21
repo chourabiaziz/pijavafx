@@ -52,7 +52,7 @@ public class AfficherAssurance implements Initializable {
 
     @FXML
     private TilePane tilePane;
-    public void setAssurances(List<Assurance> assurances) {
+    public void setAssurances(List<Assurance> assurances ) {
         ObservableList<Node> children = tilePane.getChildren();
         children.clear();
         for (Assurance assurance : assurances) {
@@ -92,21 +92,23 @@ public class AfficherAssurance implements Initializable {
 
             Button supprimerButton = new Button("Supprimer");
             supprimerButton.setOnAction(event -> {
+                // Retrieve the assurance associated with this button
+                Assurance assuranceToDelete = assurance;
 
-                        Assurance assuranceToDelete = assurance;
+                // Create an instance of the ServiceAssurance class
+                ServiceAssurance serviceAssurance = new ServiceAssurance();
 
-                        // Supprimer l'assurance de la base de données en utilisant le service
-                        boolean deleteSuccess = serviceAssurance.delete(assuranceToDelete);
-                        if (deleteSuccess) {
-                            // Si la suppression réussit, supprimer également la carte de l'interface utilisateur
-                            children.remove(card);
-                            System.out.println("Assurance supprimée avec succès.");
-                        } else {
-                            System.out.println("Échec de la suppression de l'assurance.");
-                        }
+                // Perform the deletion operation
+                boolean deleteSuccess = serviceAssurance.delete(assuranceToDelete);
+                if (deleteSuccess) {
+                    // If deletion is successful, remove the card from the UI
+                    children.remove(card);
+                    System.out.println("Assurance supprimée avec succès.");
+                } else {
+                    System.out.println("Échec de la suppression de l'assurance.");
+                }
+            });
 
-                    }
-                    );
 
 
             card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel,modifierButton,supprimerButton);
