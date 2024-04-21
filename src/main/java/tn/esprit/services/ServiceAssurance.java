@@ -45,7 +45,7 @@ public class ServiceAssurance implements IService<Assurance> {
     }
 
     @Override
-    public ArrayList<Assurance> getAll() {
+    public  ArrayList<Assurance> getAll() {
         //1-req SELECT
         //2-recuperation de la base de donné remplissage dans Array
         //3-retour du tableau done
@@ -106,6 +106,29 @@ public class ServiceAssurance implements IService<Assurance> {
         }
     }
 
+
+
+   public Assurance getById(int id) {
+        Assurance assurance = null;
+        String query = "SELECT * FROM assurance WHERE id = ?";
+        try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    assurance = new Assurance();
+                    assurance.setId(rs.getInt("id"));
+                    assurance.setNom_assurance(rs.getString("nom_assurance"));
+                    assurance.setAdresse_assurance(rs.getString("adresse_assurance"));
+                    assurance.setCode_postal_assurance(rs.getString("code_postal_assurance"));
+                    assurance.setTel_assurance(rs.getString("tel_assurance"));
+                    assurance.setEmail_assurance(rs.getString("email_assurance"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération de l'assurance par ID: " + e.getMessage());
+        }
+        return assurance;
+    }
 
 
     @Override

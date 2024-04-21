@@ -1,51 +1,39 @@
 
 package tn.esprit.controllers;
 
-        import javafx.fxml.FXML;
+        import javafx.collections.FXCollections;
+        import javafx.collections.ObservableList;
+        import javafx.event.ActionEvent;
+        import javafx.fxml.FXML;;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
+        import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
-        import javafx.scene.control.Alert;
+        import javafx.scene.control.*;
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
-        import javafx.scene.layout.GridPane;
+        import javafx.scene.control.cell.PropertyValueFactory;
+
+        import javafx.scene.layout.TilePane;
         import javafx.scene.layout.VBox;
-        import javafx.scene.text.Text;
         import javafx.stage.Stage;
         import tn.esprit.models.Assurance;
         import tn.esprit.services.ServiceAssurance;
 
+        import java.awt.*;
         import java.io.IOException;
         import java.net.URL;
-        import java.util.ArrayList;
         import java.util.List;
         import java.util.ResourceBundle;
+        import javafx.geometry.Insets;
 
 
 public class AfficherAssurance implements Initializable {
 
-    private ServiceAssurance serviceAssurance = new ServiceAssurance();
 
     @FXML
-    private GridPane gridPane;
-
-    private List<Assurance> assurances; // Supposons que vous avez une liste d'assurances
-
-    @FXML
-    private Label nomLabel;
-
-    @FXML
-    private Label adresseLabel;
-
-    @FXML
-    private Label codePostalLabel;
-
-    @FXML
-    private Label telephoneLabel;
-
-    @FXML
-    private Label emailLabel;
+    private VBox assuranceCardVBox;
 
     @FXML
     private Button ajouterButton;
@@ -53,111 +41,90 @@ public class AfficherAssurance implements Initializable {
     @FXML
     private Button modifierButton;
 
+    @FXML
+    private Button supprimerButton;
+
     private String nom;
     private String adresse;
     private String codePostal;
     private String telephone;
     private String email;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Initialiser la liste d'assurances
-        assurances = new ArrayList<>();
+    @FXML
+    private TilePane tilePane;
+    public void setAssurances(List<Assurance> assurances) {
+        ObservableList<Node> children = tilePane.getChildren();
+        children.clear();
+        for (Assurance assurance : assurances) {
+            VBox card = new VBox();
+            card.setPrefWidth(200);
+            card.setPrefHeight(180);
+            card.setSpacing(5);
+            card.setPadding(new Insets(5));
 
-        // Afficher les données récupérées dans les labels correspondants
-        nomLabel.setText(nom);
-        adresseLabel.setText(adresse);
-        codePostalLabel.setText(codePostal);
-        telephoneLabel.setText(telephone);
-        emailLabel.setText(email);
-
-        // Ajouter un gestionnaire d'événements au bouton "Ajouter"
-        ajouterButton.setOnAction(event -> {
-            // Charger la page AjouterAssurance.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
-            try {
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-
-                // Obtenir la fenêtre principale
-                Stage stage = (Stage) ajouterButton.getScene().getWindow();
-                // Définir la nouvelle scène
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-
-      // Ajouter un gestionnaire d'événements au bouton "modifier"
-        modifierButton.setOnAction(event -> {
-            // Charger la page ModifierAssurance.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierAssurance.fxml"));
-            try {
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) modifierButton.getScene().getWindow();
-                // Définir la nouvelle scène
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+            Label nomLabel = new Label("Nom: " + assurance.getNom_assurance());
+            Label adresseLabel = new Label("Adresse: " + assurance.getAdresse_assurance());
+            Label codePostalLabel = new Label("Code Postal: " + assurance.getCode_postal_assurance());
+            Label telephoneLabel = new Label("Téléphone: " + assurance.getTel_assurance());
+            Label emailLabel = new Label("Email: " + assurance.getEmail_assurance());
 
 
 
+            Button modifierButton = new Button("Modifier");
+            modifierButton.setOnAction(event -> {
+                try {
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    currentStage.close();
 
-    }
+                    // Charger le fichier FXML de la page ModifierAssurance.fxml
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierAssurance.fxml"));
+                    Parent root = loader.load();
 
-    // Méthode pour récupérer les données de AjouterAssurance.fxml et les affecter aux variables correspondantes
-    public void setDonnees(String nom, String adresse, String codePostal, String telephone, String email) {
-        this.nom = nom;
-        this.adresse = adresse;
-        this.codePostal = codePostal;
-        this.telephone = telephone;
-        this.email = email;
-    }
-
-    void afficherAssurances(String string) {
-        int row = 0;
-        int col = 0;
-
-        if (assurances != null) {
-            for (Assurance assurance : assurances) {
-                VBox carreau = createCarreau(assurance);
-                gridPane.add(carreau, col, row);
-                col++;
-                if (col == 3) {
-                    col = 0;
-                    row++;
+                    // Afficher la nouvelle scène
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            }
-        } else {
-            System.err.println("La liste d'assurances est vide ou non initialisée.");
+            });
+
+            Button supprimerButton = new Button("Supprimer");
+            supprimerButton.setOnAction(event -> {
+
+                        Assurance assuranceToDelete = assurance;
+
+                        // Supprimer l'assurance de la base de données en utilisant le service
+                        boolean deleteSuccess = serviceAssurance.delete(assuranceToDelete);
+                        if (deleteSuccess) {
+                            // Si la suppression réussit, supprimer également la carte de l'interface utilisateur
+                            children.remove(card);
+                            System.out.println("Assurance supprimée avec succès.");
+                        } else {
+                            System.out.println("Échec de la suppression de l'assurance.");
+                        }
+
+                    }
+                    );
+
+
+            card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel,modifierButton,supprimerButton);
+            children.add(card);
         }
     }
 
-    private VBox createCarreau(Assurance assurance) {
-        VBox vbox = new VBox();
-        vbox.getStyleClass().add("carreau"); // Appliquer des styles CSS si nécessaire
-
-        Text nomAssurance = new Text("Nom: " + assurance.getNom_assurance());
-        Text adresseAssurance = new Text("Adresse: " + assurance.getAdresse_assurance());
-        Text codePostalAssurance = new Text("Code postal: " + assurance.getCode_postal_assurance());
-        Text telephoneAssurance = new Text("Téléphone: " + assurance.getTel_assurance());
-        Text emailAssurance = new Text("Email: " + assurance.getEmail_assurance());
-
-        Button btnSupprimer = new Button("Supprimer");
-        btnSupprimer.setOnAction(event -> supprimerAssurance(assurance));
 
 
-        vbox.getChildren().addAll(nomAssurance, adresseAssurance, codePostalAssurance, telephoneAssurance, emailAssurance);
-        return vbox;
-    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-    private void supprimerAssurance(Assurance assurance) {
+  /*
+    @FXML
+    private void supprimerAssurance(ActionEvent event) {
+
+        Assurance assurance = (Assurance) supprimerButton.getUserData();
+
         boolean success = serviceAssurance.delete(assurance);
         if (success) {
             // Actualiser l'affichage des assurances après la suppression
@@ -168,11 +135,12 @@ public class AfficherAssurance implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Erreur lors de la suppression de l'assurance !");
             alert.showAndWait();
-        }
+        }  */
     }
 
 
 
-}
+
+    }
 
 

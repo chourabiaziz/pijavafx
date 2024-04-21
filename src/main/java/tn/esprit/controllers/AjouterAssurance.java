@@ -1,17 +1,21 @@
 package tn.esprit.controllers;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.Assurance;
 import tn.esprit.services.ServiceAssurance;
 
 import java.io.IOException;
+import java.util.List;
 
 import static javafx.application.Application.launch;
 
@@ -34,15 +38,17 @@ public class AjouterAssurance {
     @FXML
     private TextField tfEmail;
 
+
     @FXML
-    void afficherAssurance(ActionEvent event) {
+    void AfficherAssurance(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssurance.fxml"));
 
         try {
             Parent root = loader.load();
             AfficherAssurance ap = loader.getController();
+            List<Assurance> assurancesList = sp.getAll();
+            ap.setAssurances(assurancesList);
 
-            ap.afficherAssurances(sp.getAll().toString());
             tfNom.getScene().setRoot(root);
 
 
@@ -50,20 +56,12 @@ public class AjouterAssurance {
             System.out.println(e.getMessage());
         }
 
-
     }
+
 
     @FXML
     void ajouterAssurance(ActionEvent event) {
-
         try {
-
-            // Récupérer les données saisies dans les TextField
-            String nom = tfNom.getText();
-            String adresse = tfAdresse.getText();
-            String codePostal = tfCodePostal.getText();
-            String telephone = tfTelephone.getText();
-            String email = tfEmail.getText();
 
             Assurance a = new Assurance();
 
@@ -76,14 +74,12 @@ public class AjouterAssurance {
             sp.add(a);
             System.out.println("Assurance ajoutée avec succès !");
 
-// Rediriger vers la page AfficherAssurance
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssurance.fxml"));
-            Parent root = loader.load();
-            AfficherAssurance afficherAssurance = loader.getController();
-
-            // Passer les données saisies au contrôleur AfficherAssurance
-            afficherAssurance.setDonnees(nom, adresse, codePostal, telephone, email);
-            tfNom.getScene().setRoot(root);
+            // Afficher une boîte de dialogue de succès
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("L'ajout s'est fait avec succès !");
+            alert.showAndWait();
 
 
         } catch (Exception e) {
@@ -91,6 +87,8 @@ public class AjouterAssurance {
         }
 
     }
+
+
 }
 
 

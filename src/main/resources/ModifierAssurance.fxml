@@ -15,31 +15,29 @@
             fx:controller="tn.esprit.controllers.ModifierAssurance"
             prefHeight="400.0" prefWidth="600.0">
 
-        <children>
-            <Text layoutX="145.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier une assurance" textAlignment="CENTER" wrappingWidth="300.0">
-                <font>
-                    <Font name="Arial" size="24.0" />
-                </font>
-            </Text>
-            <Label layoutX="72.0" layoutY="86.0" text="Nom" />
-            <TextField fx:id="tfNom" layoutX="178.0" layoutY="82.0" />
+    <children>
+        <Text layoutX="145.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier une assurance" textAlignment="CENTER" wrappingWidth="300.0">
+            <font>
+                <Font name="Arial" size="24.0" />
+            </font>
+        </Text>
 
-            <Label layoutX="72.0" layoutY="151.0" text="Adresse" />
-            <TextField fx:id="tfAdresse" layoutX="178.0" layoutY="147.0" />
+        <Label layoutX="58.0" layoutY="96.0" text="Nom:" />
+        <TextField layoutX="176.0" layoutY="92.0" fx:id="nomTextField" />
 
-            <Label layoutX="72.0" layoutY="212.0" text="Code postal" />
-            <TextField fx:id="tfCodePostal" layoutX="178.0" layoutY="208.0" />
+        <Label layoutX="58.0" layoutY="144.0" text="Adresse:" />
+        <TextField layoutX="176.0" layoutY="140.0" fx:id="adresseTextField" />
 
-            <Label layoutX="72.0" layoutY="263.0" text="Téléphone" />
-            <TextField fx:id="tfTelephone" layoutX="178.0" layoutY="259.0" />
+        <Label layoutX="58.0" layoutY="192.0" text="Code Postal:" />
+        <TextField layoutX="176.0" layoutY="188.0" fx:id="codePostalTextField" />
 
-            <Label layoutX="72.0" layoutY="320.0" text="Email" />
-            <TextField fx:id="tfEmail" layoutX="178.0" layoutY="316.0" />
+        <Label layoutX="58.0" layoutY="240.0" text="Téléphone:" />
+        <TextField layoutX="176.0" layoutY="236.0" fx:id="telephoneTextField" />
 
-            <Button layoutX="200.0" layoutY="370.0" mnemonicParsing="false" onAction="#modifierAssurance" text="Modifier" />
-        </children>
+        <Label layoutX="58.0" layoutY="288.0" text="Email:" />
+        <TextField layoutX="176.0" layoutY="284.0" fx:id="emailTextField" />
 
+        <Button layoutX="200.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifierAssurance" text="Modifier" />
+    </children>
 
-    </AnchorPane>
-
-
+</AnchorPane>
