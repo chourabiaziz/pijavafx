@@ -37,6 +37,7 @@ public class ContratIndex implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         contratService = new ContratService();
         listContrat = new ArrayList<>();
 
@@ -47,9 +48,12 @@ public class ContratIndex implements Initializable {
 
     @FXML
     private Button facture;
+    @FXML
+    private Button ccc;
     ////class one cell
 
     private class ContratListCell extends ListCell<Contrat> {
+
    @Override
         protected void updateItem(Contrat contrat, boolean empty) {
             super.updateItem(contrat, empty);
@@ -60,11 +64,11 @@ public class ContratIndex implements Initializable {
             } else {
                 // Create an HBox to hold the contract details
                 HBox card = new HBox();
-                card.setStyle("-fx-background-color: #808080; -fx-padding: 10px; -fx-spacing: 10px;");
+
                 Label idLabel = new Label("Contrat N°" + contrat.getId());
                 Label client = new Label("pour " + contrat.getClient());
                 String couvertureText = contrat.getCouverture() != null ? contrat.getCouverture() : "";
-                Label couvertureLabel = new Label("-- " + couvertureText);
+                Label couvertureLabel = new Label( "" + couvertureText);
                 String debutText = contrat.getDebut() != null ? contrat.getDebut().toString() : "";
                 Label debutLabel = new Label("De " + debutText);
                 String finText = contrat.getFin() != null ? contrat.getFin().toString() : "";
@@ -74,8 +78,25 @@ public class ContratIndex implements Initializable {
                 Button button1 = new Button("Modifier");
                 Button button0 = new Button("Consulter");
                 Button button2 = new Button("Supprimer");
+
+add.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+
+                button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+                button1.setStyle("-fx-background-color: #6e6e6e; -fx-padding: 10px; -fx-border-radius: 50px;");
+                button2.setStyle("-fx-background-color: #ef1a1a; -fx-padding: 10px; -fx-border-radius: 50px;");
+
+                idLabel.setMinWidth(70);
+                idLabel.setMaxWidth(70);
+                client.setMinWidth(70);
+                client.setMaxWidth(70);
+                debutLabel.setMinWidth(70);
+                debutLabel.setMaxWidth(70);
+                couvertureLabel.setMinWidth(70);
+                couvertureLabel.setMaxWidth(70);
+                finLabel.setMinWidth(70);
+                finLabel.setMaxWidth(70);
                 HBox buttonBox = new HBox(button0,button1, button2);
-                buttonBox.setAlignment(Pos.CENTER_RIGHT);
+                buttonBox.setStyle("-fx-spacing: 10px;");
                 card.getChildren().addAll(idLabel, client, prixLabel, couvertureLabel, debutLabel, finLabel, buttonBox);
 //buttons actions
                 button1.setOnAction(event -> {
@@ -103,6 +124,11 @@ public class ContratIndex implements Initializable {
                     refreshContrats();
 
                 });
+
+ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+    facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+
+                card.setStyle("-fx-alignment: center ;-fx-background-color: #6d89ef; -fx-padding: 10px; -fx-spacing: 10px;");
                 setGraphic(card);
             }
         }}

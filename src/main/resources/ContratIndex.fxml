@@ -6,16 +6,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ContratIndex">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFFFF3D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ContratIndex">
    <children>
-      <Button fx:id="add" layoutX="21.0" layoutY="346.0" mnemonicParsing="false" onAction="#changeroute" text="Ajouter un contrat" AnchorPane.bottomAnchor="23.207546061661418" AnchorPane.leftAnchor="21.0" />
-      <ListView fx:id="listView" layoutX="2.0" layoutY="85.13207853540668" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0" />
+      <Button fx:id="add" layoutX="21.0" layoutY="346.0" mnemonicParsing="false" onAction="#changeroute" style="-fx-border-insets: 80;" text="Ajouter un contrat " AnchorPane.bottomAnchor="23.207546061661418" AnchorPane.leftAnchor="21.0" />
+       <ListView fx:id="listView" layoutX="2.0" layoutY="85.13207853540668" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0" />
       <Text layoutX="14.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List des contrats" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="38.3896484375">
          <font>
             <Font name="System Italic" size="33.0" />
          </font>
       </Text>
-      <Button layoutX="300.0" layoutY="14.0" mnemonicParsing="false" text="Contrat" />
-      <Button fx:id="facture" layoutX="402.0" layoutY="13.0"  mnemonicParsing="false" text="Facture" />
+      <Button fx:id="ccc" layoutX="409.0" layoutY="23.0" mnemonicParsing="false" text="Contrat" AnchorPane.rightAnchor="132.13207335317622" AnchorPane.topAnchor="23.0">
+        </Button>
+      <Button fx:id="facture" layoutX="504.0" layoutY="23.0" mnemonicParsing="false" text="Facture" AnchorPane.rightAnchor="36.226412943225114" AnchorPane.topAnchor="23.0">
+         </Button>
    </children>
 </AnchorPane>
