@@ -44,8 +44,6 @@ public class ContratEdit implements Initializable  {
     @FXML
     private Button retour;
 
-    @FXML
-    private Button submit;
     private int id, pr, eng;
     private String cl , cv;
     private String db;
@@ -126,10 +124,8 @@ try {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
         annuler.setOnAction(this::goToContratList);
         retour.setOnAction(this::goToContratList);
-
         updateUI();
     }
     private void updateUI() {
@@ -152,21 +148,4 @@ try {
     }
 
 
-    @FXML
-    void goToFactureIndex(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureIndex.fxml"));
-        Parent root ;
-        try {
-            Node source = (Node) event.getSource();
-            root = loader.load();
-            System.out.println("FXML file loaded successfully.");
-            FactureIndex controller = loader.getController();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Facture  ");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
