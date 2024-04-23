@@ -2,8 +2,10 @@ package tn.esprit.test;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +25,14 @@ public class MainFx extends Application {
 
             primaryStage.setTitle("AssureEase");
             primaryStage.setScene(scene);
+            Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+
+            // Set stage width and height to screen dimensions
+            primaryStage.setWidth(screenBounds.getWidth());
+            primaryStage.setHeight(screenBounds.getHeight());
+
+
+
             primaryStage.show();
 
 

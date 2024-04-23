@@ -29,7 +29,8 @@ public class FactureIndex implements Initializable {
 
     @FXML
     private Button contrat;
-
+    @FXML
+    private Button gotofacture;
     @FXML
     private ListView<Facture> listView;
 
@@ -39,7 +40,8 @@ public class FactureIndex implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contrat.setOnAction(this::gotofacture);
-
+        contrat.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+        gotofacture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
         listContrat = new ArrayList<>();
         afficherContrats();
 
@@ -58,7 +60,7 @@ public class FactureIndex implements Initializable {
             } else {
                 // Create an HBox to hold the contract details
                 HBox card = new HBox();
-                card.setStyle("-fx-background-color: #808080; -fx-padding: 10px; -fx-spacing: 10px;");
+                card.setStyle("-fx-alignment: center ;-fx-background-color: #6d89ef; -fx-padding: 10px; -fx-spacing: 10px;");
                 Label idLabel = new Label("Facture N°" + facture.getId());
                 Label totale = new Label(  facture.getTotale()+" TND");
                 Label contrat = new Label("pour contrat N°" + facture.getId());
@@ -69,7 +71,9 @@ public class FactureIndex implements Initializable {
                 Button button0 = new Button("Consulter");
                 Button button1 = new Button("archiver");Button button2 = new Button("Supprimer");
                 HBox buttonBox = new HBox(button0 , button1, button2);
-                buttonBox.setAlignment(Pos.CENTER_RIGHT);
+                button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+                button1.setStyle("-fx-background-color: #6e6e6e; -fx-padding: 10px; -fx-border-radius: 50px;");
+                button2.setStyle("-fx-background-color: #ef1a1a; -fx-padding: 10px; -fx-border-radius: 50px;");
                 card.getChildren().addAll(idLabel, totale, contrat, createdat, buttonBox);
 //buttons actions
                 button1.setOnAction(event -> {
@@ -99,6 +103,7 @@ public class FactureIndex implements Initializable {
                     Contrat c = cs.getById(facture.getContrat());
                   facture(event, facture.getId() , c.getClient(), c.getCouverture(),c.getEngagement(), c.getDebut()+"",c.getFin()+"",c.getPrix() , facture.getTva() , facture.getTotale());
                 });
+
                 setGraphic(card);
             }
         }}

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import tn.esprit.models.Contrat;
 import tn.esprit.navigation.Navigation;
@@ -79,7 +81,7 @@ public class ContratIndex implements Initializable {
                 Button button0 = new Button("Consulter");
                 Button button2 = new Button("Supprimer");
 
-add.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+            add.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
 
                 button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
                 button1.setStyle("-fx-background-color: #6e6e6e; -fx-padding: 10px; -fx-border-radius: 50px;");
@@ -114,9 +116,9 @@ add.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radiu
 
                     int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
                     int prix = contrat.getPrix() ; String cliente = contrat.getClient();
-                    String debut= contrat.getDebut().toString();
+                    String debut= contrat.getDebut().toString();String fin= contrat.getFin().toString();
 
-                    n.gotoshow(event, id , cliente, couverture,engagement, debut,prix);
+                    n.gotoshow(event, id , cliente, couverture,engagement, debut,fin,prix);
 
                 });
                 button2.setOnAction(event -> {
@@ -143,22 +145,36 @@ ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radiu
 
     @FXML
     public   void changeroute(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
-        Parent root = null;
-        try {
-            Node source = (Node) event.getSource();
-            root = loader.load();
-            System.out.println("FXML file loaded successfully.");
-            AjouterContrat controller = loader.getController();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Ajouter Contrat");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
+            Parent root = null;
+            try {
+                Node source = (Node) event.getSource();
+                root = loader.load();
+                System.out.println("FXML file loaded successfully.");
+                AjouterContrat controller = loader.getController();
+                Stage stage = (Stage) source.getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("Ajouter Contrat");
+
+                // Set stage to full screen
+
+                // Retrieve screen dimensions
+                Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+
+                // Set stage width and height to screen dimensions
+                stage.setWidth(screenBounds.getWidth());
+                stage.setHeight(screenBounds.getHeight());
+
+                stage.show();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+
+            }
+
+    }
 
 
     private void afficherContrats() {

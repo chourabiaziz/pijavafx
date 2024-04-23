@@ -42,6 +42,9 @@ public class ContratEdit implements Initializable  {
     private TextField prix;
 
     @FXML
+    private Button retour;
+
+    @FXML
     private Button submit;
     private int id, pr, eng;
     private String cl , cv;
@@ -119,13 +122,13 @@ try {
 
         updateUI();
     }
-    @FXML
-    private Button btn1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        btn1.setOnAction(this::goToContratList);
+
         annuler.setOnAction(this::goToContratList);
+        retour.setOnAction(this::goToContratList);
 
         updateUI();
     }

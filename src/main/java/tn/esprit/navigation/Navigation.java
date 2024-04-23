@@ -32,7 +32,7 @@ public class Navigation {
     }
 
 
-    public void gotoshow(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , int prix) {
+    public void gotoshow(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin, int prix) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratShow.fxml"));
         Parent root = null;
         try {
@@ -40,9 +40,9 @@ public class Navigation {
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
             ContratShow controller = loader.getController();
-            controller.setId(id , cliente, couverture , engagement , debut,prix);
+            controller.setId(id , cliente, couverture , engagement , debut,fin ,prix);
             Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Modifier Contrat");
+            stage.setTitle("Contrat");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {

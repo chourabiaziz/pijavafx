@@ -48,11 +48,12 @@ public class ContratShow implements Initializable {
 
 
 
-    public void setId(int id, String cl, String cv, int eng, String db, int pr) {
+    public void setId(int id, String cl, String cv, int eng, String db ,String fn, int pr) {
         this.id = id;
         this.cv = cv;
         this.eng = eng;
-        this.db = db;this.fn = fn;
+        this.db = db;
+        this.fn = fn;
         this.pr = pr;
         this.cl = cl ;
 
@@ -62,6 +63,8 @@ public class ContratShow implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         retour.setOnAction(this::goToContratList);
+        retour.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+      //  facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
         facture.setOnAction(event -> {
             facture(event, id , cl, cv,eng, db,fn,pr);
         });
@@ -69,7 +72,7 @@ public class ContratShow implements Initializable {
     }
 
 
-        public void facture(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin , int prix) {
+        public void facture(ActionEvent event , int id ,String couverture,String cliente,  int engagement , String debut , String fin , int prix) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureAdd.fxml"));
             Parent root = null;
             try {
@@ -95,8 +98,10 @@ public class ContratShow implements Initializable {
         couverture.setText(cv);
 
         client.setText(cl);
-        debut.setText(db);fin.setText(fn);
+        debut.setText(db);
+        fin.setText(fn);
 
+       // System.out.println(cl+cv+eng+"");
 
 
 
