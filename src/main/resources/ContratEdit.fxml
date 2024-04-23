@@ -26,14 +26,29 @@
          <font>
             <Font size="35.0" />
          </font></Label>
-      <TextField fx:id="client" layoutX="320.0" layoutY="120.0" AnchorPane.leftAnchor="319.6981247127506" />
-        <TextField fx:id="couverture" layoutX="320.0" layoutY="194.0" AnchorPane.leftAnchor="319.6981247127506" />
-        <TextField fx:id="engagement" layoutX="320.0" layoutY="275.0" AnchorPane.leftAnchor="319.6981247127506" />
-        <TextField fx:id="prix" layoutX="320.0" layoutY="443.0" AnchorPane.leftAnchor="320.0" />
-        <Button fx:id="annuler" layoutX="104.0" layoutY="580.0" mnemonicParsing="false" text="Annuler" />
-        <Button fx:id="submit" layoutX="320.0" layoutY="580.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
-      <TextField fx:id="datedebut" layoutX="320.0" layoutY="356.0" AnchorPane.leftAnchor="320.0" />
-        <Button fx:id="retour" styleClass="primary" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" text="Retour">
+      <TextField fx:id="client" layoutX="320.0" layoutY="120.0" AnchorPane.leftAnchor="319.6981247127506">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <TextField fx:id="couverture" layoutX="320.0" layoutY="194.0" AnchorPane.leftAnchor="319.6981247127506">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <TextField fx:id="engagement" layoutX="320.0" layoutY="275.0" AnchorPane.leftAnchor="319.6981247127506">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <TextField fx:id="prix" layoutX="320.0" layoutY="443.0" AnchorPane.leftAnchor="320.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <Button fx:id="annuler" layoutX="104.0" layoutY="580.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Annuler" />
+        <Button fx:id="submit" layoutX="320.0" layoutY="580.0" mnemonicParsing="false" onAction="#submit" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Envoyer" />
+      <TextField fx:id="datedebut" layoutX="320.0" layoutY="356.0" AnchorPane.leftAnchor="320.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <Button fx:id="retour" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Retour">
             <font>
                 <Font size="13.0" />
             </font>

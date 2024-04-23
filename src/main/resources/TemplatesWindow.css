@@ -17,13 +17,13 @@
 
 /* Styles for the button hover state */
 .button-64:hover {
-    background-color: #0056b3; /* Darker blue color on hover */
+     /* Darker blue color on hover */
 }
 
 
 .primary{
-    -fx-background-color: #cacaca;
-    -fx-padding: 10px;
-    -fx-border-radius: 50px;
+
+
+
 }
 /* Styles for the button when it's pressed */

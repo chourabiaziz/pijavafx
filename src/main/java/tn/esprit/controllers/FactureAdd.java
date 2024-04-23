@@ -88,7 +88,8 @@ public class FactureAdd implements Initializable {
         try {
 
             int tvaValue = Integer.parseInt(tva.getText());
-            int totale = pr + (pr * tvaValue / 100);
+            int totale = pr - ((pr * tvaValue / 100) +  (pr * 19 / 100));
+
             tot.setText(String.valueOf(totale));
         } catch (NumberFormatException ex) {
             tot.setText("-_-");
@@ -96,8 +97,11 @@ public class FactureAdd implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        facture.setOnAction(this::goToFactureIndex);
-        contrat.setOnAction(this::contrat);
+
+
+
+
+        tot.setText(pr- (pr * 19 /100) +"");
         send.setOnAction(this::send);
 
 

@@ -41,7 +41,7 @@ public class AjouterContrat implements Initializable {
     private TextField client;
 
     @FXML
-    private Button submit;
+    private Button retour;
 
     @FXML
     void submit(ActionEvent event) {
@@ -89,10 +89,10 @@ public class AjouterContrat implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    Button btn1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn1.setOnAction(this::goToContratList);
+
+        retour.setOnAction(this::goToContratList);
     }
 }

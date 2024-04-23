@@ -1,46 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureAdd">
+<AnchorPane prefHeight="820.0" prefWidth="1196.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureAdd">
     <children>
-        <Button fx:id="contrat" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" text="Contrat" />
-        <Button fx:id="facture" layoutX="402.0" layoutY="13.0" mnemonicParsing="false" text="Facture" />
-      <Text layoutX="47.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client :" />
-      <Text fx:id="client" layoutX="102.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="44.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ref°" />
-      <Text layoutX="104.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="couverture" />
-      <Text layoutX="185.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="engagement" />
-      <Text layoutX="304.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de" />
-      <Text layoutX="372.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'a" />
-      <Text layoutX="378.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totale" />
-      <Text layoutX="378.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TVA" />
-      <Text fx:id="idc" layoutX="44.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="couverture" layoutX="121.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="engagement" layoutX="207.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="debut" layoutX="300.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="fin" layoutX="380.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="tot" layoutX="468.0" layoutY="338.0" onKeyReleased="#updateTotale" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <TextField fx:id="tva" layoutX="456.0" layoutY="283.0" onKeyReleased="#handleTvaKeyReleased" prefHeight="25.0" prefWidth="46.0" text="19" />
-      <Text layoutX="513.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
-      <Text layoutX="513.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TND" />
-      <Text layoutX="470.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
-      <Text layoutX="240.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mois" />
-      <Text fx:id="prix" layoutX="468.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="506.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TND" />
-      <Text layoutX="44.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contrat">
+        <Button fx:id="retour" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Retour">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+      <Text layoutX="47.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client(e) :">
          <font>
-            <Font size="21.0" />
+            <Font size="26.0" />
          </font>
       </Text>
-      <Line endX="396.6981201171875" endY="1.52587890625E-5" layoutX="143.0" layoutY="232.0" startX="-100.0" />
-      <Line endX="479.95281982421875" endY="3.0517578125E-5" layoutX="61.0" layoutY="273.0" startX="-21.00002670288086" startY="3.0517578125E-5" />
-      <Button fx:id="send" layoutX="125.0" layoutY="335.0" mnemonicParsing="false" text="Confirmer" />
+      <Text fx:id="client" layoutX="276.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ref°">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="125.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="couverture">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="282.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="engagement">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="499.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="615.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'a">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="668.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totale">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="673.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TVA">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="idc" layoutX="44.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="couverture" layoutX="146.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="engagement" layoutX="304.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="debut" layoutX="492.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="fin" layoutX="632.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="tot" layoutX="794.0" layoutY="437.0" onKeyReleased="#updateTotale" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="793.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19%">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="870.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TND">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="797.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="371.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mois">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="prix" layoutX="794.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="870.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TND">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contrat">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Line endX="870.3585205078125" endY="-1.52587890625E-5" layoutX="143.0" layoutY="232.0" startX="-100.0" />
+      <Line endX="953.26416015625" endY="3.0517578125E-5" layoutX="61.0" layoutY="291.0" startX="-21.00002670288086" startY="3.0517578125E-5" />
+      <Button fx:id="send" layoutX="422.0" layoutY="672.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="119.0" text="Confirmer" />
+      <Text layoutX="642.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promotion">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="885.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="161.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mr/MMe">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
     </children>
 
 </AnchorPane>
