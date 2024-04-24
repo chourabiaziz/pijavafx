@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import com.sun.javafx.font.FontFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,32 +9,37 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.SnapshotParameters;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import tn.esprit.services.ContratService;
-import javafx.stage.FileChooser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 //import javafx.embed.swing.SwingFXUtils;
 
-import javafx.scene.SnapshotParameters;
-import javafx.scene.image.WritableImage;
-
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.text.Document;
-
+import javax.swing.text.ParagraphView;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
+
 
 public class FactureShow implements Initializable {
 
@@ -68,12 +74,13 @@ public class FactureShow implements Initializable {
     private Text prix;
 
     @FXML
-
     private Text tot;
     @FXML
     private Text couverture;
     @FXML
     private Text tva;
+    @FXML
+    private VBox fafa;
     private int idee, pr, eng ,tvae , tote;
     private String cl , cv;
     private String db,fn;
@@ -92,54 +99,99 @@ public class FactureShow implements Initializable {
         this.tote =tote ;
         updateUI();
     }
+    @FXML
+    private AnchorPane anchorPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        facture.setOnAction(this::goToFactureIndex);
+        pdf.setOnAction(event -> saveAsPDF(pdf.getScene().getWindow()));
 
-        pdf.setOnAction(event -> {
+        facture.setOnAction(this::goToFactureIndex);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void saveAsPDF(Window window) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save PDF File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        File file = fileChooser.showSaveDialog(window);
+        if (file != null) {
             try {
-                generatePDF();
+                generatePDF(file);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
+        }
     }
 
 
-    private void generatePDF() throws IOException {
-        // Créer un nouveau document PDF
-        PDDocument document = new PDDocument();
-        PDPage page = new PDPage();
-        document.addPage(page);
+    private void generatePDF(File file) throws IOException {
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage();
+            document.addPage(page);
 
-        // Initialiser le contenu du PDF
-        PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        contentStream.beginText();
-        contentStream.setFont(PDType1Font.HELVETICA, 12);
-        contentStream.newLineAtOffset(100, 700); // Position de départ
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
 
-        // Insérer le contenu de votre interface dans le PDF
-        contentStream.showText("Contenu de votre interface ici...");
+                // Define text content
+                String[] lines = {
+                        "   Ref° facture: " + idee,"","",
+                        "   Client: " + cl,"","",
+                        
+                        "   Couverture: " + cv,"","",
+                        "   De: " + db,"","",
+                        "   Jusqu'à: " + fn,"","",
+                        "   Engagement: " + eng + " Mois","","",
+                        "                                                           Prix:         " + pr + " TND","","",
+                        "                                                           Tva: 19 %     ","","",
+                        "                                                           Promotion de: " + tvae + " %","","",
+                        "                                                           Totale:       " + tote + " TND","","",
+                        "", // Empty line for spacing
+                        "", // Empty line for spacing
+                        "", // Empty line for spacing
+                        "                  Signature : ------------------------"
+                };
 
-        contentStream.endText();
-        contentStream.close();
+                // Starting position
+                float x = 50;
+                float y = page.getMediaBox().getHeight() - 50; // Adjust as needed
 
-        // Sauvegarder le document PDF
-        File file = new File("facture.pdf");
-        document.save(file);
-        document.close();
+                // Adding text with line breaks
+                contentStream.beginText();
+                contentStream.newLineAtOffset(x, y);
+                for (String line : lines) {
+                    contentStream.showText(line);
+                    contentStream.newLineAtOffset(0, -15); // Adjust line spacing as needed
+                }
+                contentStream.endText();
+            }
 
-        // Afficher un message de confirmation
-        System.out.println("Le fichier PDF a été généré avec succès !");
+            // Save the document
+            document.save(file);
+            System.out.println("The PDF file has been saved successfully!");
+        }
     }
+
+
 
     private void updateUI() {
 
         prix.setText(String.valueOf(pr));
         engagement.setText(String.valueOf(eng));
-        couverture.setText(cv);
+        couverture.setText(cl);
         idc.setText(String.valueOf(idee));
-        client.setText(cl);
+        client.setText(cv);
         debut.setText(db);
         fin.setText(fn);
 
@@ -180,46 +232,7 @@ public class FactureShow implements Initializable {
         }
     }
 
-//    private void pdf(ActionEvent event  ) {
-//
-//
-//        Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-//        PdfWriter.getInstance(document, new FileOutputStream("invoice.pdf"));
-//        document.open();
-//
-//
-//
-//
-//        // Ajout du titre
-//        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
-//        Paragraph title = new Paragraph("Facture", titleFont);
-//        title.setAlignment(Element.ALIGN_CENTER);
-//        document.add(new Paragraph(" "));
-//        document.add(new Paragraph(" "));
-//        document.add(new Paragraph(" "));
-//        document.add(new Paragraph(" "));
-//
-//        document.add(title);
-//        document.add(new Paragraph(" "));
-//
-//        // Ajouter les détails de la facture
-//        Font contentFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.NORMAL, BaseColor.BLACK);
-//        document.add(new Paragraph("Numéro de facture : " + factureSelectionnee.getNumFacture(), contentFont));
-//        document.add(new Paragraph("Date : " + new SimpleDateFormat("dd-MM-yyyy").format(factureSelectionnee.getDate()), contentFont));
-//        document.add(new Paragraph("Type : " + factureSelectionnee.getType().toString(), contentFont));
-//        document.add(new Paragraph("Montant : " + factureSelectionnee.getMontant(), contentFont));
-//        document.add(new Paragraph("Description : " + factureSelectionnee.getDescriptionFacture(), contentFont));
-//
-//        // Ajouter la signature
-//        Paragraph signature = new Paragraph("Signature : _____________________", contentFont);
-//        signature.setAlignment(Element.ALIGN_RIGHT);
-//        signature.setSpacingBefore(20f);
-//        document.add(signature);
-//
-//        document.close();
-//
-//
-//    }
+
 
 
 }
