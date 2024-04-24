@@ -128,27 +128,18 @@ try {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        datedebut.setDisable(true);
+        engagement.setDisable(true);
         annuler.setOnAction(this::goToContratList);
         retour.setOnAction(this::goToContratList);
         updateUI();
     }
     private void updateUI() {
-
         prix.setText(String.valueOf(pr));
         engagement.setText(String.valueOf(eng));
         couverture.setText(cv);
-
         client.setText(cl);
        datedebut.setText(db);
-
-
-
-
-
-//        Instant instant = db.toInstant();
-//        LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-//        datedebut.setValue(db);
 
     }
 

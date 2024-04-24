@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import tn.esprit.services.ContratService;
 import javafx.stage.FileChooser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -45,8 +46,6 @@ public class FactureShow implements Initializable {
     @FXML
     private Button send;
 
-    @FXML
-    private Text couverture;
 
     @FXML
     private Text debut;
@@ -69,8 +68,10 @@ public class FactureShow implements Initializable {
     private Text prix;
 
     @FXML
-    private Text tot;
 
+    private Text tot;
+    @FXML
+    private Text couverture;
     @FXML
     private Text tva;
     private int idee, pr, eng ,tvae , tote;
@@ -94,11 +95,43 @@ public class FactureShow implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         facture.setOnAction(this::goToFactureIndex);
-        //pdf.setOnAction(this::pdf);
+
+        pdf.setOnAction(event -> {
+            try {
+                generatePDF();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
+    private void generatePDF() throws IOException {
+        // Créer un nouveau document PDF
+        PDDocument document = new PDDocument();
+        PDPage page = new PDPage();
+        document.addPage(page);
 
+        // Initialiser le contenu du PDF
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        contentStream.beginText();
+        contentStream.setFont(PDType1Font.HELVETICA, 12);
+        contentStream.newLineAtOffset(100, 700); // Position de départ
+
+        // Insérer le contenu de votre interface dans le PDF
+        contentStream.showText("Contenu de votre interface ici...");
+
+        contentStream.endText();
+        contentStream.close();
+
+        // Sauvegarder le document PDF
+        File file = new File("facture.pdf");
+        document.save(file);
+        document.close();
+
+        // Afficher un message de confirmation
+        System.out.println("Le fichier PDF a été généré avec succès !");
+    }
 
     private void updateUI() {
 

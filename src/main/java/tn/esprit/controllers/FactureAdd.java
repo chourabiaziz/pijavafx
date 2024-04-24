@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.models.Contrat;
@@ -86,18 +87,27 @@ public class FactureAdd implements Initializable {
     private void handleTvaKeyReleased() {
         updateTotale();
     }
-
+@FXML
+private Text errpromo ;
     @FXML
     private void updateTotale() {
-        try {
-
+                if (tva.getText().matches("[a-zA-Z]+") || tva.getText().isEmpty() ) {
+                    errpromo.setText("champ ne peut pas etre vide ou contient des lettres inclus les espaces");
+                    errpromo.setFill(Color.RED);
+                    send.setDisable(true);
+                } else if (!tva.getText().matches("[0-100]")) {
+                    errpromo.setText(" 0 >= promotion > 100");
+                    errpromo.setFill(Color.RED);
+                    send.setDisable(true);
+                } else {
+                    errpromo.setText("");
+                    send.setDisable(false);
+                }
             int tvaValue = Integer.parseInt(tva.getText());
-            int totale = pr - (pr * tvaValue / 100) +           (pr * 19 / 100);
+            int totale = pr - (pr * tvaValue / 100) + (pr * 19 / 100);
 
             tot.setText(totale+"");
-        } catch (NumberFormatException ex) {
-            tot.setText("??");
-        }
+
     }
 
 
@@ -174,7 +184,7 @@ public class FactureAdd implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        errpromo.setText("");
         send.setOnAction(this::send);
         retour.setOnAction(this::contrat);
 
