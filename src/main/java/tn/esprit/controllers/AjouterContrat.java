@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AjouterContrat implements Initializable {
@@ -42,7 +43,8 @@ public class AjouterContrat implements Initializable {
 
     @FXML
     private Button retour;
-
+    @FXML
+    private Button annuler;
     @FXML
     void submit(ActionEvent event) {
         Contrat c = new Contrat();
@@ -60,7 +62,15 @@ public class AjouterContrat implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText("Contrat ajouté avec succès");
-            alert.showAndWait();
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+// Check if the user clicked OK
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                goToContratList(event);
+            } else {
+                goToContratList(event);
+            }
         }
         catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -94,5 +104,6 @@ public class AjouterContrat implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         retour.setOnAction(this::goToContratList);
+        annuler.setOnAction(this::goToContratList);
     }
 }

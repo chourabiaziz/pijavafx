@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,13 +11,14 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import tn.esprit.models.Contrat;
 import tn.esprit.navigation.Navigation;
 import tn.esprit.services.ContratService;
@@ -28,6 +30,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ContratIndex implements Initializable {
     Navigation n = new Navigation() ;
@@ -45,9 +48,24 @@ public class ContratIndex implements Initializable {
 
         facture.setOnAction(n::goToFactureIndex);
         add.setOnAction(this::changeroute);
+        listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
+            @Override
+            public ListCell<Contrat> call(ListView<Contrat> contratListView) {
+                return new ContratListCell();
+            }
+        });
+
+
         afficherContrats();
     }
 
+    @FXML
+    private TextField search;
+
+    @FXML
+    private Pagination pagination;
+    private static final int ITEMS_PER_PAGE = 1;
+    private static final int TOTAL_ITEMS = 100;
     @FXML
     private Button facture;
     @FXML
@@ -122,8 +140,13 @@ public class ContratIndex implements Initializable {
 
                 });
                 button2.setOnAction(event -> {
-                   contratService.delete(contrat.getId());
-                    refreshContrats();
+//                   contratService.delete(contrat.getId());
+//                    refreshContrats();
+                    int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
+                    int prix = contrat.getPrix() ; String cliente = contrat.getClient();
+                    String debut= contrat.getDebut().toString();String fin= contrat.getFin().toString();
+
+                    n.gotoshow(event, id , cliente, couverture,engagement, debut,fin,prix);
 
                 });
 
@@ -176,14 +199,60 @@ ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radiu
 
     }
 
-
     private void afficherContrats() {
-        List<Contrat> contrats = contratService.getAll();
-        listContrat.addAll(contrats);
-        ObservableList<Contrat> observableList = FXCollections.observableList(listContrat);
-        listView.setItems(observableList);
-        listView.setCellFactory(param -> new ContratListCell());
+        // Fetch all contracts
+        listContrat = contratService.getAll();
+
+        // Calculate total pages for pagination
+        int totalPageCount = (int) Math.ceil((double) listContrat.size() / ITEMS_PER_PAGE);
+        pagination.setPageCount(totalPageCount);
+
+        // Set up pagination to update ListView
+        pagination.setPageFactory(pageIndex -> {
+            int fromIndex = pageIndex * ITEMS_PER_PAGE;
+            int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, listContrat.size());
+            ObservableList<Contrat> pageContrats = FXCollections.observableArrayList(listContrat.subList(fromIndex, toIndex));
+            listView.setItems(pageContrats);
+            return new VBox(); // Placeholder, the actual content is set dynamically
+        });
     }
+
+    @FXML
+    void search(KeyEvent event) {
+        String searched = search.getText().trim().toLowerCase(); // Get the text from the search field
+
+        if (!searched.isEmpty()) {
+
+            List<Contrat> filteredContrats = listContrat.stream().filter(contrat ->
+                            contrat.getClient().toLowerCase().contains(searched) ||
+                                    String.valueOf(contrat.getPrix()).contains(searched) ||
+                                    String.valueOf(contrat.getEngagement()).contains(searched) ||
+                                    contrat.getCouverture().toLowerCase().contains(searched)
+                    )
+                    .collect(Collectors.toList());
+
+
+            listView.getItems().clear();
+            listView.getItems().addAll(filteredContrats);
+        } else {
+
+            afficherContrats();
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 @FXML
 Button add ;
 

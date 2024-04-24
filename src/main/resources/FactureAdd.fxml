@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -141,6 +142,11 @@
             <Font name="System Italic" size="26.0" />
          </font>
       </Text>
+      <TextField fx:id="tva" layoutX="797.0" layoutY="354.0" onKeyReleased="#handleTvaKeyReleased" prefHeight="38.0" prefWidth="51.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
     </children>
 
 </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FactureAdd implements Initializable {
@@ -31,7 +33,7 @@ public class FactureAdd implements Initializable {
     private Text client;
 
     @FXML
-    private Button contrat;
+    private Button retour;
     @FXML
     private Button send;
 
@@ -67,6 +69,7 @@ public class FactureAdd implements Initializable {
 
     private ContratService contratService ;
 
+
     public void setId(int idee, String cl, String cv, int eng, String db, String fn , int pr) {
         this.idee = idee;
         this.cv = cv;
@@ -75,6 +78,7 @@ public class FactureAdd implements Initializable {
         this.fn=fn;
         this.pr = pr;
         this.cl = cl ;
+        tot.setText(pr + pr*19/100 +"");
         updateUI();
     }
 
@@ -88,24 +92,14 @@ public class FactureAdd implements Initializable {
         try {
 
             int tvaValue = Integer.parseInt(tva.getText());
-            int totale = pr - ((pr * tvaValue / 100) +  (pr * 19 / 100));
+            int totale = pr - (pr * tvaValue / 100) +           (pr * 19 / 100);
 
-            tot.setText(String.valueOf(totale));
+            tot.setText(totale+"");
         } catch (NumberFormatException ex) {
-            tot.setText("-_-");
+            tot.setText("??");
         }
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-
-
-        tot.setText(pr- (pr * 19 /100) +"");
-        send.setOnAction(this::send);
-
-
-    }
 
     private void send(ActionEvent event) {
         Facture f = new Facture();
@@ -121,7 +115,17 @@ public class FactureAdd implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText("facture ajouté avec succès");
-            alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
+
+// Check if the user clicked OK
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                contrat(event);
+            } else {
+                contrat(event);
+
+
+            }
+
         }
         catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -136,7 +140,7 @@ public class FactureAdd implements Initializable {
 
     private void updateUI() {
 
-        prix.setText(String.valueOf(pr));
+        prix.setText(pr +"");
         engagement.setText(String.valueOf(eng));
         couverture.setText(cv);
         idc.setText(String.valueOf(idee));
@@ -144,31 +148,14 @@ public class FactureAdd implements Initializable {
         debut.setText(db);
         fin.setText(fn);
 
-        int tvaValue = Integer.parseInt(tva.getText()); // Convert text input to integer
-        int totale = pr + (pr * tvaValue / 100);
-        tot.setText(totale+"");
+
 
     }
 
 
 
 
-    void goToFactureIndex(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureIndex.fxml"));
-        Parent root ;
-        try {
-            Node source = (Node) event.getSource();
-            root = loader.load();
-            System.out.println("FXML file loaded successfully.");
-            FactureIndex controller = loader.getController();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Facture  ");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     void contrat(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndex.fxml"));
         Parent root ;
@@ -184,5 +171,14 @@ public class FactureAdd implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        send.setOnAction(this::send);
+        retour.setOnAction(this::contrat);
+
+
+
     }
 }

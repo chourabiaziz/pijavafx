@@ -30,7 +30,7 @@ public class FactureIndex implements Initializable {
     @FXML
     private Button contrat;
     @FXML
-    private Button gotofacture;
+    private Button facture;
     @FXML
     private ListView<Facture> listView;
 
@@ -39,9 +39,9 @@ public class FactureIndex implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        contrat.setOnAction(this::gotofacture);
-        contrat.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
-        gotofacture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+        contrat.setOnAction(this::contrat);
+//        contrat.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+//        facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
         listContrat = new ArrayList<>();
         afficherContrats();
 
@@ -74,6 +74,7 @@ public class FactureIndex implements Initializable {
                 button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
                 button1.setStyle("-fx-background-color: #6e6e6e; -fx-padding: 10px; -fx-border-radius: 50px;");
                 button2.setStyle("-fx-background-color: #ef1a1a; -fx-padding: 10px; -fx-border-radius: 50px;");
+                buttonBox.setStyle("-fx-spacing: 10px;");
                 card.getChildren().addAll(idLabel, totale, contrat, createdat, buttonBox);
 //buttons actions
                 button1.setOnAction(event -> {
@@ -102,18 +103,13 @@ public class FactureIndex implements Initializable {
                     ContratService cs = new ContratService();
                     Contrat c = cs.getById(facture.getContrat());
                   facture(event, facture.getId() , c.getClient(), c.getCouverture(),c.getEngagement(), c.getDebut()+"",c.getFin()+"",c.getPrix() , facture.getTva() , facture.getTotale());
+
                 });
 
                 setGraphic(card);
             }
         }}
-//    private void refreshContrats() {
-//        listView.getItems().clear(); // Clear the existing items
-//        listContrat.clear(); // Clear the list of contracts
-//        listContrat.addAll(contratService.getAll()); // Get the updated list of contracts
-//        ObservableList<Contrat> observableList = FXCollections.observableList(listContrat);
-//        listView.setItems(observableList); // Set the updated list to the ListView
-//    }
+
 
     private void refreshContrats() {
         listView.getItems().clear(); // Clear the existing items
@@ -156,7 +152,7 @@ public class FactureIndex implements Initializable {
 
 
 
-    private void gotofacture(ActionEvent event) {
+    private void contrat(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndex.fxml"));
         Parent root = null;
         try {

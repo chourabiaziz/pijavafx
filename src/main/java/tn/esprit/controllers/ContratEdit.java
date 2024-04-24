@@ -21,6 +21,7 @@ import java.time.ZoneId;
 
 import java.sql.Date;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ContratEdit implements Initializable  {
@@ -74,6 +75,8 @@ public class ContratEdit implements Initializable  {
         }
     }
 
+
+
     private void send(int id) {
 
 
@@ -98,6 +101,8 @@ try {
     alert.setTitle("Succès");
     alert.setHeaderText("Contrat a été mise a jour avec succès");
     alert.showAndWait();
+
+
 }catch (Exception e) {
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
