@@ -14,7 +14,7 @@ public class MainFx extends Application {
         launch(args);
     }
 
-  @Override
+/*  @Override
     public void start(Stage primaryStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
 
@@ -31,9 +31,9 @@ public class MainFx extends Application {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 
-   /* @Override
+    @Override
     public void start(Stage primaryStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
 
@@ -49,7 +49,7 @@ public class MainFx extends Application {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }*/
+    }
 
 
 

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="536.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterConstat">
+<VBox prefHeight="623.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterConstat">
     <Text fill="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="666.1367073059082">
         <font>
             <Font name="System Bold Italic" size="15.0" />
@@ -114,7 +116,14 @@
     <TextField fx:id="tfLocalisation" />
     <Label text="Témoins: nom,adresse,tel" />
     <TextField fx:id="tfTemoins" />
-    <Button mnemonicParsing="false" onAction="#ajouterConstat" text="Ajouter" />
+    <Button layoutX="200.0" layoutY="370.0" mnemonicParsing="false" onAction="#ajouterConstat" text="Ajouter" />
+    <Button layoutX="330.0" layoutY="370.0" mnemonicParsing="false" onAction="#afficherConstat" text="Afficher" />
+    <!-- Add this Button to allow users to select an image -->
+    <Button fx:id="addImageButton" layoutX="460.0" layoutY="330.0" mnemonicParsing="false" onAction="#addImage" text="Add Image" />
+   <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="263.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+      <cursor>
+         <Cursor fx:constant="MOVE" />
+      </cursor></ImageView>
 
 
 </VBox>

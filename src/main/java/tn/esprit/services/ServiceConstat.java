@@ -131,6 +131,25 @@ public class ServiceConstat implements IService<Constat> {
         return constats;
     }
 
+    public Constat getConstat(int id) {
+        Constat constat = null;
+        String qry ="SELECT * FROM `constat` WHERE id = ?";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(qry);
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                constat = new Constat();
+                constat.setId(rs.getInt("id"));
+                constat.setA_preneur_nom(rs.getString("a_preneur_nom"));
+                // Assurez-vous de récupérer les autres données nécessaires ici...
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return constat;
+    }
+
     @Override
     public boolean update(Constat constat) {
 return false ;

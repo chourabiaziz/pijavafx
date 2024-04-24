@@ -13,8 +13,10 @@ package tn.esprit.controllers;
         import javafx.scene.control.*;
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
+        import javafx.scene.control.TextField;
         import javafx.scene.control.cell.PropertyValueFactory;
 
+        import javafx.scene.layout.HBox;
         import javafx.scene.layout.TilePane;
         import javafx.scene.layout.VBox;
         import javafx.stage.Stage;
@@ -27,6 +29,8 @@ package tn.esprit.controllers;
         import java.util.List;
         import java.util.ResourceBundle;
         import javafx.geometry.Insets;
+
+        import javax.swing.text.html.ImageView;
 
 
 public class AfficherAssurance implements Initializable {
@@ -52,6 +56,15 @@ public class AfficherAssurance implements Initializable {
 
     @FXML
     private TilePane tilePane;
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private ImageView imageView;
+
+    private ObservableList<Assurance> data = FXCollections.observableArrayList();
+    private ObservableList<Assurance> filteredData = FXCollections.observableArrayList();
+
     public void setAssurances(List<Assurance> assurances ) {
         ObservableList<Node> children = tilePane.getChildren();
         children.clear();
@@ -67,8 +80,6 @@ public class AfficherAssurance implements Initializable {
             Label codePostalLabel = new Label("Code Postal: " + assurance.getCode_postal_assurance());
             Label telephoneLabel = new Label("Téléphone: " + assurance.getTel_assurance());
             Label emailLabel = new Label("Email: " + assurance.getEmail_assurance());
-
-
 
             Button modifierButton = new Button("Modifier");
             modifierButton.setOnAction(event -> {
@@ -110,34 +121,88 @@ public class AfficherAssurance implements Initializable {
             });
 
 
-
             card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel,modifierButton,supprimerButton);
             children.add(card);
         }
     }
 
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Ajouter le gestionnaire d'événements pour le bouton "Ajouter"
+        ajouterButton.setOnAction(event -> {
+            try {
+                // Charger le fichier FXML de la page AjouterAssurance.fxml
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
+                Parent root = loader.load();
 
-  /*
+                // Afficher la nouvelle scène
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        loadData();
+
+
+
+    }
+
+
+    private void loadData() {
+        // Retrieve data from your service or database
+        ServiceAssurance service = new ServiceAssurance();
+        List<Assurance> allAssurances = service.getAll();
+        data.addAll(allAssurances);
+        filteredData.addAll(allAssurances);
+
+        // Display all assurances initially
+        displayAssurances(filteredData);
+    }
+    private void displayAssurances(ObservableList<Assurance> assurances) {
+        // Implement the logic to display assurances in your TilePane
+        tilePane.getChildren().clear(); // Clear existing children
+
+        for (Assurance assurance : assurances) {
+            VBox card = new VBox();
+            card.setPrefWidth(200);
+            card.setPrefHeight(180);
+            card.setSpacing(5);
+            card.setPadding(new Insets(5));
+
+            Label nomLabel = new Label("Nom: " + assurance.getNom_assurance());
+            Label adresseLabel = new Label("Adresse: " + assurance.getAdresse_assurance());
+            Label codePostalLabel = new Label("Code Postal: " + assurance.getCode_postal_assurance());
+            Label telephoneLabel = new Label("Téléphone: " + assurance.getTel_assurance());
+            Label emailLabel = new Label("Email: " + assurance.getEmail_assurance());
+
+            card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel);
+            tilePane.getChildren().add(card);
+        }
+
+    }
+
     @FXML
-    private void supprimerAssurance(ActionEvent event) {
+    private void searchFieldChanged() {
+        String query = searchField.getText().trim().toLowerCase();
 
-        Assurance assurance = (Assurance) supprimerButton.getUserData();
-
-        boolean success = serviceAssurance.delete(assurance);
-        if (success) {
-            // Actualiser l'affichage des assurances après la suppression
+        filteredData.clear(); // Clear existing filtered data
+        if (query.isEmpty()) {
+            displayAssurances(data);
         } else {
-            // Afficher un message d'erreur en cas d'échec de la suppression
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Erreur lors de la suppression de l'assurance !");
-            alert.showAndWait();
-        }  */
+            for (Assurance assurance : data) {
+
+                if (assurance.getNom_assurance().toLowerCase().contains(query)) {
+                    filteredData.add(assurance); // Add matching assurances to filtered data
+                }
+            }
+            System.out.println("Filtered data size: " + filteredData.size());
+
+            displayAssurances(filteredData); // Display filtered data
+        }
     }
 
 
