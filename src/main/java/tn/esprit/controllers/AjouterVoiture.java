@@ -1,6 +1,5 @@
 package tn.esprit.controllers;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,22 +7,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-
-import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import tn.esprit.models.Voiture;
-
-import tn.esprit.services.ServiceVoiture;
+import tn.esprit.services.ServiceVoiture ;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AjouterVoiture<VoitureIndex> implements Initializable {
@@ -39,23 +32,31 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
 
     @FXML
     private TextField prix_achat;
+
     @FXML
     private TextField prix_actuel;
+
     @FXML
     private TextField marque;
+
     @FXML
     private TextField modele;
+
     @FXML
     private TextField numero_serie;
+
     @FXML
     private TextField type_carburant;
+
     @FXML
     private TextField numero_immatriculation;
+
     @FXML
     private TextField couleur;
 
     @FXML
     private TextField carte_grise;
+
     @FXML
     private TextField nom_image;
 
@@ -67,7 +68,11 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         Voiture voiture = new Voiture();
         ServiceVoiture service = new ServiceVoiture(); // Assurez-vous d'avoir une classe ServiceVoiture pour gérer les opérations sur les voitures
 
-        voiture.setId(Integer.parseInt(id.getText()));
+        // Génération automatique de l'ID
+        int newId = generateNewId(); // Méthode pour générer automatiquement un nouvel ID
+        voiture.setId(newId);
+
+        // Assignation des autres valeurs
         voiture.setKilometrage(Integer.parseInt(kilometrage.getText()));
         voiture.setPrix_achat(Double.parseDouble(prix_achat.getText()));
         voiture.setPrix_actuel(Double.parseDouble(prix_actuel.getText()));
@@ -79,6 +84,7 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         voiture.setCouleur(couleur.getText());
         voiture.setCarte_grise(carte_grise.getText());
         voiture.setNom_image(nom_image.getText());
+        voiture.setDate_achat(java.sql.Date.valueOf(annee_fabrication.getValue()));
 
         try {
             service.add(voiture);
@@ -94,6 +100,14 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             alert.showAndWait();
         }
     }
+
+    private int generateNewId() {
+        // Implémentez ici la logique pour générer automatiquement un nouvel ID
+        // Par exemple, vous pouvez récupérer le dernier ID de la base de données et l'incrémenter de 1
+        // Pour l'instant, nous utilisons simplement une valeur aléatoire pour l'ID
+        return (int) (Math.random() * 1000); // Remplacez cette logique par votre propre logique de génération d'ID
+    }
+
 
     @FXML
     void goToVoitureList(ActionEvent event) {
@@ -112,12 +126,23 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         }
     }
 
-
-
     @FXML
     Button btn1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+    @FXML
+    void reset(ActionEvent event) {
+        // Réinitialiser les champs de saisie
+        marque.clear();
+        modele.clear();
+        numero_serie.clear();
+        type_carburant.clear();
+        numero_immatriculation.clear();
+        couleur.clear();
+        prix_achat.clear();
+        annee_fabrication.setValue(null); // Réinitialiser la date d'achat
+    }
+
 }

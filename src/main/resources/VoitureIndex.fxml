@@ -1,35 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.VoitureIndex">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="715.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.VoitureIndex">
     <children>
-        <TableView fx:id="voitureTable" layoutX="32.0" layoutY="32.0" prefHeight="336.0" prefWidth="536.0">
-            <columns>
-                <!-- ... -->
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="marqueColumn" prefWidth="75.0" text="Marque" />
-                <TableColumn fx:id="modeleColumn" prefWidth="75.0" text="Modèle" />
-                <TableColumn fx:id="numeroSerieColumn" prefWidth="75.0" text="Numéro de série" />
-                <TableColumn fx:id="typeCarburantColumn" prefWidth="75.0" text="Type de carburant" />
-                <TableColumn fx:id="numeroImmatriculationColumn" prefWidth="75.0" text="Numéro d'immatriculation" />
-                <TableColumn fx:id="kilometrageColumn" prefWidth="75.0" text="Kilométrage" />
-                <TableColumn fx:id="couleurColumn"   prefWidth="75.0" text="Couleur" />
-                <TableColumn fx:id="prixAchatColumn" prefWidth="75.0" text="Prix d'achat" />
-                <TableColumn fx:id="prixActuelColumn" prefWidth="75.0" text="Prix actuel" />
-                <TableColumn fx:id="carteGriseColumn" prefWidth="75.0" text="Carte grise" />
-                <TableColumn fx:id="nomImageColumn" prefWidth="75.0" text="Nom de l'image" />
-                <!-- ... -->
+        <!-- En-tête -->
+        <Text layoutX="194.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Voitures">
+            <font>
+                <Font name="Arial" size="18.0" />
+            </font>
+        </Text>
 
-            </columns>
-        </TableView>
-        <Button layoutX="205.0" layoutY="380.0" mnemonicParsing="false" onAction="#goToAjouterVoiture" text="Ajouter une voiture" />
-<!--        <Button layoutX="409.0" layoutY="316.0" mnemonicParsing="false" onAction="#goToVoitureList" text="Afficher" />-->
-<!--        <Button layoutX="290.0" layoutY="380.0" mnemonicParsing="false" onAction="#goToModifierVoiture" text="Modifier une voiture" />&ndash;&gt;-->
-        <Button layoutX="376.0" layoutY="314.0" mnemonicParsing="false" text="supprimer" />
+        <!-- Champ de recherche -->
+        <TextField layoutX="10.0" layoutY="24.0" prefHeight="26.0" prefWidth="568.0" />
+
+        <!-- Grille pour la disposition des éléments -->
+        <GridPane layoutY="60.0" prefHeight="631.0" prefWidth="520.0" AnchorPane.bottomAnchor="14.400000000000091" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="60.0">
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+
+            <!-- Conteneur pour les cartes de voitures -->
+            <TilePane fx:id="tilePane" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+            <!-- Espace réservé pour d'autres éléments -->
+            <VBox alignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+        </GridPane>
+
+        <!-- Bouton d'ajout -->
+        <Button fx:id="ajouterButton" layoutX="10.0" layoutY="660.0" mnemonicParsing="false" onAction="#goToAjouterVoiture" text="Ajouter une nouvelle voiture" />
+        <Button text="Modifier" onAction="#goToModifierVoiture" />
+
     </children>
 </AnchorPane>

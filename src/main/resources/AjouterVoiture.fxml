@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture">
     <children>
-        <TextField fx:id="id" layoutX="178.0" layoutY="82.0" />
-        <TextField fx:id="kilometrage" layoutX="178.0" layoutY="208.0" />
-        <TextField fx:id="prix_achat" layoutX="178.0" layoutY="272.0" />
-        <TextField fx:id="prix_actuel" layoutX="178.0" layoutY="336.0" />
-        <TextField fx:id="marque" layoutX="178.0" layoutY="400.0" />
-        <TextField fx:id="modele" layoutX="178.0" layoutY="464.0" />
-        <TextField fx:id="numero_serie" layoutX="178.0" layoutY="528.0" />
-        <TextField fx:id="type_carburant" layoutX="178.0" layoutY="592.0" />
-        <TextField fx:id="numero_immatriculation" layoutX="178.0" layoutY="656.0" />
-        <TextField fx:id="couleur" layoutX="178.0" layoutY="720.0" />
-        <TextField fx:id="carte_grise" layoutX="178.0" layoutY="784.0" />
-        <TextField fx:id="nom_image" layoutX="178.0" layoutY="848.0" />
-        <Label layoutX="74.0" layoutY="86.0" text="ID:" />
-        <Label layoutX="74.0" layoutY="212.0" text="Kilométrage:" />
-        <Label layoutX="74.0" layoutY="276.0" text="Prix d'achat:" />
-        <Label layoutX="74.0" layoutY="340.0" text="Prix actuel:" />
-        <Label layoutX="74.0" layoutY="404.0" text="Marque:" />
-        <Label layoutX="74.0" layoutY="468.0" text="Modèle:" />
-        <Label layoutX="74.0" layoutY="532.0" text="Numéro de série:" />
-        <Label layoutX="74.0" layoutY="596.0" text="Type de carburant:" />
-        <Label layoutX="74.0" layoutY="660.0" text="Numéro d'immatriculation:" />
-        <Label layoutX="74.0" layoutY="724.0" text="Couleur:" />
-        <Label layoutX="74.0" layoutY="788.0" text="Carte grise:" />
-        <Label layoutX="74.0" layoutY="852.0" text="Nom de l'image:" />
+        <Label layoutX="50.0" layoutY="30.0" text="Informations sur la voiture" style="-fx-font-size: 18px;" />
 
-        <Button layoutX="506.0" layoutY="316.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
-        <Button layoutX="409.0" layoutY="316.0" mnemonicParsing="false" onAction="#goToVoitureList" text="Afficher" />
+        <Label layoutX="50.0" layoutY="80.0" text="Marque :" />
+        <TextField fx:id="marque" layoutX="200.0" layoutY="76.0" />
 
+        <Label layoutX="50.0" layoutY="120.0" text="Modèle :" />
+        <TextField fx:id="modele" layoutX="200.0" layoutY="116.0" />
+
+        <Label layoutX="50.0" layoutY="160.0" text="Numéro de série :" />
+        <TextField fx:id="numero_serie" layoutX="200.0" layoutY="156.0" />
+
+        <Label layoutX="50.0" layoutY="200.0" text="Kilométrage :" />
+        <TextField fx:id="kilometrage" layoutX="200.0" layoutY="196.0"  />
+
+        <Label layoutX="50.0" layoutY="240.0" text="Type de carburant :" />
+        <TextField fx:id="type_carburant" layoutX="200.0" layoutY="236.0" />
+
+        <Label layoutX="50.0" layoutY="280.0" text="Numéro d'immatriculation :" />
+        <TextField fx:id="numero_immatriculation" layoutX="200.0" layoutY="276.0" />
+
+        <Label layoutX="50.0" layoutY="320.0" text="Couleur :" />
+        <TextField fx:id="couleur" layoutX="200.0" layoutY="316.0" />
+
+        <Label layoutX="50.0" layoutY="360.0" text="Année de fabrication :" />
+        <DatePicker fx:id="annee_fabrication" layoutX="200.0" layoutY="356.0" prefHeight="25.0" prefWidth="147.0" />
+
+        <Label layoutX="50.0" layoutY="400.0" text="Prix actuel :" />
+        <TextField fx:id="prix_actuel" layoutX="200.0" layoutY="396.0" />
+
+        <Label layoutX="50.0" layoutY="440.0" text="Prix d'achat :" />
+        <TextField fx:id="prix_achat" layoutX="200.0" layoutY="436.0" />
+
+        <Label layoutX="50.0" layoutY="480.0" text="Carte grise :" />
+        <TextField fx:id="carte_grise" layoutX="200.0" layoutY="476.0" />
+
+        <Label layoutX="50.0" layoutY="520.0" text="Nom de l'image :" />
+        <TextField fx:id="nom_image" layoutX="200.0" layoutY="516.0" />
+
+        <Button fx:id="submit" layoutX="200.0" layoutY="560.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
+        <Button fx:id="btn1" layoutX="300.0" layoutY="560.0" mnemonicParsing="false" onAction="#goToVoitureList" text="Liste des Voitures" />
+        <Button layoutX="400.0" layoutY="560.0" mnemonicParsing="false" text="Panne" />
+        <Button layoutX="500.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Panne" />
+        <Button layoutX="550.0" layoutY="560.0" mnemonicParsing="false" text="Réinitialiser" />
     </children>
 </AnchorPane>

@@ -17,12 +17,9 @@ public class ServiceVoiture implements IService<Voiture> {
 
     @Override
     public void add(Voiture voiture) {
-        //1-req sql INSERT
-        //2-executer req
         String qry = "INSERT INTO `voiture`(`id`, `marque`, `modele`, `numero_serie`, `type_carburant`, `numero_immatriculation`, `kilometrage`, `couleur`, `prix_achat`, `prix_actuel`, `date_achat`, `carte_grise`, `nom_image`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
-
             pstm.setInt(1, voiture.getId());
             pstm.setString(2, voiture.getMarque());
             pstm.setString(3, voiture.getModele());
@@ -33,15 +30,14 @@ public class ServiceVoiture implements IService<Voiture> {
             pstm.setString(8, voiture.getCouleur());
             pstm.setDouble(9, voiture.getPrix_achat());
             pstm.setDouble(10, voiture.getPrix_actuel());
-            pstm.setDate(11, new Date(2023,02,02));
+            pstm.setDate(11, new Date(voiture.getDate_achat().getTime()));
             pstm.setString(12, voiture.getCarte_grise());
             pstm.setString(13, voiture.getNom_image());
 
             pstm.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erreur lors de l'ajout de la voiture : " + e.getMessage());
         }
-
     }
 
     @Override
@@ -78,7 +74,6 @@ public class ServiceVoiture implements IService<Voiture> {
         return voitures;
     }
 
-
     @Override
     public void update(Voiture voiture) {
         String qry = "UPDATE `voiture` SET `marque`=?, `modele`=?, `numero_serie`=?, `type_carburant`=?, `numero_immatriculation`=?, `kilometrage`=?, `couleur`=?, `prix_achat`=?, `prix_actuel`=?, `date_achat`=?, `carte_grise`=?, `nom_image`=? WHERE `id`=?";
@@ -93,7 +88,7 @@ public class ServiceVoiture implements IService<Voiture> {
             pstm.setString(7, voiture.getCouleur());
             pstm.setDouble(8, voiture.getPrix_achat());
             pstm.setDouble(9, voiture.getPrix_actuel());
-            pstm.setDate(10, new Date(voiture.getDate_achat().getTime())); // Convertir la date en java.sql.Date
+            pstm.setDate(10, new Date(voiture.getDate_achat().getTime()));
             pstm.setString(11, voiture.getCarte_grise());
             pstm.setString(12, voiture.getNom_image());
             pstm.setInt(13, voiture.getId());
@@ -112,11 +107,10 @@ public class ServiceVoiture implements IService<Voiture> {
             pstm.setInt(1, voiture.getId());
 
             int rowsAffected = pstm.executeUpdate();
-            return rowsAffected > 0; // Vérifie si des lignes ont été supprimées avec succès
+            return rowsAffected > 0;
         } catch (SQLException e) {
             System.out.println("Erreur lors de la suppression de la voiture : " + e.getMessage());
             return false;
         }
     }
-
 }

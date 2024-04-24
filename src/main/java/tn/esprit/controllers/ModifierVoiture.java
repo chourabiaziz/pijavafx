@@ -2,20 +2,12 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import tn.esprit.models.Voiture;
 import tn.esprit.services.ServiceVoiture;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class ModifierVoiture implements Initializable {
-
-    @FXML
-    private TextField idField;
+public class ModifierVoiture {
 
     @FXML
     private TextField marqueField;
@@ -47,25 +39,12 @@ public class ModifierVoiture implements Initializable {
     @FXML
     private TextField carteGriseField;
 
-    @FXML
-    private TextField nomImageField;
-
-    @FXML
-    private Button saveButton;
-
     private Voiture voiture; // Voiture à modifier
     private ServiceVoiture serviceVoiture; // Service pour gérer les opérations sur les voitures
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Initialisation du service de gestion des voitures
-        serviceVoiture = new ServiceVoiture();
-    }
 
     // Méthode pour charger les détails de la voiture à modifier
     public void loadVoitureDetails(Voiture voiture) {
         this.voiture = voiture;
-        idField.setText(String.valueOf(voiture.getId()));
         marqueField.setText(voiture.getMarque());
         modeleField.setText(voiture.getModele());
         numeroSerieField.setText(voiture.getNumero_serie());
@@ -76,7 +55,6 @@ public class ModifierVoiture implements Initializable {
         prixAchatField.setText(String.valueOf(voiture.getPrix_achat()));
         prixActuelField.setText(String.valueOf(voiture.getPrix_actuel()));
         carteGriseField.setText(voiture.getCarte_grise());
-        nomImageField.setText(voiture.getNom_image());
     }
 
     // Méthode appelée lors de l'appui sur le bouton "Enregistrer" pour modifier la voiture
@@ -93,7 +71,6 @@ public class ModifierVoiture implements Initializable {
         voiture.setPrix_achat(Double.parseDouble(prixAchatField.getText()));
         voiture.setPrix_actuel(Double.parseDouble(prixActuelField.getText()));
         voiture.setCarte_grise(carteGriseField.getText());
-        voiture.setNom_image(nomImageField.getText());
 
         // Appel de la méthode update du service pour mettre à jour la voiture dans la base de données
         serviceVoiture.update(voiture);
