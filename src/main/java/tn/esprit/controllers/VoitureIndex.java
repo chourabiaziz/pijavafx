@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class VoitureIndex implements Initializable {
 
+
     @FXML
     private VBox assuranceCardVBox;
 

@@ -51,7 +51,7 @@
 
         <!-- Bouton d'ajout -->
         <Button fx:id="ajouterButton" layoutX="10.0" layoutY="660.0" mnemonicParsing="false" onAction="#goToAjouterVoiture" text="Ajouter une nouvelle voiture" />
-        <Button text="Modifier" onAction="#goToModifierVoiture" />
+        <Button fx:id="modifierButton" layoutX="150.0" layoutY="660.0" mnemonicParsing="false" text="Modifier" onAction="#goToModifierVoiture"  />
 
     </children>
 </AnchorPane>

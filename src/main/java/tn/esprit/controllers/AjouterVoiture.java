@@ -112,10 +112,11 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
     @FXML
     void goToVoitureList(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/VoitureIndex.fxml"));
+        Parent root ;
         try {
             Node source = (Node) event.getSource();
-            Parent root = loader.load();
-            System.out.println("Fichier FXML chargé avec succès.");
+            root = loader.load();
+            System.out.println("Le fichier FXML a été chargé avec succès.");
             VoitureIndex controller = loader.getController();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.setTitle("Liste des Voitures");
@@ -125,6 +126,8 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+
 
     @FXML
     Button btn1;
