@@ -191,4 +191,19 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void goToAtelierList(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML de la liste des pannes (PanneIndex.fxml)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/atelierIndex.fxml"));
+            Parent root = loader.load();
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

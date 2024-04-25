@@ -1,56 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture">
     <children>
-        <Label layoutX="50.0" layoutY="30.0" text="Informations sur la voiture" style="-fx-font-size: 18px;" />
+        <VBox spacing="10.0" layoutX="50.0" layoutY="30.0" prefHeight="570.0" prefWidth="450.0">
+            <children>
+                <Label text="Informations sur la voiture" style="-fx-font-size: 18px; -fx-font-weight: bold;">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
 
-        <Label layoutX="50.0" layoutY="80.0" text="Marque :" />
-        <TextField fx:id="marque" layoutX="200.0" layoutY="76.0" />
+                <GridPane hgap="10.0" vgap="5.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        </columnConstraints>
+                        <!-- Le reste de votre code ici -->
 
-        <Label layoutX="50.0" layoutY="120.0" text="Modèle :" />
-        <TextField fx:id="modele" layoutX="200.0" layoutY="116.0" />
+                    <children>
+                        <Label text="Marque :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <TextField fx:id="marque" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="160.0" text="Numéro de série :" />
-        <TextField fx:id="numero_serie" layoutX="200.0" layoutY="156.0" />
+                        <Label text="Modèle :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <TextField fx:id="modele" GridPane.rowIndex="1" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="200.0" text="Kilométrage :" />
-        <TextField fx:id="kilometrage" layoutX="200.0" layoutY="196.0"  />
+                        <Label text="Numéro de série :" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                        <TextField fx:id="numero_serie" GridPane.rowIndex="2" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="240.0" text="Type de carburant :" />
-        <TextField fx:id="type_carburant" layoutX="200.0" layoutY="236.0" />
+                        <Label text="Kilométrage :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                        <TextField fx:id="kilometrage" GridPane.rowIndex="3" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="280.0" text="Numéro d'immatriculation :" />
-        <TextField fx:id="numero_immatriculation" layoutX="200.0" layoutY="276.0" />
+                        <Label text="Type de carburant :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                        <TextField fx:id="type_carburant" GridPane.rowIndex="4" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="320.0" text="Couleur :" />
-        <TextField fx:id="couleur" layoutX="200.0" layoutY="316.0" />
+                        <Label text="Numéro d'immatriculation :" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                        <TextField fx:id="numero_immatriculation" GridPane.rowIndex="5" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="360.0" text="Année de fabrication :" />
-        <DatePicker fx:id="annee_fabrication" layoutX="200.0" layoutY="356.0" prefHeight="25.0" prefWidth="147.0" />
+                        <Label text="Couleur :" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+                        <TextField fx:id="couleur" GridPane.rowIndex="6" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="400.0" text="Prix actuel :" />
-        <TextField fx:id="prix_actuel" layoutX="200.0" layoutY="396.0" />
+                        <Label text="Année de fabrication :" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+                        <DatePicker fx:id="annee_fabrication" GridPane.rowIndex="7" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="440.0" text="Prix d'achat :" />
-        <TextField fx:id="prix_achat" layoutX="200.0" layoutY="436.0" />
+                        <Label text="Prix actuel :" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+                        <TextField fx:id="prix_actuel" GridPane.rowIndex="8" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="480.0" text="Carte grise :" />
-        <TextField fx:id="carte_grise" layoutX="200.0" layoutY="476.0" />
+                        <Label text="Prix d'achat :" GridPane.rowIndex="9" GridPane.columnIndex="0" />
+                        <TextField fx:id="prix_achat" GridPane.rowIndex="9" GridPane.columnIndex="1" />
 
-        <Label layoutX="50.0" layoutY="520.0" text="Nom de l'image :" />
-        <TextField fx:id="nom_image" layoutX="200.0" layoutY="516.0" />
+                        <Label text="Carte grise :" GridPane.rowIndex="10" GridPane.columnIndex="0" />
+                        <TextField fx:id="carte_grise" GridPane.rowIndex="10" GridPane.columnIndex="1" />
 
-        <Button fx:id="submit" layoutX="200.0" layoutY="560.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
-        <Button fx:id="btn1" layoutX="300.0" layoutY="560.0" mnemonicParsing="false" onAction="#goToVoitureList" text="Liste des Voitures" />
-        <Button layoutX="400.0" layoutY="560.0" mnemonicParsing="false" text="Panne"  onAction="#goToPanneList" />
-        <Button layoutX="500.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Panne"  onAction="#goToAjouterPanne" />
-        <Button layoutX="450.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Atelier"  onAction="#goToAjouterAtelier" />
-        <Button layoutX="550.0" layoutY="560.0" mnemonicParsing="false" text="Réinitialiser" />
+                        <Label text="Nom de l'image :" GridPane.rowIndex="11" GridPane.columnIndex="0" />
+                        <TextField fx:id="nom_image" GridPane.rowIndex="11" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="submit" text="Ajouter" onAction="#submit" />
+                        <Button fx:id="btn1" text="Liste des Voitures" onAction="#goToVoitureList" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <children>
+                        <Button layoutX="50.0" layoutY="560.0" mnemonicParsing="false" text="Panne" onAction="#goToPanneList" />
+                        <Button layoutX="150.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Panne" onAction="#goToAjouterPanne" />
+                        <Button layoutX="250.0" layoutY="560.0" mnemonicParsing="false" text="Réinitialiser" />
+                        <Button layoutX="350.0" layoutY="560.0" mnemonicParsing="false" text="Liste des Ateliers" onAction="#goToAtelierList" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>
