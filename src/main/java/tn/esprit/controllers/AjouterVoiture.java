@@ -126,7 +126,19 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
+    @FXML
+    void goToAjouterPanne(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterpanne.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @FXML

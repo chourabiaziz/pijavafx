@@ -24,6 +24,9 @@ public class ServicePanne implements IService<Panne> {
             return;
         }
 
+        // Obtenez la date actuelle
+        java.util.Date currentDate = new java.util.Date();
+
         String qry = "INSERT INTO `panne`(`id`, `atelier_id`, `etat`, `localisation`, `panne`, `description`, `date`) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
@@ -33,13 +36,14 @@ public class ServicePanne implements IService<Panne> {
             pstm.setString(4, panne.getLocalisation());
             pstm.setString(5, panne.getPanne());
             pstm.setString(6, panne.getDescription());
-            pstm.setDate(7, new java.sql.Date(panne.getDate().getTime()));
+            pstm.setDate(7, new java.sql.Date(currentDate.getTime())); // Utilisez la date actuelle
 
             pstm.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erreur lors de l'ajout de la panne : " + e.getMessage());
         }
     }
+
 
     @Override
     public ArrayList<Panne> getAll() {
@@ -121,8 +125,12 @@ public class ServicePanne implements IService<Panne> {
             return false;
         }
 
-
+        if (panne.getDate() == null) {
+            System.out.println("Erreur : La date de la panne est obligatoire.");
+            return false;
+        }
 
         return true;
     }
+
 }
