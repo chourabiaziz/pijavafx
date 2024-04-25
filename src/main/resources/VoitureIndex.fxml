@@ -20,7 +20,7 @@
         </Text>
 
         <!-- Champ de recherche -->
-        <TextField layoutX="10.0" layoutY="24.0" prefHeight="26.0" prefWidth="568.0" />
+        <TextField fx:id="searchField" onAction="#searchFieldChanged" />
 
         <!-- Grille pour la disposition des éléments -->
         <GridPane layoutY="60.0" prefHeight="631.0" prefWidth="520.0" AnchorPane.bottomAnchor="14.400000000000091" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="60.0">

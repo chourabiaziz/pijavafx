@@ -61,6 +61,7 @@ public class VoitureIndex implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Ajouter le gestionnaire d'événements pour le bouton "Ajouter"
         // Gestionnaire d'événements pour le bouton "Ajouter"
+
         ajouterButton.setOnAction(event -> {
             try {
                 // Charger le fichier FXML de la page d'ajout de voiture
@@ -131,29 +132,21 @@ public class VoitureIndex implements Initializable {
     private void searchFieldChanged() {
         String query = searchField.getText().trim().toLowerCase();
 
-        filteredData.clear(); // Effacer les données filtrées existantes
+        filteredData.clear(); // Clear the existing filtered data
+
         if (query.isEmpty()) {
             displayVoitures(data);
         } else {
             for (Voiture voiture : data) {
-                if (String.valueOf(voiture.getId()).toLowerCase().contains(query)
-                        || voiture.getMarque().toLowerCase().contains(query)
-                        || voiture.getModele().toLowerCase().contains(query)
-                        || voiture.getNumero_serie().toLowerCase().contains(query)
-                        || voiture.getType_carburant().toLowerCase().contains(query)
-                        || voiture.getNumero_immatriculation().toLowerCase().contains(query)
-                        || String.valueOf(voiture.getKilometrage()).toLowerCase().contains(query)
-                        || voiture.getCouleur().toLowerCase().contains(query)
-                        || String.valueOf(voiture.getPrix_achat()).toLowerCase().contains(query)
-                        || String.valueOf(voiture.getPrix_actuel()).toLowerCase().contains(query)
-                        || voiture.getCarte_grise().toLowerCase().contains(query)
-                        || voiture.getNom_image().toLowerCase().contains(query)) {
-                    filteredData.add(voiture); // Ajouter les voitures correspondantes aux données filtrées
+                if (voiture.getMarque().toLowerCase().contains(query)) {
+                    filteredData.add(voiture); // Add the matching cars to the filtered data
                 }
             }
-            displayVoitures(filteredData); // Afficher les données filtrées
+            displayVoitures(filteredData); // Display the filtered data
         }
     }
+
+
 
     private void handle(ActionEvent event) {
         try {
