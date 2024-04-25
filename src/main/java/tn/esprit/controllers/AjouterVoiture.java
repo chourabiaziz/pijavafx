@@ -176,4 +176,19 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         }
     }
 
+    public void goToAjouterAtelier(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier Fxml pour ajouter atelier
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterAtelier.fxml"));
+            Parent root = loader.load();
+
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
