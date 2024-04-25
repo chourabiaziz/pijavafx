@@ -14,6 +14,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Voiture;
+
 import tn.esprit.services.ServiceVoiture;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -228,5 +229,19 @@ public class VoitureIndex implements Initializable {
             alert.showAndWait();
         }
     }
+    @FXML
+    private void openChatbotPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChatbotPage.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
