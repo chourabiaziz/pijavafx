@@ -13,7 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.Voiture;
-import tn.esprit.services.ServiceVoiture ;
+import tn.esprit.services.ServiceVoiture;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,6 +65,36 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
 
     @FXML
     void submit(ActionEvent event) {
+        // Vérifier si les champs obligatoires sont vides
+        if (marque.getText().isEmpty() || modele.getText().isEmpty() || kilometrage.getText().isEmpty() ||
+                prix_achat.getText().isEmpty() || prix_actuel.getText().isEmpty() || numero_serie.getText().isEmpty() ||
+                type_carburant.getText().isEmpty() || numero_immatriculation.getText().isEmpty() || couleur.getText().isEmpty() ||
+                carte_grise.getText().isEmpty() || nom_image.getText().isEmpty() || annee_fabrication.getValue() == null) {
+            // Afficher un message d'erreur si un champ obligatoire est vide
+            showAlert(Alert.AlertType.ERROR, "Erreur", null, "Veuillez remplir tous les champs obligatoires !");
+            return;
+        }
+
+        // Vérifier le format du kilométrage
+        if (!kilometrage.getText().matches("\\d+")) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", null, "Le kilométrage doit être un nombre entier positif !");
+            return;
+        }
+
+        // Vérifier le format des prix
+        if (!prix_achat.getText().matches("\\d+(\\.\\d+)?") || !prix_actuel.getText().matches("\\d+(\\.\\d+)?")) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", null, "Les prix doivent être des nombres décimaux positifs !");
+            return;
+        }
+
+        // Vérifier le format de l'année de fabrication
+        // (assumant que l'année doit être dans le passé)
+        if (annee_fabrication.getValue().getYear() >= java.time.LocalDate.now().getYear()) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", null, "L'année de fabrication doit être dans le passé !");
+            return;
+        }
+
+        // Si toutes les vérifications passent, ajouter la voiture
         Voiture voiture = new Voiture();
         ServiceVoiture service = new ServiceVoiture(); // Assurez-vous d'avoir une classe ServiceVoiture pour gérer les opérations sur les voitures
 
@@ -88,16 +118,9 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
 
         try {
             service.add(voiture);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Succès");
-            alert.setHeaderText("Voiture ajoutée avec succès");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.INFORMATION, "Succès", null, "Voiture ajoutée avec succès !");
         } catch(Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Échec de l'ajout de la voiture");
-            alert.setContentText("Une erreur est survenue lors de l'ajout de la voiture. Veuillez réessayer.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Erreur", null, "Échec de l'ajout de la voiture. Veuillez réessayer.");
         }
     }
 
@@ -107,7 +130,6 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         // Pour l'instant, nous utilisons simplement une valeur aléatoire pour l'ID
         return (int) (Math.random() * 1000); // Remplacez cette logique par votre propre logique de génération d'ID
     }
-
 
     @FXML
     void goToVoitureList(ActionEvent event) {
@@ -126,6 +148,7 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void goToAjouterPanne(ActionEvent event) {
         try {
@@ -140,13 +163,14 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         }
     }
 
-
     @FXML
     Button btn1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
     @FXML
     void reset(ActionEvent event) {
         // Réinitialiser les champs de saisie
@@ -206,6 +230,7 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void openChatbotPage(ActionEvent event) {
         try {
@@ -218,5 +243,13 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
     }
 }

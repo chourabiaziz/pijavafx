@@ -3,12 +3,13 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import tn.esprit.models.Panne;
 import tn.esprit.services.ServicePanne;
-import java.util.Date;
 
+import java.util.Date;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,10 +35,26 @@ public class AjouterPanne implements Initializable {
     @FXML
     void submit(ActionEvent event) {
         // Récupérer les données saisies par l'utilisateur
-        int atelierId = Integer.parseInt(atelierIdTextField.getText());
+        String atelierIdText = atelierIdTextField.getText();
         String localisation = localisationTextField.getText();
         String panne = panneTextField.getText();
         String description = descriptionTextArea.getText();
+
+        // Vérifier si les champs obligatoires sont vides
+        if (atelierIdText.isEmpty() || localisation.isEmpty() || panne.isEmpty() || description.isEmpty()) {
+            // Afficher un message d'erreur si un champ obligatoire est vide
+            showAlert("Erreur", "Veuillez remplir tous les champs obligatoires !");
+            return;
+        }
+
+        // Vérifier si l'identifiant de l'atelier est un entier
+        int atelierId;
+        try {
+            atelierId = Integer.parseInt(atelierIdText);
+        } catch (NumberFormatException e) {
+            showAlert("Erreur", "L'identifiant de l'atelier doit être un nombre entier !");
+            return;
+        }
 
         // Créer un objet Panne avec les données saisies
         Panne newPanne = new Panne();
@@ -55,7 +72,15 @@ public class AjouterPanne implements Initializable {
         servicePanne.add(newPanne);
 
         // Afficher un message de confirmation
-        System.out.println("Panne ajoutée avec succès !");
+        showAlert("Succès", "Panne ajoutée avec succès !");
     }
 
+    // Méthode pour afficher une boîte de dialogue avec un message
+    private void showAlert(String title, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
 }
