@@ -9,6 +9,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureIndex">
     <children>
         <ImageView fitHeight="70.0" fitWidth="124.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -16,7 +18,7 @@
                 <Image url="@assure.png" />
             </image>
         </ImageView>
-        <ListView fx:id="listView" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="2.0" layoutY="85.13207853540668" prefHeight="245.0" prefWidth="598.0" scaleShape="false" style="-fx-background-color: transparent; -fx-control-inner-background: transparent;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+        <ListView fx:id="listView"  layoutX="2.0" layoutY="167.54717584095994" prefHeight="431.0" prefWidth="1163.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="168.0">
             <stylesheets>
                 <URL value="@TemplatesWindow.css" />
             </stylesheets>
@@ -31,5 +33,18 @@
         </Button>
             
         </children>
-
+    <Pagination fx:id="pagination" layoutX="437.4339780063981" layoutY="615.0" prefHeight="44.0" prefWidth="236.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="492.0">
+        <style>
+            -fx-font-size: 14px;
+            -fx-padding: 5px;
+            -fx-text-fill: #ffffff;
+            -fx-background-color: #337ab7;
+        </style>
+    </Pagination>
+    <TextField fx:id="search" alignment="CENTER" layoutX="215.0" layoutY="73.0" onKeyReleased="#search" prefHeight="37.0" prefWidth="708.0" promptText="Recherche par referance , couverture , prix et client" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="215.8678903712107" />
+    <ImageView fitHeight="37.0" fitWidth="36.0" layoutX="913.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="216.0">
+        <image>
+            <Image url="@search.png" />
+        </image>
+    </ImageView>
 </AnchorPane>

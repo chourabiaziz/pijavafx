@@ -95,11 +95,11 @@ private Text errpromo ;
                     errpromo.setText("champ ne peut pas etre vide ou contient des lettres inclus les espaces");
                     errpromo.setFill(Color.RED);
                     send.setDisable(true);
-                } else if (!tva.getText().matches("[0-100]")) {
-                    errpromo.setText(" 0 >= promotion > 100");
-                    errpromo.setFill(Color.RED);
-                    send.setDisable(true);
-                } else {
+                } else if (!tva.getText().matches("(100|[1-9]?[0-9])")) {
+            errpromo.setText("Promotion doit etre  entre 0 et 100");
+            errpromo.setFill(Color.RED);
+            send.setDisable(true);
+        } else {
                     errpromo.setText("");
                     send.setDisable(false);
                 }
