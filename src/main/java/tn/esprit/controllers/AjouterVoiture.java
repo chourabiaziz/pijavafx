@@ -160,4 +160,20 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         annee_fabrication.setValue(null); // Réinitialiser la date d'achat
     }
 
+    public void goToPanneList(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML de la liste des pannes (PanneIndex.fxml)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/PanneIndex.fxml"));
+            Parent root = loader.load();
+
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

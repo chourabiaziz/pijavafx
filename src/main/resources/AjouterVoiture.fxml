@@ -48,7 +48,7 @@
 
         <Button fx:id="submit" layoutX="200.0" layoutY="560.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
         <Button fx:id="btn1" layoutX="300.0" layoutY="560.0" mnemonicParsing="false" onAction="#goToVoitureList" text="Liste des Voitures" />
-        <Button layoutX="400.0" layoutY="560.0" mnemonicParsing="false" text="Panne" />
+        <Button layoutX="400.0" layoutY="560.0" mnemonicParsing="false" text="Panne"  onAction="#goToPanneList" />
         <Button layoutX="500.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Panne"  onAction="#goToAjouterPanne" />
         <Button layoutX="550.0" layoutY="560.0" mnemonicParsing="false" text="Réinitialiser" />
     </children>

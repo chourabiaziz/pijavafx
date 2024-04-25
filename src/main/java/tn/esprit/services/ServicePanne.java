@@ -44,33 +44,31 @@ public class ServicePanne implements IService<Panne> {
         }
     }
 
-
     @Override
     public ArrayList<Panne> getAll() {
         List<Panne> pannes = new ArrayList<>();
-        String qry = "SELECT * FROM `panne`";
-        try {
-            Statement stm = cnx.createStatement();
-            ResultSet rs = stm.executeQuery(qry);
+        String req = "SELECT * FROM panne";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                int id = res.getInt("id");
+                int atelierId = res.getInt("atelier_id");
+                int etat = res.getInt("etat");
+                String localisation = res.getString("localisation");
+                String panne = res.getString("panne");
+                String description = res.getString("description");
+                Date date = res.getDate("date");
 
-            while (rs.next()) {
-                Panne panne = new Panne(
-                        rs.getInt("id"),
-                        rs.getInt("atelier_id"),
-                        rs.getInt("etat"),
-                        rs.getString("localisation"),
-                        rs.getString("panne"),
-                        rs.getString("description"),
-                        rs.getDate("date")
-                );
-                pannes.add(panne);
+                Panne p = new Panne(id, atelierId, etat, localisation, panne, description, date);
+                pannes.add(p);
             }
-            rs.close();
+
         } catch (SQLException e) {
-            System.out.println("Erreur lors de la récupération des pannes : " + e.getMessage());
+            e.printStackTrace();
         }
         return (ArrayList<Panne>) pannes;
     }
+
 
     @Override
     public void update(Panne panne) {
