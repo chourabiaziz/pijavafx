@@ -206,4 +206,17 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void openChatbotPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChatbotPage.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

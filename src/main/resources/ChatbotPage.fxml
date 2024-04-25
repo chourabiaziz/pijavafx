@@ -3,9 +3,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <WebView fx:id="chatbotWebView" layoutX="29.0" layoutY="32.0" prefHeight="200.0" prefWidth="542.0"/>
-    </children>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.ChatbotIntegration"
+            prefWidth="800" prefHeight="600">
+
+    <WebView fx:id="webView" layoutX="50" layoutY="30" prefWidth="700" prefHeight="540"/>
+
 </AnchorPane>

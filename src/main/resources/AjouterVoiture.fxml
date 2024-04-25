@@ -71,6 +71,8 @@
                         <Button layoutX="150.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Panne" onAction="#goToAjouterPanne" />
                         <Button layoutX="250.0" layoutY="560.0" mnemonicParsing="false" text="Réinitialiser" />
                         <Button layoutX="350.0" layoutY="560.0" mnemonicParsing="false" text="Liste des Ateliers" onAction="#goToAtelierList" />
+                        <Button fx:id="chatbotButton" layoutX="290.0" layoutY="660.0" mnemonicParsing="false" text="Chatbot" onAction="#openChatbotPage" />
+
                     </children>
                 </HBox>
             </children>
