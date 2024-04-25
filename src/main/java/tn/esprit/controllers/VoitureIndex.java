@@ -100,7 +100,7 @@ public class VoitureIndex implements Initializable {
 
     private void displayVoitures(ObservableList<Voiture> voitures) {
         // Implémenter la logique pour afficher les voitures dans votre TilePane
-        tilePane.getChildren().clear(); // Effacer les enfants existants
+        tilePane.getChildren().clear();
 
         for (Voiture voiture : voitures) {
             VBox card = new VBox();
@@ -108,7 +108,6 @@ public class VoitureIndex implements Initializable {
             card.setPrefHeight(180);
             card.setSpacing(5);
             card.setPadding(new Insets(5));
-
             Label idLabel = new Label("ID: " + voiture.getId());
             Label marqueLabel = new Label("Marque: " + voiture.getMarque());
             Label modeleLabel = new Label("Modèle: " + voiture.getModele());
@@ -121,13 +120,34 @@ public class VoitureIndex implements Initializable {
             Label prixActuelLabel = new Label("Prix Actuel: " + voiture.getPrix_actuel());
             Label carteGriseLabel = new Label("Carte Grise: " + voiture.getCarte_grise());
             Label nomImageLabel = new Label("Nom de l'Image: " + voiture.getNom_image());
+            card.getChildren().addAll(idLabel, marqueLabel, modeleLabel, numeroSerieLabel, carburantLabel, immatriculationLabel, kilometrageLabel, couleurLabel, prixAchatLabel, prixActuelLabel, carteGriseLabel, nomImageLabel);
 
-            card.getChildren().addAll(idLabel, marqueLabel, modeleLabel, numeroSerieLabel, carburantLabel,
-                    immatriculationLabel, kilometrageLabel, couleurLabel, prixAchatLabel, prixActuelLabel,
-                    carteGriseLabel, nomImageLabel);
+            // Add border to the card
+            card.setStyle("-fx-border-color: dodgerblue; -fx-border-width: 2;");
+
+            // Add modify and delete buttons
+            Button modifyButton = new Button("Modifier");
+            Button deleteButton = new Button("Supprimer");
+
+            // Style the buttons
+            modifyButton.setStyle("-fx-background-color: #007bff; -fx-text-fill: white;");
+            deleteButton.setStyle("-fx-background-color: #dc3545; -fx-text-fill: white;");
+
+            // Add action events to the buttons
+            modifyButton.setOnAction(event -> {
+                // Handle modify action
+            });
+            deleteButton.setOnAction(event -> {
+                // Handle delete action
+            });
+
+            // Add buttons to the card
+            card.getChildren().addAll(modifyButton, deleteButton);
+
             tilePane.getChildren().add(card);
         }
     }
+
 
     @FXML
     private void searchFieldChanged() {
@@ -203,7 +223,7 @@ public class VoitureIndex implements Initializable {
         if (selectedVoiture != null) {
             try {
                 // Charger le fichier FXML de la page de modification de voiture
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierVoiture.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/VoitureEdit.fxml"));
                 Parent root = loader.load();
 
                 // Récupérer le contrôleur de la page de modification
@@ -229,6 +249,8 @@ public class VoitureIndex implements Initializable {
             alert.showAndWait();
         }
     }
+
+
 
 
 
