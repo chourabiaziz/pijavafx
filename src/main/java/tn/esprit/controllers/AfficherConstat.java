@@ -1,6 +1,7 @@
 package tn.esprit.controllers;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,10 +9,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -80,56 +79,16 @@ public class AfficherConstat  implements Initializable {
 @FXML
     private Label temoinsLabel;
 
+    @FXML
+    private Button modifierButton;
 
+    @FXML
+    private Button ajouterConstatButton;
 
-
-
-          /*  Label nomPreneurALabel = new Label("NomPreneurA: " + constat.getA_preneur_nom());
-            Label PrenomPreneurALabel = new Label("PrenomPreneurA: " + constat.getA_preneur_prenom());
-            Label TelPreneurALabel = new Label("TelPreneurA " + constat.getA_preneur_tel());
-            Label MarquePreneurALabel = new Label("MarquePreneurA " + constat.getA_vehicule_moteur_marque());
-            Label ImmatriculationPreneurALabel = new Label("ImmatriculationPreneurA " + constat.getA_vehicule_moteur_num_immatriculation());*/
-
-
-/*
-            Button modifierButton = new Button("Modifier");
-            modifierButton.setOnAction(event -> {
-                try {
-                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    currentStage.close();
-
-                    // Charger le fichier FXML de la page ModifierAssurance.fxml
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierConstat.fxml"));
-                    Parent root = loader.load();
-
-                    // Afficher la nouvelle scène
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });*/
-
-          /*  Button supprimerButton = new Button("Supprimer");
-            supprimerButton.setOnAction(event -> {
-                // Retrieve the assurance associated with this button
-                Constat constatToDelete = constat;
-
-                // Create an instance of the ServiceAssurance class
-                ServiceConstat serviceConstat1 = new ServiceConstat();
-
-                // Perform the deletion operation
-                boolean deleteSuccess = serviceConstat.delete(constatToDelete);
-                if (deleteSuccess) {
-                    // If deletion is successful, remove the card from the UI
-                    children.remove(card);
-                    System.out.println("Constat supprimée avec succès.");
-                } else {
-                    System.out.println("Échec de la suppression de constat.");
-                }
-            });*/
+    private Constat constat = new Constat();
+    private ServiceConstat serviceConstat;
+    @FXML
+    private VBox constatsContainer;
 
 
     @Override
@@ -141,42 +100,148 @@ public class AfficherConstat  implements Initializable {
         doublait.setDisable(true);
         viraitDroite.setDisable(true);
         viraitGauche.setDisable(true);
+
+
+        this.serviceConstat = new ServiceConstat();
+
+
     }
 
-    public void afficherConstats(ArrayList<Constat> constats) {
-        if (!constats.isEmpty()) {
-            Constat constat = constats.get(constats.size() - 1);
-
-            nomPreneurlabelA.setText(constat.getA_preneur_nom());
-            prenomPreneurlabelA.setText(constat.getA_preneur_prenom());
-            telPreneurLabelA.setText(constat.getA_preneur_tel());
-            marqueLabelA.setText(constat.getA_vehicule_moteur_marque());
-            immatriculationLabelA.setText(constat.getA_vehicule_moteur_num_immatriculation());
-            nomSocieteLabelA.setText(constat.getA_societe_assurance_agence_nom());
-            adresseSocietelabelA.setText(constat.getA_societe_assurance_agence_adresse());
-
-            nomPreneurlabelB.setText(constat.getB_preneur_nom());
-            prenomPreneurlabelB.setText(constat.getB_preneur_prenom());
-            telPreneurLabelB.setText(constat.getB_preneur_tel());
-            marqueLabelB.setText(constat.getB_vehicule_moteur_marque());
-            immatriculationLabelB.setText(constat.getB_vehicule_moteur_num_immatriculation());
-            nomSocieteLabelB.setText(constat.getB_societe_assurance_agence_nom());
-            adresseSocietelabelB.setText(constat.getB_societe_assurance_agence_adresse());
 
 
-            localisationLabel.setText(constat.getLocalisation());
-            temoinsLabel.setText(constat.getTemoins());
+    public void afficherConstat(Constat constat) {
+        nomPreneurlabelA.setText(constat.getA_preneur_nom());
+        prenomPreneurlabelA.setText(constat.getA_preneur_prenom());
+        telPreneurLabelA.setText(constat.getA_preneur_tel());
+        marqueLabelA.setText(constat.getA_vehicule_moteur_marque());
+        immatriculationLabelA.setText(constat.getA_vehicule_moteur_num_immatriculation());
+        nomSocieteLabelA.setText(constat.getA_societe_assurance_agence_nom());
+        adresseSocietelabelA.setText(constat.getA_societe_assurance_agence_adresse());
 
-            enStationnement.setSelected(constat.isStationnement_arret());
-            quittaitStationnement.setSelected(constat.isQuittait_stationnement_arret());
-            prenaitStationnement.setSelected(constat.isPrenait_stationnement());
-            sortaitParking.setSelected(constat.isSortait_dun_parking_lieu());
-            doublait.setSelected(constat.isDoublait());
-            viraitDroite.setSelected(constat.isVirait_droite());
-            viraitGauche.setSelected(constat.isVirait_gauche());
+        nomPreneurlabelB.setText(constat.getB_preneur_nom());
+        prenomPreneurlabelB.setText(constat.getB_preneur_prenom());
+        telPreneurLabelB.setText(constat.getB_preneur_tel());
+        marqueLabelB.setText(constat.getB_vehicule_moteur_marque());
+        immatriculationLabelB.setText(constat.getB_vehicule_moteur_num_immatriculation());
+        nomSocieteLabelB.setText(constat.getB_societe_assurance_agence_nom());
+        adresseSocietelabelB.setText(constat.getB_societe_assurance_agence_adresse());
 
+
+        localisationLabel.setText(constat.getLocalisation());
+        temoinsLabel.setText(constat.getTemoins());
+
+        enStationnement.setSelected(constat.isStationnement_arret());
+        quittaitStationnement.setSelected(constat.isQuittait_stationnement_arret());
+        prenaitStationnement.setSelected(constat.isPrenait_stationnement());
+        sortaitParking.setSelected(constat.isSortait_dun_parking_lieu());
+        doublait.setSelected(constat.isDoublait());
+        viraitDroite.setSelected(constat.isVirait_droite());
+        viraitGauche.setSelected(constat.isVirait_gauche());
+
+    }
+
+
+    public void afficherTousLesConstats(ArrayList<Constat> constats) {
+
+        constatsContainer.getChildren().clear();
+
+        Label nomPreneurlabelA = new Label("Nom: " + constat.getA_preneur_nom());
+        Label prenomPreneurlabelA = new Label("prenom: " + constat.getA_preneur_prenom());
+        Label telPreneurLabelA = new Label("tel: " + constat.getA_preneur_tel());
+        Label marqueLabelA = new Label("marque: " + constat.getA_vehicule_moteur_marque());
+        Label immatriculationLabelA = new Label("immatriculation: " + constat.getA_vehicule_moteur_num_immatriculation());
+        Label nomSocieteLabelA = new Label("NomSociete: " + constat.getA_societe_assurance_agence_nom());
+        Label adresseSocietelabelA = new Label("AdresseSociete: " + constat.getA_societe_assurance_agence_adresse());
+
+
+        for (Constat constat : constats) {
+            try {
+                // Charger le modèle/template FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherConstat.fxml"));
+                Parent root = loader.load();
+                AfficherConstat controller = loader.getController();
+                controller.afficherConstat(constat);
+                constatsContainer.getChildren().add(root);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+    }
+
+    @FXML
+    private void handleAjouterConstatButtonAction(ActionEvent event ) {
+        try {
+            // Charger le fichier FXML de la page AjouterConstat.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ajouterConstatButton.getScene().getWindow();
+            stage.close();
+
+            // Afficher la nouvelle scène
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleModifierButtonAction(ActionEvent event) {
+
+        try {
+            // Charger le fichier FXML de la page ModifierConstat.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierConstat.fxml"));
+            Parent root = loader.load();
+            ModifierConstat controller = loader.getController();
+            controller.setId(constat.getId());
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) modifierButton.getScene().getWindow();
+            stage.close();
+
+            // Afficher la nouvelle scène
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
 
+    private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
     }
+    public void handleSupprimerButtonAction(javafx.event.ActionEvent actionEvent) {
+        Constat constatToDelete = constat;
+        constatToDelete.setId(constat.getId());
+
+        System.out.println("Deleting constat with ID: " + constatToDelete.getId());
+
+        // Create an instance of the ServiceAssurance class
+        ServiceConstat serviceConstat = new ServiceConstat();
+
+        System.out.println("constatToDelete id: " + constatToDelete.getId());
+
+        boolean deleteSuccess = serviceConstat.delete(constatToDelete);
+        if (deleteSuccess) {
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Suppression réussie", "Le constat a été supprimé avec succès.");
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la suppression", "La suppression du constat a échoué.");
+        }
+    }
+
+
+}

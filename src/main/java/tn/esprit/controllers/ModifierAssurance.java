@@ -59,6 +59,7 @@ public class ModifierAssurance {
         emailTextField.setText(assurance.getEmail_assurance());
     }
     public void modifierAssurance(ActionEvent actionEvent) {
+
         String nom = nomTextField.getText();
         String adresse = adresseTextField.getText();
         String codePostal = codePostalTextField.getText();

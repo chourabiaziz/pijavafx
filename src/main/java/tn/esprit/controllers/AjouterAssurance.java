@@ -10,12 +10,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import tn.esprit.models.Assurance;
 import tn.esprit.services.ServiceAssurance;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static javafx.application.Application.launch;
 
@@ -37,6 +42,9 @@ public class AjouterAssurance {
 
     @FXML
     private TextField tfEmail;
+
+    @FXML
+    private AnchorPane mainAnchorPane;
 
 
     @FXML

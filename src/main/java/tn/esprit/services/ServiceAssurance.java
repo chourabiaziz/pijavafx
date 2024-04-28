@@ -81,9 +81,6 @@ public class ServiceAssurance implements IService<Assurance> {
 
     // Méthode pour modifier une assurance dans la base de données
     public boolean update(Assurance assurance) {
-        // Mettez ici la logique pour modifier l'assurance dans la base de données
-        // Par exemple, vous pouvez utiliser une requête SQL pour mettre à jour l'assurance
-
         try {
             cnx = MyDataBase.getInstance().getCnx();
             String query = "UPDATE assurance SET nom_assurance=?, adresse_assurance=?, code_postal_assurance=?, tel_assurance=?, email_assurance=? WHERE id=?";
@@ -93,6 +90,7 @@ public class ServiceAssurance implements IService<Assurance> {
             pstmt.setString(3, assurance.getCode_postal_assurance());
             pstmt.setString(4, assurance.getTel_assurance());
             pstmt.setString(5, assurance.getEmail_assurance());
+
             pstmt.setInt(6, assurance.getId());
 
             int rowsAffected = pstmt.executeUpdate();

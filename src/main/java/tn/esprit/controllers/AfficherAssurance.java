@@ -16,15 +16,16 @@ package tn.esprit.controllers;
         import javafx.scene.control.TextField;
         import javafx.scene.control.cell.PropertyValueFactory;
 
-        import javafx.scene.layout.HBox;
-        import javafx.scene.layout.TilePane;
-        import javafx.scene.layout.VBox;
+        import javafx.scene.layout.*;
         import javafx.stage.Stage;
         import tn.esprit.models.Assurance;
         import tn.esprit.services.ServiceAssurance;
+        import javafx.scene.image.Image; // Correct import for JavaFX Image
+
 
         import java.awt.*;
         import java.io.IOException;
+        import java.io.InputStream;
         import java.net.URL;
         import java.util.List;
         import java.util.ResourceBundle;
@@ -62,10 +63,13 @@ public class AfficherAssurance implements Initializable {
     @FXML
     private ImageView imageView;
 
+    @FXML
+    private AnchorPane mainAnchorPane;
+
     private ObservableList<Assurance> data = FXCollections.observableArrayList();
     private ObservableList<Assurance> filteredData = FXCollections.observableArrayList();
 
-    public void setAssurances(List<Assurance> assurances ) {
+    public void setAssurances(List<Assurance> assurances) {
         ObservableList<Node> children = tilePane.getChildren();
         children.clear();
         for (Assurance assurance : assurances) {
@@ -73,7 +77,7 @@ public class AfficherAssurance implements Initializable {
             card.setPrefWidth(200);
             card.setPrefHeight(180);
             card.setSpacing(5);
-            card.setPadding(new Insets(5));
+
 
             Label nomLabel = new Label("Nom: " + assurance.getNom_assurance());
             Label adresseLabel = new Label("Adresse: " + assurance.getAdresse_assurance());
@@ -120,14 +124,32 @@ public class AfficherAssurance implements Initializable {
                 }
             });
 
-
-            card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel,modifierButton,supprimerButton);
+            card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel, modifierButton, supprimerButton);
             children.add(card);
+
+
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        InputStream imageStream = getClass().getResourceAsStream("/background.png");
+        if (imageStream == null) {
+            System.err.println("Resource not found: /resources/background.png");
+        } else {
+            Image imageBack = new Image(imageStream);
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    imageBack,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(100, 100, true, true, false, true)
+            );
+            mainAnchorPane.setBackground(new Background(backgroundImage));
+        }
+
+
         // Ajouter le gestionnaire d'événements pour le bouton "Ajouter"
         ajouterButton.setOnAction(event -> {
             try {
@@ -146,7 +168,6 @@ public class AfficherAssurance implements Initializable {
         });
 
         loadData();
-
 
 
     }
@@ -204,7 +225,6 @@ public class AfficherAssurance implements Initializable {
             displayAssurances(filteredData); // Display filtered data
         }
     }
-
 
 
 

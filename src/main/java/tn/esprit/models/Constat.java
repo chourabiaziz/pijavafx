@@ -7,7 +7,7 @@ public class Constat {
     private String heure ;
     private String localisation ,temoins ;
     private boolean stationnement_arret ,quittait_stationnement_arret ,prenait_stationnement,sortait_dun_parking_lieu,doublait,virait_droite,virait_gauche ;
-
+    private String image;
     private int id ;
 
     public Constat() {
@@ -214,10 +214,19 @@ public class Constat {
         this.id = id;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Constat(int id, String a_preneur_nom, String a_preneur_prenom, String a_preneur_tel, String  a_vehicule_moteur_marque, String a_vehicule_moteur_num_immatriculation , String a_societe_assurance_agence_nom,String a_societe_assurance_agence_adresse,
                    String b_preneur_nom, String b_preneur_prenom, String b_preneur_tel, String  b_vehicule_moteur_marque, String b_vehicule_moteur_num_immatriculation , String b_societe_assurance_agence_nom , String b_societe_assurance_agence_adresse,
                      String localisation, String temoins,
                           boolean stationnement_arret, boolean quittait_stationnement_arret , boolean prenait_stationnement, boolean sortait_dun_parking_lieu, boolean doublait, boolean virait_droite, boolean virait_gauche
+
                    ) {
         this.id = id;
         this.a_preneur_nom = a_preneur_nom;
@@ -249,6 +258,7 @@ public class Constat {
         this.doublait =doublait ;
         this.virait_droite=virait_droite ;
         this.virait_gauche =virait_gauche ;
+
 
     }
 
@@ -283,7 +293,6 @@ public class Constat {
                 ",doublait"+ doublait +
                 ",virait_droite" + virait_droite +
                 ",virait_gauche" + virait_gauche +
-
                 "}\n";
     }
 }

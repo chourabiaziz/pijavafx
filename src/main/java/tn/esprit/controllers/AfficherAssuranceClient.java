@@ -10,13 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import tn.esprit.models.Assurance;
 import tn.esprit.services.ServiceAssurance;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,6 +47,9 @@ public class AfficherAssuranceClient implements Initializable {
 
     @FXML
     private TilePane tilePane;
+
+    @FXML
+    private AnchorPane mainAnchorPane;
 
     private final ServiceAssurance serviceAssurance = new ServiceAssurance();
 
@@ -77,6 +81,22 @@ public class AfficherAssuranceClient implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        InputStream imageStream = getClass().getResourceAsStream("/background.png");
+        if (imageStream == null) {
+            System.err.println("Resource not found: /resources/background.png");
+        } else {
+            Image imageBack = new Image(imageStream);
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    imageBack,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(100, 100, true, true, false, true)
+            );
+            mainAnchorPane.setBackground(new Background(backgroundImage));
+        }
+
+
         afficherAssurances();    }
 
 

@@ -1,7 +1,6 @@
 package tn.esprit.controllers;
 
-import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
+ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +24,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+ import java.io.InputStream;
+ import java.nio.file.Files;
+ import java.nio.file.StandardCopyOption;
+ import java.util.ArrayList;
 import java.util.List;
 
 public class AjouterConstat {
@@ -105,7 +107,15 @@ public class AjouterConstat {
 
     @FXML
     private ImageView imageView;
+    private String selectedImagePath; // Variable pour stocker le chemin de l'image sélectionnée
 
+
+
+    private void copyImageToStorage(String sourcePath, String destinationDirectory) throws IOException {
+        File sourceFile = new File(sourcePath);
+        File destinationFile = new File(destinationDirectory, sourceFile.getName());
+        Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+    }
     @FXML
     void ajouterConstat(ActionEvent event) {
 
@@ -209,7 +219,22 @@ public class AjouterConstat {
             c.setSortait_dun_parking_lieu(sortaitParking.isSelected());
             c.setDoublait(doublait.isSelected());
             c.setVirait_droite(viraitDroite.isSelected());
-            c.setVirait_gauche(viraitDroite.isSelected());
+            c.setVirait_gauche(viraitGauche.isSelected());
+
+            c.setImage(selectedImagePath); // Ajouter le chemin de l'image
+
+            try (InputStream is = getClass().getResourceAsStream("/Image/myImage.png")) {
+                if (is != null) {
+                    // Charger l'image ou effectuer d'autres opérations avec le flux
+                    Image image = new Image(is);
+                    imageView.setImage(image); // Par exemple, pour afficher dans un ImageView
+                } else {
+                    System.out.println("Image not found");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
             sp.add(c);
             System.out.println("Constat ajoutée avec succès !");
@@ -243,8 +268,10 @@ public class AjouterConstat {
             ArrayList<Constat> constats = sp.getAll();
 
             // Mettre à jour l'affichage dans le contrôleur AfficherConstat
-            afficherConstatController.afficherConstats(constats);
-            tfNomPreneurA.getScene().setRoot(root);
+            afficherConstatController.afficherTousLesConstats(constats);
+            // Changer la scène une fois que les données sont chargées
+            Stage stage = (Stage) tfNomPreneurA.getScene().getWindow();
+            stage.setScene(new Scene(root));
 
 
         } catch (IOException e) {
@@ -254,37 +281,41 @@ public class AjouterConstat {
 
 
     @FXML
-    void addImage(ActionEvent event) {
+    private void addImage(ActionEvent event) {
+        System.out.println("addImage: ImageView is " + (imageView != null ? "initialized" : "null"));
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
         );
 
-        // Show open file dialog
         File selectedFile = fileChooser.showOpenDialog(((Button) event.getSource()).getScene().getWindow());
         if (selectedFile != null) {
             try {
-                // Load the selected image file
+                // Load the selected image
                 Image image = new Image(selectedFile.toURI().toString());
-                imageView.setImage(image);
+                imageView.setImage(image); // Set the image in ImageView
             } catch (Exception e) {
                 e.printStackTrace();
-                // Show an error message if unable to load the image
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
                 alert.setContentText("Failed to load the image.");
                 alert.showAndWait();
             }
+        } else {
+            System.out.println("No file selected.");
         }
+
     }
 
 
     @FXML
     public void initialize() {
 
-        imageView = new ImageView();
+        System.out.println("initialize: ImageView is " + (imageView != null ? "initialized" : "null"));
+
     }
 
 
