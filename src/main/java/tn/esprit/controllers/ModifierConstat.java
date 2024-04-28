@@ -241,7 +241,6 @@ public class ModifierConstat {
 
     @FXML
     private void handleRetourButtonAction(ActionEvent event) {
-        // Code pour gérer le retour à la page précédente ou la fermeture de la fenêtre
     }
 
     public void setServiceConstat(ServiceConstat serviceConstat) {
@@ -249,7 +248,14 @@ public class ModifierConstat {
     }
 
     public void setConstat(Constat constat) {
-        this.constat = constat;
+        tfNomPreneurA.setText(constat.getA_preneur_nom());
+        tfPrenomPreneurA.setText(constat.getA_preneur_prenom());
+        tfTelPreneurA.setText(constat.getA_preneur_tel());
+        tfMarquePreneurA.setText(constat.getA_vehicule_moteur_marque());
+        tfImmatriculationPreneurA.setText(constat.getA_vehicule_moteur_num_immatriculation());
+
+        tfAdresseSocieteA.setText(constat.getA_societe_assurance_agence_adresse());
+        tfNomSocieteA.setText(constat.getA_societe_assurance_agence_nom());
     }
 
     public void setConstatId(int constatId) {

@@ -43,8 +43,6 @@ public class AfficherConstat  implements Initializable {
 
 
 
-
-
    @FXML
     private CheckBox enStationnement;
     @FXML
@@ -59,6 +57,7 @@ public class AfficherConstat  implements Initializable {
     private CheckBox viraitDroite;
     @FXML
     private CheckBox viraitGauche;
+
 
     @FXML
     private Label nomPreneurlabelB;
@@ -79,13 +78,14 @@ public class AfficherConstat  implements Initializable {
 @FXML
     private Label temoinsLabel;
 
+
     @FXML
     private Button modifierButton;
 
     @FXML
     private Button ajouterConstatButton;
 
-    private Constat constat = new Constat();
+
     private ServiceConstat serviceConstat;
     @FXML
     private VBox constatsContainer;
@@ -101,13 +101,9 @@ public class AfficherConstat  implements Initializable {
         viraitDroite.setDisable(true);
         viraitGauche.setDisable(true);
 
-
         this.serviceConstat = new ServiceConstat();
 
-
     }
-
-
 
     public void afficherConstat(Constat constat) {
         nomPreneurlabelA.setText(constat.getA_preneur_nom());
@@ -142,35 +138,41 @@ public class AfficherConstat  implements Initializable {
 
 
     public void afficherTousLesConstats(ArrayList<Constat> constats) {
-
         constatsContainer.getChildren().clear();
-
-        Label nomPreneurlabelA = new Label("Nom: " + constat.getA_preneur_nom());
-        Label prenomPreneurlabelA = new Label("prenom: " + constat.getA_preneur_prenom());
-        Label telPreneurLabelA = new Label("tel: " + constat.getA_preneur_tel());
-        Label marqueLabelA = new Label("marque: " + constat.getA_vehicule_moteur_marque());
-        Label immatriculationLabelA = new Label("immatriculation: " + constat.getA_vehicule_moteur_num_immatriculation());
-        Label nomSocieteLabelA = new Label("NomSociete: " + constat.getA_societe_assurance_agence_nom());
-        Label adresseSocietelabelA = new Label("AdresseSociete: " + constat.getA_societe_assurance_agence_adresse());
-
 
         for (Constat constat : constats) {
             try {
-                // Charger le modèle/template FXML
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherConstat.fxml"));
                 Parent root = loader.load();
                 AfficherConstat controller = loader.getController();
                 controller.afficherConstat(constat);
+
+                // Créer le bouton Supprimer
+                Button supprimerButton = new Button("Supprimer");
+                supprimerButton.setOnAction(event -> {
+                    Constat constatToDelete = constat;
+
+                    System.out.println("Deleting constat with ID: " + constatToDelete.getId());
+
+                    ServiceConstat serviceConstat = new ServiceConstat();
+                    boolean deleteSuccess = serviceConstat.delete(constatToDelete);
+
+                    if (deleteSuccess) {
+                        showAlert(Alert.AlertType.INFORMATION, "Succès", "Suppression réussie", "Le constat a été supprimé avec succès.");
+                    } else {
+                        showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la suppression", "La suppression du constat a échoué.");
+                    }
+                });
+
+                constatsContainer.getChildren().add(supprimerButton);
                 constatsContainer.getChildren().add(root);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
-
     }
+
 
     @FXML
     private void handleAjouterConstatButtonAction(ActionEvent event ) {
@@ -193,29 +195,29 @@ public class AfficherConstat  implements Initializable {
         }
     }
 
-    @FXML
-    private void handleModifierButtonAction(ActionEvent event) {
 
-        try {
-            // Charger le fichier FXML de la page ModifierConstat.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierConstat.fxml"));
-            Parent root = loader.load();
-            ModifierConstat controller = loader.getController();
-            controller.setId(constat.getId());
-            Scene scene = new Scene(root);
-
-            Stage stage = (Stage) modifierButton.getScene().getWindow();
-            stage.close();
-
-            // Afficher la nouvelle scène
-            Stage primaryStage = new Stage();
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+//    @FXML
+//    private void handleModifierButtonAction(ActionEvent event) {
+//
+//        try {
+//            // Charger le fichier FXML de la page ModifierConstat.fxml
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierConstat.fxml"));
+//            Parent root = loader.load();
+//            ModifierConstat controller = loader.getController();
+//            controller.setId(constat.getId());
+//            Scene scene = new Scene(root);
+//
+//            Stage stage = (Stage) modifierButton.getScene().getWindow();
+//            stage.close();
+//
+//            // Afficher la nouvelle scène
+//            Stage primaryStage = new Stage();
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Alert alert = new Alert(alertType);
@@ -224,6 +226,9 @@ public class AfficherConstat  implements Initializable {
         alert.setContentText(contentText);
         alert.showAndWait();
     }
+
+
+/*
     public void handleSupprimerButtonAction(javafx.event.ActionEvent actionEvent) {
         Constat constatToDelete = constat;
         constatToDelete.setId(constat.getId());
@@ -242,6 +247,7 @@ public class AfficherConstat  implements Initializable {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la suppression", "La suppression du constat a échoué.");
         }
     }
-
+*/
 
 }
+

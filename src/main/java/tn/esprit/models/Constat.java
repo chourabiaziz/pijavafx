@@ -237,7 +237,6 @@ public class Constat {
         this.a_societe_assurance_agence_nom = a_societe_assurance_agence_nom;
         this.a_societe_assurance_agence_adresse = a_societe_assurance_agence_adresse;
 
-
         this.b_preneur_nom = b_preneur_nom;
         this.b_preneur_prenom = b_preneur_prenom;
         this.b_preneur_tel = b_preneur_tel;
@@ -245,8 +244,6 @@ public class Constat {
         this.b_vehicule_moteur_num_immatriculation = b_vehicule_moteur_num_immatriculation;
         this.b_societe_assurance_agence_nom = b_societe_assurance_agence_nom;
         this.b_societe_assurance_agence_adresse = b_societe_assurance_agence_adresse;
-
-
 
         this.localisation =localisation ;
         this.temoins =temoins ;
@@ -273,7 +270,6 @@ public class Constat {
                 ", a_vehicule_moteur_num_immatriculation='" + a_vehicule_moteur_num_immatriculation + '\'' +
                 ", a_societe_assurance_agence_nom='" + a_societe_assurance_agence_nom + '\'' +
                 ", a_societe_assurance_agence_adresse='" + a_societe_assurance_agence_adresse + '\'' +
-
 
                 ", b_preneur_nom=" + b_preneur_nom +
                 ", b_preneur_prenom='" + b_preneur_prenom + '\'' +

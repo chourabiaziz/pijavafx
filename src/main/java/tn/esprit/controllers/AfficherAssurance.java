@@ -109,7 +109,6 @@ public class AfficherAssurance implements Initializable {
             supprimerButton.setOnAction(event -> {
                 // Retrieve the assurance associated with this button
                 Assurance assuranceToDelete = assurance;
-
                 // Create an instance of the ServiceAssurance class
                 ServiceAssurance serviceAssurance = new ServiceAssurance();
 

@@ -48,10 +48,8 @@ public class ModifierAssurance {
     public void initialize() {
         int assuranceId = 1; // Par exemple, vous pouvez définir l'identifiant ici ou le passer comme paramètre depuis la vue précédente
 
-        // Récupérer les données de l'assurance depuis la base de données en utilisant son identifiant
         assurance = serviceAssurance.getById(assuranceId);
 
-        // Remplir les champs TextField avec les données de l'assurance
         nomTextField.setText(assurance.getNom_assurance());
         codePostalTextField.setText(assurance.getCode_postal_assurance());
         adresseTextField.setText(assurance.getAdresse_assurance());
