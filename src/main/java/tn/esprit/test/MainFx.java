@@ -36,7 +36,7 @@ public class MainFx extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ScanImage.fxml"));
 
         try {
             Parent root = loader.load();

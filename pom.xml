@@ -34,7 +34,17 @@
         <artifactId>javafx-media</artifactId>
         <version>17.0.6</version>
     </dependency>
+
+    <dependency>
+        <groupId>net.sourceforge.tess4j</groupId>
+        <artifactId>tess4j</artifactId>
+        <version>4.5.2</version>
+    </dependency>
+
 </dependencies>
+
+
+
     <build>
         <plugins>
             <plugin>

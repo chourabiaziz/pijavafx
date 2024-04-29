@@ -7,6 +7,7 @@ import tn.esprit.services.ServiceAssurance;
 import tn.esprit.services.ServiceConstat;
 
 
+
 public class Main {
     public static void main(String[] args) {
         Assurance a = new Assurance(4,"Gprod","tunis lac 1","2011","7321544","grod@gmail.com");
@@ -35,20 +36,18 @@ public class Main {
                 true, // doublait
                 false, // virait_droite
                 true // virait_gauche
-
-
-
         ) ;
-
 
         ServiceAssurance sa = new ServiceAssurance();
         ServiceConstat sc = new ServiceConstat();
         sa.add(a);
         sc.add(c);
 
-
-
         System.out.println(sa.getAll());
         System.out.println(sc.getAll());
+
+
+
+
     }
 }
