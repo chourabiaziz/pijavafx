@@ -163,13 +163,39 @@ public class AfficherConstat  implements Initializable {
                         showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la suppression", "La suppression du constat a échoué.");
                     }
                 });
-
                 constatsContainer.getChildren().add(supprimerButton);
+
                 constatsContainer.getChildren().add(root);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            Button modifierButton = new Button("Modifier");
+            modifierButton.setOnAction(event -> {
+                try {
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    currentStage.close();
+
+                    // Charger le fichier FXML de la page ModifierAssurance.fxml
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierConstat.fxml"));
+                    Parent root = loader.load();
+                    
+                    ModifierConstat controller = loader.getController();
+                    controller.setConstatId(constat.getId());
+
+                    // Afficher la nouvelle scène
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            constatsContainer.getChildren().add(modifierButton);
+
+
         }
     }
 

@@ -187,8 +187,6 @@ public class AjouterConstat {
             }
 
 
-
-
             Constat c = new Constat();
 
             c.setA_preneur_nom(tfNomPreneurA.getText());

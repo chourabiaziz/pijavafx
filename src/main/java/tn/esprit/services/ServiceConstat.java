@@ -132,8 +132,6 @@ public class ServiceConstat implements IService<Constat> {
     }
 
 
-
-
     public Constat getById(int id) {
         Constat constat = null;
         String query = "SELECT * FROM constat WHERE id = ?";

@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,6 @@ import tn.esprit.services.ServiceConstat;
 
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 public class ModifierConstat {
 
@@ -96,25 +96,18 @@ public class ModifierConstat {
     @FXML
     private Button retourButton;
     private Constat constat;
-    @FXML
-    private Button supprimerButton;
-    private int constatId;
-    int id ;
-        public void setId(int id){
-           this.id = id ;
-            System.out.println(id);
-        }
+
+
+
+    public ModifierConstat() {
+        this.serviceConstat = new ServiceConstat();
+    }
+
 
     public void initialize() {
-        this.constat = new Constat();
-        this.serviceConstat = new ServiceConstat(); // Or initialize it with your actual service object
-        System.out.println(id);
-      serviceConstat = new ServiceConstat();
 
-        int constatId = 1 ;
-        constat = serviceConstat.getById(constatId) ;
+        constat = serviceConstat.getById(constat.getId());
 
- /*
         tfNomPreneurA.setText(constat.getA_preneur_nom());
         tfPrenomPreneurA.setText(constat.getA_preneur_prenom());
         tfTelPreneurA.setText(constat.getA_preneur_tel());
@@ -138,8 +131,10 @@ public class ModifierConstat {
         doublait.setSelected(constat.isDoublait());
         viraitDroite.setSelected(constat.isVirait_droite());
         viraitGauche.setSelected(constat.isVirait_gauche());
-*/
+
     }
+
+
 
         private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
             Alert alert = new Alert(alertType);
@@ -239,28 +234,16 @@ public class ModifierConstat {
 
     }
 
-    @FXML
-    private void handleRetourButtonAction(ActionEvent event) {
+
+
+    public void setConstatId(int id) {
+        this.constat = serviceConstat.getById(id);
+        if (constat == null) {
+            throw new IllegalArgumentException("Constat with ID " + id + " not found.");
+        }
     }
 
-    public void setServiceConstat(ServiceConstat serviceConstat) {
-        this.serviceConstat = serviceConstat;
-    }
 
-    public void setConstat(Constat constat) {
-        tfNomPreneurA.setText(constat.getA_preneur_nom());
-        tfPrenomPreneurA.setText(constat.getA_preneur_prenom());
-        tfTelPreneurA.setText(constat.getA_preneur_tel());
-        tfMarquePreneurA.setText(constat.getA_vehicule_moteur_marque());
-        tfImmatriculationPreneurA.setText(constat.getA_vehicule_moteur_num_immatriculation());
-
-        tfAdresseSocieteA.setText(constat.getA_societe_assurance_agence_adresse());
-        tfNomSocieteA.setText(constat.getA_societe_assurance_agence_nom());
-    }
-
-    public void setConstatId(int constatId) {
-        this.constatId = constatId;
-    }
 
 
 
