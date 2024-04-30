@@ -2,7 +2,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@/style.css" fx:controller="tn.esprit.controllers.AjouterVoiture">
+
+<AnchorPane prefHeight="793.0" prefWidth="1170.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture">
     <children>
         <VBox spacing="10.0" layoutX="50.0" layoutY="30.0" prefHeight="570.0" prefWidth="450.0">
             <children>
@@ -17,7 +18,7 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
                     </columnConstraints>
-                    <!-- Le reste de votre code ici -->
+
 
                     <children>
                         <Label text="Marque :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
