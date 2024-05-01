@@ -23,7 +23,6 @@
         <Text layoutX="72.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
         <TextArea fx:id="descriptionTextArea" layoutX="167.0" layoutY="199.0" prefHeight="117.0" prefWidth="359.0" />
         <Button layoutX="167.0" layoutY="344.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
-<!--        <Button layoutX="167.0" layoutY="344.0" mnemonicParsing="false" onAction="#promptGpt" text="gpt" />-->
 
     </children>
 </AnchorPane>
