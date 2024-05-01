@@ -19,6 +19,15 @@
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.33</version>
     </dependency>
+
+        <!-- Dependency for JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+        </dependency>
+
+        <!-- HttpClient dependency already included in Java 11+ -->
+
     <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-controls</artifactId>

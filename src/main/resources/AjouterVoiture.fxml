@@ -2,88 +2,79 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane prefHeight="793.0" prefWidth="1170.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" prefHeight="793.0" prefWidth="1170.0">
     <children>
-        <VBox spacing="10.0" layoutX="50.0" layoutY="30.0" prefHeight="570.0" prefWidth="450.0">
+        <!-- Navigation Bar -->
+        <HBox prefHeight="50.0" style="-fx-background-color: #333; -fx-padding: 15px;" alignment="CENTER_LEFT" prefWidth="1170.0">
+            <prefHeight>793.0</prefHeight>
+            <Button text="Accueil" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouteVoiture" />
+            <Button text="Liste des Voitures" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToVoitureList" />
+            <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouteVoiture" />
+            <Button text="Gestion des Pannes" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToPanneList" />
+            <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouterPanne" />
+            <Button text="Gestion des Ateliers" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAtelierList" />
+            <Button text="Chatbot" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#openChatbotPage" />
+        </HBox>
+
+        <!-- Centered Form -->
+        <VBox layoutY="75.0" alignment="CENTER" spacing="20" prefWidth="900.0">
             <children>
-                <Label text="Informations sur la voiture" style="-fx-font-size: 18px; -fx-font-weight: bold;">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-
-                <GridPane hgap="10.0" vgap="5.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
-                    </columnConstraints>
-
-
+                <VBox alignment="CENTER" spacing="10.0" style="-fx-padding: 20px; -fx-background-color: rgba(255, 255, 255, 0.85); -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);">
                     <children>
-                        <Label text="Marque :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-                        <TextField fx:id="marque" GridPane.rowIndex="0" GridPane.columnIndex="1" />
-
-                        <Label text="Modèle :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-                        <TextField fx:id="modele" GridPane.rowIndex="1" GridPane.columnIndex="1" />
-
-                        <Label text="Numéro de série :" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-                        <TextField fx:id="numero_serie" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-
-                        <Label text="Kilométrage :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-                        <TextField fx:id="kilometrage" GridPane.rowIndex="3" GridPane.columnIndex="1" />
-
-                        <Label text="Type de carburant :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
-                        <TextField fx:id="type_carburant" GridPane.rowIndex="4" GridPane.columnIndex="1" />
-
-                        <Label text="Numéro d'immatriculation :" GridPane.rowIndex="5" GridPane.columnIndex="0" />
-                        <TextField fx:id="numero_immatriculation" GridPane.rowIndex="5" GridPane.columnIndex="1" />
-
-                        <Label text="Couleur :" GridPane.rowIndex="6" GridPane.columnIndex="0" />
-                        <TextField fx:id="couleur" GridPane.rowIndex="6" GridPane.columnIndex="1" />
-
-                        <Label text="Année de fabrication :" GridPane.rowIndex="7" GridPane.columnIndex="0" />
-                        <DatePicker fx:id="annee_fabrication" GridPane.rowIndex="7" GridPane.columnIndex="1" />
-
-                        <Label text="Prix actuel :" GridPane.rowIndex="8" GridPane.columnIndex="0" />
-                        <TextField fx:id="prix_actuel" GridPane.rowIndex="8" GridPane.columnIndex="1" />
-
-                        <Label text="Prix d'achat :" GridPane.rowIndex="9" GridPane.columnIndex="0" />
-                        <TextField fx:id="prix_achat" GridPane.rowIndex="9" GridPane.columnIndex="1" />
-
-                        <Label text="Carte grise :" GridPane.rowIndex="10" GridPane.columnIndex="0" />
-                        <TextField fx:id="carte_grise" GridPane.rowIndex="10" GridPane.columnIndex="1" />
-
-                        <Label text="Nom de l'image :" GridPane.rowIndex="11" GridPane.columnIndex="0" />
-                        <TextField fx:id="nom_image" GridPane.rowIndex="11" GridPane.columnIndex="1" />
-                    </children>
-                </GridPane>
-
-                <HBox spacing="10.0">
-                    <children>
-                        <Button fx:id="submit" text="Ajouter" onAction="#submit" />
-                        <Button fx:id="btn1" text="Liste des Voitures" onAction="#goToVoitureList" />
-                    </children>
-                </HBox>
-
-                <HBox spacing="10.0" style="-fx-alignment: center;">
-                    <children>
-                        <VBox spacing="10.0">
+                        <Label text="Informations sur la voiture" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+                        <GridPane hgap="20.0" vgap="20.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+                            </columnConstraints>
                             <children>
-                                <Button layoutX="50.0" layoutY="560.0" mnemonicParsing="false" text="Panne" onAction="#goToPanneList" style="-fx-background-color: #337ab7; -fx-text-fill: white;"/>
-                                <Button layoutX="50.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter une Panne" onAction="#goToAjouterPanne" style="-fx-background-color: #337ab7; -fx-text-fill: white;"/>
+                                <Label text="Marque :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                                <TextField fx:id="marque" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                                <Label text="Modèle :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                                <TextField fx:id="modele" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                                <Label text="Numéro de série :" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                                <TextField fx:id="numero_serie" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                                <Label text="Kilométrage :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                                <TextField fx:id="kilometrage" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+                                <Label text="Type de carburant :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                                <TextField fx:id="type_carburant" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+                                <Label text="Numéro d'immatriculation :" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                                <TextField fx:id="numero_immatriculation" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+                                <Label text="Couleur :" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+                                <TextField fx:id="couleur" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+                                <Label text="Année de fabrication :" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+                                <DatePicker fx:id="annee_fabrication" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+
+                                <Label text="Prix actuel :" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+                                <TextField fx:id="prix_actuel" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+
+                                <Label text="Prix d'achat :" GridPane.rowIndex="9" GridPane.columnIndex="0" />
+                                <TextField fx:id="prix_achat" GridPane.rowIndex="9" GridPane.columnIndex="1" />
+
+                                <Label text="Carte grise :" GridPane.rowIndex="10" GridPane.columnIndex="0" />
+                                <TextField fx:id="carte_grise" GridPane.rowIndex="10" GridPane.columnIndex="1" />
+
+                                <Label text="Nom de l'image :" GridPane.rowIndex="11" GridPane.columnIndex="0" />
+                                <TextField fx:id="nom_image" GridPane.rowIndex="11" GridPane.columnIndex="1" />
                             </children>
-                        </VBox>
-                        <VBox spacing="10.0">
-                            <children>
-                                <Button layoutX="50.0" layoutY="560.0" mnemonicParsing="false" text="Réinitialiser" style="-fx-background-color: #337ab7; -fx-text-fill: white;"/>
-                                <Button layoutX="50.0" layoutY="560.0" mnemonicParsing="false" text="Liste des Ateliers" onAction="#goToAtelierList" style="-fx-background-color: #337ab7; -fx-text-fill: white;"/>
-                                <Button layoutX="50.0" layoutY="560.0" mnemonicParsing="false" text="Ajouter un Atelier" onAction="#goToAjouterAtelier" style="-fx-background-color: #337ab7; -fx-text-fill: white;"/>
-                            </children>
-                        </VBox>
-                        <Button fx:id="chatbotButton" layoutX="290.0" layoutY="660.0" mnemonicParsing="false" text="Chatbot" onAction="#openChatbotPage" style="-fx-background-color: #5cb85c; -fx-text-fill: white;"/>
+                        </GridPane>
+
+                        <!-- Buttons -->
+                        <HBox spacing="20" alignment="CENTER">
+                            <Button fx:id="submit" text="Ajouter" style="-fx-background-color: #3498DB; -fx-text-fill: white;" onAction="#submit" />
+                            <Button fx:id="btnReset" text="Réinitialiser" style="-fx-background-color: #E74C3C; -fx-text-fill: white;" onAction="#reset" />
+                        </HBox>
                     </children>
-                </HBox>
+                </VBox>
             </children>
         </VBox>
     </children>

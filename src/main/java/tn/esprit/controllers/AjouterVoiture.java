@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Voiture;
 import tn.esprit.services.ServiceVoiture;
@@ -232,12 +233,13 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
     }
 
     @FXML
-    private void openChatbotPage(ActionEvent event) {
+    public void openChatbotPage() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChatbotPage.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/path/to/fxml/ChatbotView.fxml"));
+            VBox chatbotPane = fxmlLoader.load();
+            Scene scene = new Scene(chatbotPane);
             Stage stage = new Stage();
+            stage.setTitle("Chatbot");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -301,4 +303,5 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             e.printStackTrace();
         }
     }
+
 }
