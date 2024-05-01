@@ -9,11 +9,12 @@ package tn.esprit.controllers;
         import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
+        import javafx.scene.control.*;
+
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
         import javafx.scene.control.ScrollPane;
         import javafx.scene.control.TextField;
-
         import javafx.scene.layout.*;
         import javafx.scene.paint.Color;
         import javafx.stage.Stage;
@@ -22,8 +23,11 @@ package tn.esprit.controllers;
         import javafx.scene.image.Image; // Correct import for JavaFX Image
 
 
+        import java.awt.*;
         import java.io.IOException;
         import java.io.InputStream;
+        import java.net.URI;
+        import java.net.URISyntaxException;
         import java.net.URL;
         import java.util.ArrayList;
         import java.util.List;
@@ -281,8 +285,20 @@ public class AfficherAssurance implements Initializable {
 
         // Add labels for each email address
         for (String emailAddress : emailAddresses) {
-            Label emailLabel = new Label(emailAddress);
-            emailListVBox.getChildren().add(emailLabel);
+            Hyperlink emailLink = new Hyperlink(emailAddress);
+
+            emailLink.setOnAction(event -> {
+                try {
+                    Desktop desktop = Desktop.getDesktop();
+                    // Create a URI with the mailto: scheme and the clicked email address
+                    URI uri = new URI("mailto:" + emailAddress);
+                    desktop.mail(uri);
+
+                } catch (IOException | URISyntaxException e){e.printStackTrace();}
+
+            });
+            emailListVBox.getChildren().add(emailLink);
+
         }
 
         // Create a scroll pane to contain the VBox
@@ -293,9 +309,9 @@ public class AfficherAssurance implements Initializable {
         // Create a scene and set it on the stage
         Scene scene = new Scene(scrollPane, 300, 400);
         emailListStage.setScene(scene);
-
-        // Show the stage
         emailListStage.show();
+
+
     }
 
 
