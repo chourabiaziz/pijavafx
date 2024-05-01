@@ -14,9 +14,9 @@ public class MainFx extends Application {
         launch(args);
     }
 
-/*  @Override
+  @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
 
        try {
             Parent root = loader.load();
@@ -31,26 +31,26 @@ public class MainFx extends Application {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }*/
-
-
-    @Override
-    public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ScanImage.fxml"));
-
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root );
-
-            primaryStage.setTitle("Gestion Constat");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
+
+
+//    @Override
+//    public void start(Stage primaryStage) {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
+//
+//        try {
+//            Parent root = loader.load();
+//            Scene scene = new Scene(root );
+//
+//            primaryStage.setTitle("Gestion Constat");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//
+//
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
 
 

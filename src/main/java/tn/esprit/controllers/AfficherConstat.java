@@ -195,6 +195,24 @@ public class AfficherConstat  implements Initializable {
             });
             constatsContainer.getChildren().add(modifierButton);
 
+            Button EnvoieConstatButton = new Button("Envoie constat ");
+            EnvoieConstatButton.setOnAction(event -> {
+                try {
+                    // Charger le fichier FXML de la page ModifierAssurance.fxml
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssurance.fxml"));
+                    Parent root = loader.load();
+
+                    // Afficher la nouvelle scène
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            constatsContainer.getChildren().add(EnvoieConstatButton);
+
 
         }
     }
@@ -222,28 +240,7 @@ public class AfficherConstat  implements Initializable {
     }
 
 
-//    @FXML
-//    private void handleModifierButtonAction(ActionEvent event) {
-//
-//        try {
-//            // Charger le fichier FXML de la page ModifierConstat.fxml
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierConstat.fxml"));
-//            Parent root = loader.load();
-//            ModifierConstat controller = loader.getController();
-//            controller.setId(constat.getId());
-//            Scene scene = new Scene(root);
-//
-//            Stage stage = (Stage) modifierButton.getScene().getWindow();
-//            stage.close();
-//
-//            // Afficher la nouvelle scène
-//            Stage primaryStage = new Stage();
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
     private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Alert alert = new Alert(alertType);
@@ -254,26 +251,7 @@ public class AfficherConstat  implements Initializable {
     }
 
 
-/*
-    public void handleSupprimerButtonAction(javafx.event.ActionEvent actionEvent) {
-        Constat constatToDelete = constat;
-        constatToDelete.setId(constat.getId());
 
-        System.out.println("Deleting constat with ID: " + constatToDelete.getId());
-
-        // Create an instance of the ServiceAssurance class
-        ServiceConstat serviceConstat = new ServiceConstat();
-
-        System.out.println("constatToDelete id: " + constatToDelete.getId());
-
-        boolean deleteSuccess = serviceConstat.delete(constatToDelete);
-        if (deleteSuccess) {
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Suppression réussie", "Le constat a été supprimé avec succès.");
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la suppression", "La suppression du constat a échoué.");
-        }
-    }
-*/
 
 }
 

@@ -2,21 +2,16 @@ package tn.esprit.controllers;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import tn.esprit.models.Assurance;
 import tn.esprit.services.ServiceAssurance;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
@@ -81,7 +76,7 @@ public class AfficherAssuranceClient implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        InputStream imageStream = getClass().getResourceAsStream("/background.png");
+        InputStream imageStream = getClass().getResourceAsStream("/Image/background.png");
         if (imageStream == null) {
             System.err.println("Resource not found: /resources/background.png");
         } else {

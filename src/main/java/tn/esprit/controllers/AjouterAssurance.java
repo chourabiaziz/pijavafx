@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 import static javafx.application.Application.launch;
 
 
-public class AjouterAssurance {
+public class AjouterAssurance  {
     ServiceAssurance sp  = new ServiceAssurance();
 
     @FXML
@@ -59,11 +59,9 @@ public class AjouterAssurance {
 
             tfNom.getScene().setRoot(root);
 
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
 
@@ -76,6 +74,8 @@ public class AjouterAssurance {
             String codePostal = tfCodePostal.getText();
             String telephone = tfTelephone.getText();
             String email = tfEmail.getText();
+
+
 
             // Vérifier si les champs obligatoires sont vides
             if (nom.isEmpty() || adresse.isEmpty() || codePostal.isEmpty() || telephone.isEmpty() || email.isEmpty()) {
@@ -140,7 +140,6 @@ public class AjouterAssurance {
             System.err.println("Erreur lors de l'ajout de l'assurance: " + e.getMessage());
         }
     }
-
 
 
 }

@@ -15,12 +15,14 @@ import javafx.scene.image.WritableImage;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import tn.esprit.models.Assurance;
+ import net.sourceforge.tess4j.TesseractException;
+ import tn.esprit.models.Assurance;
 import tn.esprit.models.Constat;
 import tn.esprit.services.ServiceAssurance;
 import tn.esprit.services.ServiceConstat;
+ import tn.esprit.utils.OCRManager;
 
-import javax.imageio.ImageIO;
+ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -108,6 +110,10 @@ public class AjouterConstat {
     @FXML
     private ImageView imageView;
     private String selectedImagePath; // Variable pour stocker le chemin de l'image sélectionnée
+
+
+
+
 
 
 
@@ -314,6 +320,52 @@ public class AjouterConstat {
 
         System.out.println("initialize: ImageView is " + (imageView != null ? "initialized" : "null"));
 
+    }
+
+
+    public void scannerTexte() {
+        // Ouvrir une boîte de dialogue pour sélectionner une image
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("selectionner  une image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif"),
+                new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            try {
+
+                // Créer un OCR manager pour extraire le texte de l'image
+                OCRManager ocrManager = new OCRManager();
+
+                // Extraire le texte de l'image
+                String texteExtrait = ocrManager.getTextFromImage(selectedFile); // pass the selectedFile instead of image
+
+                // Afficher le texte extrait dans une boîte de dialogue
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Texte extrait");
+                alert.setHeaderText(null);
+                alert.setContentText("Texte extrait de l'image :\n" + texteExtrait);
+                alert.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gérer les erreurs d'extraction du texte
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Une erreur s'est produite lors de l'extraction du texte.");
+                alert.showAndWait();
+            } catch (TesseractException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Gérer le cas où aucune image n'est sélectionnée
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucune image sélectionnée");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner une image avant de scanner le texte.");
+            alert.showAndWait();
+        }
     }
 
 
