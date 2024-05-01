@@ -309,6 +309,7 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         }
     }
 
+
     public void calculateMean(ActionEvent actionEvent) {
         try {
             // Charger le fichier FXML de la liste des pannes (PanneIndex.fxml)
@@ -361,4 +362,5 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             e.printStackTrace();
         }
     }
+
 }
