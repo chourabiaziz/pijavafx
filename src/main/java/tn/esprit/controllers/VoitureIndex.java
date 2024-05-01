@@ -58,6 +58,7 @@ public class VoitureIndex implements Initializable {
     private ObservableList<Voiture> data = FXCollections.observableArrayList();
     private ObservableList<Voiture> filteredData = FXCollections.observableArrayList();
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Ajouter le gestionnaire d'événements pour le bouton "Ajouter"
