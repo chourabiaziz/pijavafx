@@ -1,6 +1,7 @@
 
 package tn.esprit.controllers;
 
+        import javafx.application.Platform;
         import javafx.collections.FXCollections;
         import javafx.collections.ObservableList;
         import javafx.fxml.FXML;;
@@ -33,6 +34,7 @@ package tn.esprit.controllers;
         import java.util.List;
         import java.util.ResourceBundle;
         import javafx.geometry.Insets;
+        import tn.esprit.utils.SMSManager;
 
         import javax.swing.text.html.ImageView;
 
@@ -166,8 +168,11 @@ public class AfficherAssurance implements Initializable {
         EvoieMail.setOnAction(event -> {
             List<String> emailAddresses = getEmailAddressesFromDatabase();
 
-            // Open a new window to display the list of email addresses
-            showEmailListWindow(emailAddresses);
+            Thread emailListThread = new Thread(() -> {
+                Platform.runLater(() -> showEmailListWindow(emailAddresses));
+            });
+            emailListThread.start();
+
         });
 
         loadData();
@@ -278,7 +283,6 @@ public class AfficherAssurance implements Initializable {
         // Create a new stage for the email list window
         Stage emailListStage = new Stage();
         emailListStage.setTitle("Liste des adresses e-mail");
-
         // Create a VBox to hold the email addresses
         VBox emailListVBox = new VBox();
         emailListVBox.setSpacing(10);
@@ -295,8 +299,14 @@ public class AfficherAssurance implements Initializable {
                     desktop.mail(uri);
 
                 } catch (IOException | URISyntaxException e){e.printStackTrace();}
+                SMSManager smsManager = new SMSManager();
+                String recipientPhoneNumber = "+21655331628";
+                String message = "vous devez envoyer votre constat à votre assurance.";
+                smsManager.sendSMS(recipientPhoneNumber, message);
+
 
             });
+
             emailListVBox.getChildren().add(emailLink);
 
         }
