@@ -65,11 +65,27 @@ public class AfficherAssurance implements Initializable {
         ObservableList<Node> children = tilePane.getChildren();
         children.clear();
         for (Assurance assurance : assurances) {
-            VBox card = new VBox();
-            card.setPrefWidth(200);
-            card.setPrefHeight(180);
-            card.setSpacing(10);
 
+            VBox card = new VBox();
+            card.setPrefWidth(300);
+            card.setPrefHeight(250);
+            card.setSpacing(10);
+            card.setPadding(new Insets(20));
+            card.setStyle(" -fx-border-color: #FFFFFF; -fx-border-width: 2px; -fx-border-radius: 10px;");
+
+            String imagePath = "/Image/backCard.jpg";
+
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    new Image(imagePath, 300, 250, false, true),
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    BackgroundSize.DEFAULT
+
+            );
+
+            // Set the background image to the card
+            card.setBackground(new Background(backgroundImage));
 
             Label nomLabel = new Label("Nom: " + assurance.getNom_assurance());
             Label adresseLabel = new Label("Adresse: " + assurance.getAdresse_assurance());
@@ -115,13 +131,7 @@ public class AfficherAssurance implements Initializable {
                 }
             });
 
-            Button envoyerButton = new Button("Envoyer");
-            envoyerButton.setOnAction(event -> {
-                // Ajoutez ici le code pour gérer l'action d'envoyer le constat
-                System.out.println("Envoyer le constat pour l'assurance: " + assurance.getNom_assurance());
-            });
-
-            card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel, modifierButton, supprimerButton, envoyerButton);
+            card.getChildren().addAll(nomLabel, adresseLabel, codePostalLabel, telephoneLabel, emailLabel, modifierButton, supprimerButton);
             children.add(card);
 
 
@@ -299,6 +309,7 @@ public class AfficherAssurance implements Initializable {
                     desktop.mail(uri);
 
                 } catch (IOException | URISyntaxException e){e.printStackTrace();}
+
                 SMSManager smsManager = new SMSManager();
                 String recipientPhoneNumber = "+21655331628";
                 String message = "vous devez envoyer votre constat à votre assurance.";

@@ -105,8 +105,8 @@ public class ModifierConstat {
 
 
     public void initialize() {
-
-        constat = serviceConstat.getById(constat.getId());
+        int constatId = 17 ;
+        constat = serviceConstat.getById(constatId);
 
         tfNomPreneurA.setText(constat.getA_preneur_nom());
         tfPrenomPreneurA.setText(constat.getA_preneur_prenom());

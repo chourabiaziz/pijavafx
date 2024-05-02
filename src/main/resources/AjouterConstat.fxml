@@ -13,16 +13,18 @@
 <?import javafx.scene.text.Text?>
 
 <VBox prefHeight="679.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterConstat">
-            <Text fill="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="900.0">
+            <Text fill="#3457ad" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="911.0">
                 <font>
-                    <Font name="System Bold Italic" size="15.0" />
+                    <Font name="System Bold Italic" size="32.0" />
                 </font>
             </Text>
-            <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#afficherConstat" prefHeight="26.0" prefWidth="175.0" text="Afficher Vos Constat" textOverrun="CENTER_WORD_ELLIPSIS" />
+            <Button mnemonicParsing="false" onAction="#afficherConstat" text="Afficher Vos Constat" />
+
             <Label text="localisation" />
-            <TextField fx:id="tfLocalisation" prefHeight="26.0" prefWidth="896.0" />
+            <TextField fx:id="tfLocalisation" />
             <Label text="Témoins: nom,adresse,tel" />
             <TextField fx:id="tfTemoins" />
+
             <SplitPane dividerPositions="0.4, 0.6">
                 <AnchorPane style="-fx-background-color: #6093ff;">
                     <children>

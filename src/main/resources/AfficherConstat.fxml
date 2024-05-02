@@ -19,9 +19,9 @@
         <VBox fx:id="constatsContainer" layoutX="10.0" layoutY="10.0" prefHeight="670.0" prefWidth="1400.0">
 
             <children>
-                <Text fill="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="789.3367195129395">
+                <Text fill="#3457ad" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="790.0">
                     <font>
-                        <Font name="System Bold Italic" size="15.0" />
+                        <Font name="System Bold Italic" size="32.0" />
                     </font>
                 </Text>
                 <SplitPane dividerPositions="0.4, 0.6">

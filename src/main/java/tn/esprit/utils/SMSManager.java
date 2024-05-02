@@ -9,7 +9,7 @@ import com.twilio.type.PhoneNumber;
 public class SMSManager {
     // Your Twilio Account SID and Auth Token
     private static final String ACCOUNT_SID = "AC504c2e997f7eb3b082a71282a3c9c9c1";
-    private static final String AUTH_TOKEN = "131f8b8bdc42800d92d5916aad63a6d2";
+    private static final String AUTH_TOKEN = "0720f68f028e834a084662fda2ba838f";
 
     // Your Twilio phone number
     private static final String TWILIO_PHONE_NUMBER = "+15029128188";
