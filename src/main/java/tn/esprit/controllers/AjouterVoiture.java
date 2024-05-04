@@ -304,4 +304,34 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
         }
     }
 
+    public void calculateMean(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML de la liste des pannes (PanneIndex.fxml)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/StatsView.fxml"));
+            Parent root = loader.load();
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleRequest(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML de la liste des pannes (PanneIndex.fxml)
+            //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChatBot.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chatbotPage.fxml"));
+            Parent root = loader.load();
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
