@@ -10,15 +10,16 @@
         <HBox prefHeight="50.0" style="-fx-background-color: #333; -fx-padding: 15px;" alignment="CENTER_LEFT" prefWidth="1170.0">
             <prefHeight>793.0</prefHeight>
             <Button text="Accueil" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#calculateMean" />
-
+ 
             <Button text="Liste des Voitures" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToVoitureList" />
             <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouteVoiture" />
             <Button text="Gestion des Pannes" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToPanneList" />
             <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouterPanne" />
             <Button text="Gestion des Ateliers" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAtelierList" />
             <Button text="Chatbot" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#handleRequest" />
-          <Button text="stat" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#showStatistics" />-->
+           <Button text="stat" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#showStatistics" />-->
 
+ 
         </HBox>
 
         <!-- Centered Form -->
