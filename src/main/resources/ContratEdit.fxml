@@ -4,22 +4,59 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ContratEdit">
+<AnchorPane prefHeight="814.0" prefWidth="1238.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ContratEdit">
     <children>
 
 
-        <Label layoutX="77.0" layoutY="128.0" text="Engagement" />
-        <Label layoutX="76.0" layoutY="90.0" text="Couverture" />
-        <Label layoutX="77.0" layoutY="167.0" text="Date debut" />
-        <Label layoutX="95.0" layoutY="209.0" text="Prix" />
-        <TextField fx:id="couverture" layoutX="213.0" layoutY="86.0" />
-        <TextField fx:id="engagement" layoutX="213.0" layoutY="124.0" />
-        <TextField fx:id="prix" layoutX="213.0" layoutY="206.0" />
-        <Button fx:id="annuler" layoutX="108.0" layoutY="253.0" mnemonicParsing="false" text="Annuler" />
-        <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
-      <TextField fx:id="datedebut" layoutX="213.0" layoutY="163.0" />
-      <Button fx:id="btn1" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToContratList" text="Contrat" />
-      <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false"  onAction="#goToFactureIndex" text="Facture" />
+        <Label layoutX="64.0" layoutY="262.0" text="Engagement" AnchorPane.leftAnchor="76.07547443589533">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+        <Label layoutX="65.0" layoutY="181.0" text="Couverture" AnchorPane.leftAnchor="76.07547443589533">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+        <Label layoutX="65.0" layoutY="343.0" text="Date debut" AnchorPane.leftAnchor="76.07547443589533">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+        <Label layoutX="64.0" layoutY="430.0" text="Prix" AnchorPane.leftAnchor="76.07547443589533">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <TextField fx:id="client" layoutX="320.0" layoutY="120.0" AnchorPane.leftAnchor="319.6981247127506">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <TextField fx:id="couverture" layoutX="320.0" layoutY="194.0" AnchorPane.leftAnchor="319.6981247127506">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <TextField fx:id="engagement" layoutX="320.0" layoutY="275.0" AnchorPane.leftAnchor="319.6981247127506">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <TextField fx:id="prix" layoutX="320.0" layoutY="443.0" AnchorPane.leftAnchor="320.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <Button fx:id="annuler" layoutX="104.0" layoutY="580.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Annuler" />
+        <Button fx:id="submit" layoutX="320.0" layoutY="580.0" mnemonicParsing="false" onAction="#submit" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Envoyer" />
+      <TextField fx:id="datedebut" layoutX="320.0" layoutY="356.0" AnchorPane.leftAnchor="320.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+        <Button fx:id="retour" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Retour">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+
+        <Label layoutX="76.0" layoutY="107.0" text="Client" AnchorPane.leftAnchor="76.0">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
     </children>
 </AnchorPane>

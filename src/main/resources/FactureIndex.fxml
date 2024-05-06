@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureIndex">
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TextField?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureIndex">
     <children>
-
-            <Button fx:id="add" layoutX="21.0" layoutY="346.0" mnemonicParsing="false" text="Ajouter une Facture" AnchorPane.bottomAnchor="23.207546061661418" AnchorPane.leftAnchor="21.0" />
-            <ListView fx:id="listView" layoutX="2.0" layoutY="85.13207853540668" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0" />
-            <Text layoutX="14.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List des factures" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="38.3896484375">
-                <font>
-                    <Font name="System Italic" size="33.0" />
-                </font>
-            </Text>
-            <Button fx:id="contrat"  layoutX="300.0" layoutY="14.0" mnemonicParsing="false" text="Contrat" />
-            <Button  layoutX="402.0" layoutY="13.0"  mnemonicParsing="false" text="Facture" />
+        <ImageView fitHeight="70.0" fitWidth="124.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assure.png" />
+            </image>
+        </ImageView>
+        <ListView fx:id="listView"  layoutX="2.0" layoutY="167.54717584095994" prefHeight="431.0" prefWidth="1163.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="168.0">
+            <stylesheets>
+                <URL value="@TemplatesWindow.css" />
+            </stylesheets>
+        </ListView>     <Text layoutX="73.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List des factures" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="14.0">
+        <font>
+            <Font name="System Italic" size="33.0" />
+        </font>
+    </Text>
+        <Button fx:id="contrat" layoutX="409.0" layoutY="23.0" mnemonicParsing="false" text="Contrat" AnchorPane.rightAnchor="132.13207335317622" AnchorPane.topAnchor="23.0">
+        </Button>
+        <Button fx:id="facture" layoutX="504.0" layoutY="23.0" mnemonicParsing="false" text="Facture" AnchorPane.rightAnchor="36.226412943225114" AnchorPane.topAnchor="23.0">
+        </Button>
+            
         </children>
-
+    <Pagination fx:id="pagination" layoutX="437.4339780063981" layoutY="615.0" prefHeight="44.0" prefWidth="236.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="492.0">
+        <style>
+            -fx-font-size: 14px;
+            -fx-padding: 5px;
+            -fx-text-fill: #ffffff;
+            -fx-background-color: #337ab7;
+        </style>
+    </Pagination>
+    <TextField fx:id="search" alignment="CENTER" layoutX="215.0" layoutY="73.0" onKeyReleased="#search" prefHeight="37.0" prefWidth="708.0" promptText="Recherche par referance , couverture , prix et client" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="215.8678903712107" />
+    <ImageView fitHeight="37.0" fitWidth="36.0" layoutX="913.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="216.0">
+        <image>
+            <Image url="@search.png" />
+        </image>
+    </ImageView>
 </AnchorPane>

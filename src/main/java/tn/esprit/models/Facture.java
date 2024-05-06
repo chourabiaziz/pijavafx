@@ -7,12 +7,11 @@ import java.util.List;
 
 public class Facture {
 
-    private int id, totale, tva;
+    private int id, totale, contrat, tva;
     private Date createdat;
     private boolean statut;
-    private Contrat contrat;
-
-    public Facture(int id, int totale, int tva, String debutStr, boolean statut, Contrat contrat) {
+     private String client ;
+    public Facture(int id, int totale, int tva, String debutStr, boolean statut, int contrat) {
         this.id = id;
         this.totale = totale;
         this.tva = tva;
@@ -22,22 +21,26 @@ public class Facture {
 
     }
 
-    public Facture(int id, int totale, int tva, Date createdat, boolean statut) {
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public Facture(int id, int totale, int tva, Date createdat, boolean statut, int contrat) {
         this.id = id;
         this.totale = totale;
         this.tva = tva;
         this.createdat = createdat;
         this.statut = statut;
+        this.contrat=contrat;
 
     }
 
-    public Facture(int id, int totale, int tva, String debutStr, boolean statut, List<Contrat> contrats) {
-        this.id = id;
-        this.totale = totale;
-        this.tva = tva;
-        this.createdat = convertToDate(debutStr);
-        this.statut = statut;
-    }
+
 
     private Date convertToDate(String dateStr) {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -99,11 +102,11 @@ public class Facture {
                 + statut + ", contrats=" + contrat + "]";
     }
 
-    public Contrat getContrat() {
+    public int getContrat() {
         return contrat;
     }
 
-    public void setContrat(Contrat contrat) {
+    public void setContrat(int contrat) {
         this.contrat = contrat;
     }
 

@@ -21,7 +21,7 @@ public class FactureService implements IFacture<Facture> {
     @Override
     public void add(Facture f) {
 
-        String sql = "INSERT INTO `facture`(`id`, `totale`, `tva`, `createdat`, `statut`, `id_contrat`) VALUES (?,?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO `facture`(`id`, `totale`, `tva`, `createdat`, `statut`, `contrat`) VALUES (?,?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = cnx.prepareStatement(sql)) {
             pstmt.setInt(1, f.getId());
@@ -29,7 +29,7 @@ public class FactureService implements IFacture<Facture> {
             pstmt.setInt(3, f.getTva());
             pstmt.setDate(4, f.getCreatedat());
             pstmt.setBoolean(5, f.isStatut());
-            pstmt.setInt(6, f.getContrat().getId());
+            pstmt.setInt(6, f.getContrat());
 
             pstmt.executeUpdate();
 
@@ -91,8 +91,9 @@ public class FactureService implements IFacture<Facture> {
                 int tva = res.getInt("tva");
                 boolean statut = res.getBoolean("statut");
                 Date createdat = res.getDate("createdat");
+                int contrat = res.getInt("contrat");
 
-                Facture c = new Facture(id, totale, tva, createdat, statut);
+                Facture c = new Facture(id, totale, tva, createdat, statut , contrat);
                 factures.add(c);
             }
 
@@ -118,8 +119,8 @@ public class FactureService implements IFacture<Facture> {
                 int tva = rs.getInt("tva");
                 boolean statut = rs.getBoolean("statut");
                 Date createdat = rs.getDate("createdat");
-
-                Facture c = new Facture(idfacture, totale, tva, createdat, statut);
+                int contrat = rs.getInt("contrat");
+                Facture c = new Facture(idfacture, totale, tva, createdat, statut ,contrat);
                 return c;
             }
         } catch (SQLException e) {
@@ -144,8 +145,8 @@ public class FactureService implements IFacture<Facture> {
                 int tva = rs.getInt("tva");
                 boolean statut = rs.getBoolean("statut");
                 Date createdat = rs.getDate("createdat");
-
-                Facture c = new Facture(idfacture, totale, tva, createdat, statut);
+                int contrat = rs.getInt("contrat");
+                Facture c = new Facture(idfacture, totale, tva, createdat, statut,contrat);
                 return c;
             }
         } catch (SQLException e) {

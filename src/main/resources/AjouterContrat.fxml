@@ -5,21 +5,70 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterContrat">
+<AnchorPane prefHeight="793.0" prefWidth="1170.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterContrat">
    <children>
-      <Label layoutX="77.0" layoutY="128.0" text="Engagement" />
-      <Label layoutX="76.0" layoutY="90.0" text="Couverture" />
-      <Label layoutX="77.0" layoutY="167.0" text="Date debut" />
-      <Label layoutX="95.0" layoutY="209.0" text="Prix" />
-      <TextField fx:id="couverture" layoutX="213.0" layoutY="86.0" />
-      <TextField fx:id="engagement" layoutX="213.0" layoutY="124.0" />
-      <TextField fx:id="prix" layoutX="213.0" layoutY="206.0" />
-      <DatePicker fx:id="datedebut" layoutX="213.0" layoutY="163.0" prefHeight="25.0" prefWidth="147.0" />
-      <Button layoutX="108.0" layoutY="253.0" mnemonicParsing="false" text="Annuler" />
-      <Button fx:id="submit" layoutX="234.0" layoutY="253.0" mnemonicParsing="false" onAction="#submit" text="Envoyer" />
-       <Button fx:id="btn1" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToContratList" text="Contrat" />
-       <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false" text="Facture" />
-      <Button layoutX="21.0" layoutY="346.0" mnemonicParsing="false"  text="Ajouter un Facture" AnchorPane.bottomAnchor="23.207546061661418" AnchorPane.leftAnchor="21.0" />
+      <Label layoutX="48.0" layoutY="270.0" text="Engagement" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="194.0" text="Couverture" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="349.0" text="Date debut" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <Label layoutX="48.0" layoutY="429.0" text="Prix" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <TextField fx:id="client" layoutX="275.0" layoutY="127.0" AnchorPane.leftAnchor="273.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+      <TextField fx:id="couverture" layoutX="274.0" layoutY="193.0" AnchorPane.leftAnchor="273.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+      <TextField fx:id="engagement" layoutX="275.0" layoutY="269.0" AnchorPane.leftAnchor="273.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+      <TextField fx:id="prix" layoutX="274.0" layoutY="429.0" onKeyReleased="#errprix" AnchorPane.leftAnchor="273.0">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+      <DatePicker fx:id="datedebut" layoutX="273.0" layoutY="348.0" onAction="#errdate" prefHeight="53.0" prefWidth="310.0" style="-fx-min-width: 35;" AnchorPane.leftAnchor="273.0" />
+      <Button fx:id="annuler" layoutX="124.0" layoutY="570.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Annuler" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="submit" layoutX="332.0" layoutY="570.0" mnemonicParsing="false" onAction="#submit" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Envoyer" AnchorPane.leftAnchor="332.0">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="retour" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Retour">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="48.0" layoutY="127.0" text="Client" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <Text fx:id="errdate" layoutX="659.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="errprix" layoutX="659.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

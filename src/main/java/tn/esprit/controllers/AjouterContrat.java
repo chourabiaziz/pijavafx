@@ -13,6 +13,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.models.Contrat;
 import tn.esprit.models.Personne;
@@ -22,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AjouterContrat implements Initializable {
@@ -37,19 +41,61 @@ public class AjouterContrat implements Initializable {
 
     @FXML
     private TextField prix;
+    @FXML
+    private TextField client;
+
+    @FXML
+    private Button retour;
+    @FXML
+    private Button annuler;
 
     @FXML
     private Button submit;
+    @FXML
+    private Text errdate;
+
+    LocalDate currentDate = LocalDate.now();
+
+    @FXML
+    void errdate(ActionEvent event) {
+
+        if (datedebut.getValue().isBefore(currentDate)) {
+            errdate.setText("date doit etre supérieur a current date");
+            errdate.setFill(Color.RED);
+                submit.setDisable(true);
+        }else {
+                submit.setDisable(false);
+            errdate.setText("");
+        }
+
+
+    }
+
+    @FXML
+    private Text errprix;
+    @FXML
+    void errprix(KeyEvent event) {
+        if (prix.getText().matches("[a-zA-Z]+") || prix.getText().isEmpty() ) {
+            errprix.setText("champ ne peut pas etre vide ou contient des lettres inclus les espaces");
+            errprix.setFill(Color.RED);
+            submit.setDisable(true);
+
+        } else {
+            errprix.setText("");
+            submit.setDisable(false);
+        }
+    }
+
 
     @FXML
     void submit(ActionEvent event) {
         Contrat c = new Contrat();
         ContratService cs = new ContratService();
         c.setCouverture(couverture.getText());
+        c.setClient(client.getText());
         c.setEngagement(Integer.parseInt(engagement.getText()));
         c.setPrix(Integer.parseInt(prix.getText()));
-
-        c.setDebut(Date.valueOf(datedebut.getValue()));
+         c.setDebut(Date.valueOf(datedebut.getValue()));
         LocalDate finDate = c.getDebut().toLocalDate().plusMonths(c.getEngagement());
         c.setFin(Date.valueOf(finDate));
 
@@ -58,7 +104,15 @@ public class AjouterContrat implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText("Contrat ajouté avec succès");
-            alert.showAndWait();
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+// Check if the user clicked OK
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                goToContratList(event);
+            } else {
+                goToContratList(event);
+            }
         }
         catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -87,10 +141,11 @@ public class AjouterContrat implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    Button btn1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn1.setOnAction(this::goToContratList);
+
+        retour.setOnAction(this::goToContratList);
+        annuler.setOnAction(this::goToContratList);
     }
 }
