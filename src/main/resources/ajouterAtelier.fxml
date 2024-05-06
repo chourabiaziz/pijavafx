@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterAtelier">
+    <children>
+        <Label layoutX="51.0" layoutY="39.0" text="Nom :" />
+        <Label layoutX="51.0" layoutY="89.0" text="Adresse :" />
+        <Label layoutX="51.0" layoutY="139.0" text="Téléphone :" />
+        <Label layoutX="51.0" layoutY="189.0" text="Spécialité :" />
+        <Label layoutX="51.0" layoutY="239.0" text="Avis :" />
+        <Label layoutX="51.0" layoutY="289.0" text="Heure d'ouverture :" />
+        <Label layoutX="51.0" layoutY="339.0" text="Heure de fermeture :" />
+        <TextField fx:id="nomTextField" layoutX="200.0" layoutY="35.0" />
+        <TextField fx:id="adresseTextField" layoutX="200.0" layoutY="85.0" />
+        <TextField fx:id="telephoneTextField" layoutX="200.0" layoutY="135.0" />
+        <TextField fx:id="specialiteTextField" layoutX="200.0" layoutY="185.0" />
+        <TextField fx:id="avisTextField" layoutX="200.0" layoutY="235.0" />
+        <TextField fx:id="heureOuvertureTextField" layoutX="200.0" layoutY="285.0" />
+        <TextField fx:id="heureFermetureTextField" layoutX="200.0" layoutY="335.0" />
+        <Button layoutX="284.0" layoutY="383.0" mnemonicParsing="false" onAction="#ajouterAtelier" text="Ajouter" />
+    </children>
+</AnchorPane>

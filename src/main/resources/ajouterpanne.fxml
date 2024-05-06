@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="793.0" prefWidth="1170.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterPanne">
+    <children>
+        <Text layoutX="237.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une Panne">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="72.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atelier ID" />
+        <TextField fx:id="atelierIdTextField" layoutX="167.0" layoutY="75.0" />
+        <Text layoutX="72.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation" />
+        <TextField fx:id="localisationTextField" layoutX="167.0" layoutY="114.0" />
+        <Text layoutX="72.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Panne" />
+        <TextField fx:id="panneTextField" layoutX="167.0" layoutY="154.0" />
+        <Text layoutX="72.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+        <TextArea fx:id="descriptionTextArea" layoutX="167.0" layoutY="199.0" prefHeight="117.0" prefWidth="359.0" />
+        <Button layoutX="167.0" layoutY="344.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
+
+
+    </children>
+</AnchorPane>
