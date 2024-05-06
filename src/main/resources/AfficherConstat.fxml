@@ -14,9 +14,9 @@
 
 <AnchorPane fx:id="rootAnchorPane" prefHeight="668.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherConstat">
 
-    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="666.0" prefWidth="1400.0" vbarPolicy="ALWAYS"> <!-- Toujours autoriser le défilement vertical -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="666.0" prefWidth="1530.0" vbarPolicy="ALWAYS"> <!-- Toujours autoriser le défilement vertical -->
 
-        <VBox fx:id="constatsContainer" layoutX="10.0" layoutY="10.0" prefHeight="670.0" prefWidth="1400.0">
+        <VBox fx:id="constatsContainer" layoutX="10.0" layoutY="10.0" prefHeight="670.0" prefWidth="1530.0">
 
             <children>
                 <Text fill="#3457ad" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="790.0">

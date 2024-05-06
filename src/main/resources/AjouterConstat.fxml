@@ -138,6 +138,6 @@
             <!-- Add this Button to allow users to select an image -->
                      <Button onAction="#scannerTexte" text="Scanner Texte" />
 
-                     <ImageView fx:id="imageViewScan" fitHeight="158.0" fitWidth="337.0" preserveRatio="true" />
+                     <ImageView fx:id="imageViewScan" fitHeight="82.0" fitWidth="302.0" preserveRatio="true" />
 
         </VBox>

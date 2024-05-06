@@ -339,13 +339,16 @@ public class AjouterConstat {
                 OCRManager ocrManager = new OCRManager();
 
                 // Extraire le texte de l'image
-                String texteExtrait = ocrManager.getTextFromImage(selectedFile); // pass the selectedFile instead of image
+              //  String texteExtrait = ocrManager.getTextFromImage(selectedFile); // pass the selectedFile instead of image
+                // Extraire le nom de l'image
+                String nom = ocrManager.getNomFromImage(selectedFile);
+
 
                 // Afficher le texte extrait dans une boîte de dialogue
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Texte extrait");
                 alert.setHeaderText(null);
-                alert.setContentText("Texte extrait de l'image :\n" + texteExtrait);
+                alert.setContentText("Nom extrait : " + nom);
                 alert.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();

@@ -23,7 +23,6 @@ public class Scan {
     private ImageView imageView;
 
 
-
     public void scannerTexte() {
         // Ouvrir une boîte de dialogue pour sélectionner une image
         FileChooser fileChooser = new FileChooser();
