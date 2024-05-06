@@ -16,6 +16,8 @@
             <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouterPanne" />
             <Button text="Gestion des Ateliers" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAtelierList" />
             <Button text="Chatbot" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#handleRequest" />
+<!--            <Button text="stat" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#showStatistics" />-->
+
         </HBox>
 
         <!-- Centered Form -->

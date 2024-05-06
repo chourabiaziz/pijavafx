@@ -23,10 +23,7 @@
         <Text layoutX="72.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
         <TextArea fx:id="descriptionTextArea" layoutX="167.0" layoutY="199.0" prefHeight="117.0" prefWidth="359.0" />
         <Button layoutX="167.0" layoutY="344.0" mnemonicParsing="false" onAction="#submit" text="Ajouter" />
-<<<<<<< HEAD
-=======
-<!--        <Button layoutX="167.0" layoutY="344.0" mnemonicParsing="false" onAction="#promptGpt" text="gpt" />-->
->>>>>>> afb90c3 (intégrer api chatgpt)
+
 
     </children>
 </AnchorPane>

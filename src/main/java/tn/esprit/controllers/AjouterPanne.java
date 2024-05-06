@@ -9,10 +9,6 @@ import javafx.scene.control.TextField;
 import tn.esprit.models.Panne;
 import tn.esprit.services.ServicePanne;
 
-<<<<<<< HEAD
-import java.util.Date;
-=======
->>>>>>> afb90c3 (intégrer api chatgpt)
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -31,12 +27,7 @@ public class AjouterPanne implements Initializable {
     @FXML
     private TextArea descriptionTextArea;
 
-<<<<<<< HEAD
-=======
-//    private static final String API_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
 
-
->>>>>>> afb90c3 (intégrer api chatgpt)
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -93,31 +84,4 @@ public class AjouterPanne implements Initializable {
         alert.setContentText(contentText);
         alert.showAndWait();
     }
-<<<<<<< HEAD
 }
-=======
-
-//    @FXML
-//    private void promptGpt() throws IOException {
-//        OkHttpClient client = new OkHttpClient();
-//
-//        String prompt = "My name is";
-//        String apiKey = "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";
-//
-//        MediaType mediaType = MediaType.parse("application/json");
-//        RequestBody body = RequestBody.create(mediaType, "{\"prompt\": \"" + prompt + "\"}");
-//
-//        Request request = new Request.Builder()
-//                .url(API_URL)
-//                .post(body)
-//                .addHeader("Authorization", "Bearer " + apiKey)
-//                .addHeader("Content-Type", "application/json")
-//                .build();
-//
-//        Response response = client.newCall(request).execute();
-//        String responseBody = response.body().string();
-//
-//        System.out.println(responseBody);
-//    }
-}
->>>>>>> afb90c3 (intégrer api chatgpt)

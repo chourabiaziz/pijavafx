@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -21,6 +22,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AjouterVoiture<VoitureIndex> implements Initializable {
+    @FXML
+    private BarChart<String, Number> barChart;
+
+
 
     @FXML
     private TextField id;
@@ -331,6 +336,28 @@ public class AjouterVoiture<VoitureIndex> implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showStatistics(ActionEvent event) {
+        try {
+            // Charger la vue FXML du tableau de bord de statistiques
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/WorkshopStatisticsDashboard.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Créer une nouvelle fenêtre
+            Stage stage = new Stage();
+            stage.setTitle("Workshop Statistics");
+            stage.setScene(scene);
+
+            // Afficher la fenêtre
+            stage.show();
+        } catch (IOException e) {
+            // Gérer les erreurs liées au chargement du fichier FXML
             e.printStackTrace();
         }
     }

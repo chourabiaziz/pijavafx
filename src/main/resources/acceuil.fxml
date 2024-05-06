@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="tn.esprit.controllers.acceuil"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="793.0" prefWidth="1170.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.acceuil">
+    <children>
+        <!-- Image de fond -->
+        <ImageView fitWidth="1170.0" fitHeight="793.0">
+            <image>
+                <Image url="backhround.png" />
+            </image>
+        </ImageView>
 
+        <!-- Contenu de la page -->
+        <VBox alignment="CENTER" spacing="20" layoutX="100" layoutY="100">
+            <!-- En-tête -->
+            <Label text="Bienvenue sur AssureEase" style="-fx-font-size: 36px; -fx-text-fill: #333; -fx-font-weight: bold;" />
+            <Label text="Votre partenaire en assurance pour une tranquillité d'esprit totale" style="-fx-font-size: 18px; -fx-text-fill: #666;" />
+
+            <!-- Call-to-Action -->
+            <Button text="Obtenir un devis gratuit" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-font-size: 18px;" />
+
+            <!-- Navigation -->
+            <HBox spacing="20">
+                <Button onAction="#goToAccueil" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Accueil" textFill="#fff" />
+                <Button onAction="#goToVoitureList" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Liste des Voitures" textFill="#fff" />
+                <Button onAction="#goToAjouteVoiture" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Ajouter une Voiture" textFill="#fff" />
+                <Button onAction="#goToPanneList" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Gestion des Pannes" textFill="#fff" />
+                <Button onAction="#goToAjouterPanne" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Ajouter une Panne" textFill="#fff" />
+                <Button onAction="#goToAtelierList" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Gestion des Ateliers" textFill="#fff" />
+            </HBox>
+        </VBox>
+    </children>
 </AnchorPane>

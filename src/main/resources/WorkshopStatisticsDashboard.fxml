@@ -1,0 +1,28 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.scene.layout.VBox?>-->
+<!--<?import javafx.scene.chart.PieChart?>-->
+<!--<?import javafx.scene.chart.BarChart?>-->
+<!--<?import javafx.scene.chart.LineChart?>-->
+<!--<?import javafx.scene.control.Label?>-->
+<!--<?import javafx.geometry.Insets?>-->
+
+<!--<VBox xmlns="http://javafx.com/javafx"-->
+<!--      xmlns:fx="http://javafx.com/fxml"-->
+<!--      fx:controller="tn.esprit.controllers.WorkshopStatisticsDashboard"-->
+<!--      spacing="10"-->
+<!--      padding="10">-->
+
+<!--&lt;!&ndash;    <Label text="Breakdown by Type"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    <PieChart fx:id="breakdownPieChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Label text="Car Availability by Model"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    <BarChart fx:id="availabilityBarChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Label text="Monthly Repair Trends"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    <LineChart fx:id="repairTrendLineChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Label text="Average Repair Costs by Type"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    <BarChart fx:id="costBarChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+
+<!--</VBox>-->
