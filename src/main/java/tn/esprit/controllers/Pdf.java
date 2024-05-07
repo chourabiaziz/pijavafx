@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import com.itextpdf.html2pdf.HtmlConverter;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
