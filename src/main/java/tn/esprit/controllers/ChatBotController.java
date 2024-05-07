@@ -12,7 +12,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 
-public class ChatbotController {
+public class ChatBotController {
     @FXML
     private TextArea chatArea;
     @FXML
