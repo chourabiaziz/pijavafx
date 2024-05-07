@@ -1,6 +1,7 @@
 package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
+import tn.esprit.interfaces.IServiceA;
 import tn.esprit.models.Panne;
 import tn.esprit.utils.MyDataBase;
 
@@ -8,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicePanne implements IService<Panne> {
+public class ServicePanne implements IServiceA<Panne> {
 
     private Connection cnx;
 
@@ -44,8 +45,7 @@ public class ServicePanne implements IService<Panne> {
         }
     }
 
-    @Override
-    public ArrayList<Panne> getAll() {
+     public ArrayList<Panne> getAll() {
         List<Panne> pannes = new ArrayList<>();
         String req = "SELECT * FROM panne";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
@@ -96,20 +96,20 @@ public class ServicePanne implements IService<Panne> {
 
     }
 
-    @Override
-    public boolean delete(Panne panne) {
-        String qry = "DELETE FROM `panne` WHERE `id`=?";
-        try {
-            PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setInt(1, panne.getId());
-
-            int rowsAffected = pstm.executeUpdate();
-            return rowsAffected > 0; // Vérifie si des lignes ont été supprimées avec succès
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la suppression de la panne : " + e.getMessage());
-            return false;
-        }
-    }
+//    @Override
+//    public boolean delete(Panne panne) {
+//        String qry = "DELETE FROM `panne` WHERE `id`=?";
+//        try {
+//            PreparedStatement pstm = cnx.prepareStatement(qry);
+//            pstm.setInt(1, panne.getId());
+//
+//            int rowsAffected = pstm.executeUpdate();
+//            return rowsAffected > 0; // Vérifie si des lignes ont été supprimées avec succès
+//        } catch (SQLException e) {
+//            System.out.println("Erreur lors de la suppression de la panne : " + e.getMessage());
+//            return false;
+//        }
+//    }
 
     // Méthode pour valider les données de la panne
     private boolean validatePanne(Panne panne) {

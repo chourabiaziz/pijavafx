@@ -47,8 +47,7 @@ public class ContratIndex implements Initializable {
         listContrat = new ArrayList<>();
 
         facture.setOnAction(n::goToFactureIndex);
-        add.setOnAction(this::changeroute);
-        listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
+         listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
             @Override
             public ListCell<Contrat> call(ListView<Contrat> contratListView) {
                 return new ContratListCell();
@@ -95,15 +94,10 @@ public class ContratIndex implements Initializable {
                 Label finLabel = new Label("Jusqu'a " + finText);
                 Label prixLabel = new Label(contrat.getPrix() + " DT");
                 prixLabel.setStyle("-fx-font-weight: bold;");
-                Button button1 = new Button("Modifier");
                 Button button0 = new Button("Consulter");
-                Button button2 = new Button("Supprimer");
 
-            add.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
 
                 button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
-                button1.setStyle("-fx-background-color: #6e6e6e; -fx-padding: 10px; -fx-border-radius: 50px;");
-                button2.setStyle("-fx-background-color: #ef1a1a; -fx-padding: 10px; -fx-border-radius: 50px;");
 
                 idLabel.setMinWidth(70);
                 idLabel.setMaxWidth(70);
@@ -115,20 +109,11 @@ public class ContratIndex implements Initializable {
                 couvertureLabel.setMaxWidth(70);
                 finLabel.setMinWidth(70);
                 finLabel.setMaxWidth(70);
-                HBox buttonBox = new HBox(button0,button1, button2);
+                HBox buttonBox = new HBox(button0);
                 buttonBox.setStyle("-fx-spacing: 10px;");
                 card.getChildren().addAll(idLabel, client, prixLabel, couvertureLabel, debutLabel, finLabel, buttonBox);
 //buttons actions
-                button1.setOnAction(event -> {
 
-
-                    int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
-                    int prix = contrat.getPrix() ; String cliente = contrat.getClient();
-                    String debut= contrat.getDebut().toString();
-
-                    n.gotoedit(event, id , cliente, couverture,engagement, debut,prix);
-
-                });
                 button0.setOnAction(event -> {
 
 
@@ -139,16 +124,7 @@ public class ContratIndex implements Initializable {
                     n.gotoshow(event, id , cliente, couverture,engagement, debut,fin,prix);
 
                 });
-                button2.setOnAction(event -> {
-//                   contratService.delete(contrat.getId());
-//                    refreshContrats();
-                    int id = contrat.getId() ;int engagement = contrat.getEngagement() ;String couverture = contrat.getCouverture() ;
-                    int prix = contrat.getPrix() ; String cliente = contrat.getClient();
-                    String debut= contrat.getDebut().toString();String fin= contrat.getFin().toString();
 
-                    n.gotoshow(event, id , cliente, couverture,engagement, debut,fin,prix);
-
-                });
 
 ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
     facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
@@ -252,9 +228,6 @@ ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radiu
 
 
 
-
-@FXML
-Button add ;
 
 
 

@@ -1,13 +1,14 @@
 package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
+import tn.esprit.interfaces.IServiceA;
 import tn.esprit.models.Voiture;
 import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ServiceVoiture implements IService<Voiture> {
+public class ServiceVoiture implements IServiceA<Voiture> {
 
     private Connection cnx;
 
@@ -40,8 +41,7 @@ public class ServiceVoiture implements IService<Voiture> {
         }
     }
 
-    @Override
-    public ArrayList<Voiture> getAll() {
+     public ArrayList<Voiture> getAll() {
         ArrayList<Voiture> voitures = new ArrayList<>();
         String qry = "SELECT * FROM `voiture`";
         try {
@@ -99,8 +99,7 @@ public class ServiceVoiture implements IService<Voiture> {
         }
     }
 
-    @Override
-    public boolean delete(Voiture voiture) {
+     public boolean delete(Voiture voiture) {
         String qry = "DELETE FROM `voiture` WHERE `id`=?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
