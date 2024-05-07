@@ -49,6 +49,19 @@
         <artifactId>commons-math3</artifactId>
         <version>3.6.1</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+<dependency>
+    <groupId>com.google.zxing</groupId>
+    <artifactId>core</artifactId>
+    <version>3.5.3</version>
+</dependency>
+
+ <dependency>
+    <groupId>com.stripe</groupId>
+    <artifactId>stripe-java</artifactId>
+    <version>25.5.0</version>
+</dependency>
+
  <dependency>
         <groupId>org.apache.pdfbox</groupId>
         <artifactId>pdfbox</artifactId>
