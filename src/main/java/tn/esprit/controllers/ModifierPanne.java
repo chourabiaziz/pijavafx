@@ -1,9 +1,4 @@
-<<<<<<< HEAD:src/main/java/tn/esprit/controllers/ModifierPanne.java
-package tn.esprit.controllers;
 
-public class ModifierPanne {
-}
-=======
 package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
@@ -246,4 +241,3 @@ public class FactureIndex implements Initializable {
         }
     }
 }
->>>>>>> 474f6cb87a762ac058f276e11f5430de2d750311:src/main/java/tn/esprit/controllers/FactureIndex.java
