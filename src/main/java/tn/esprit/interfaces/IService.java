@@ -2,15 +2,18 @@ package tn.esprit.interfaces;
 
 import java.util.ArrayList;
 
-public interface IService<T> {
 
-        void add (T t );
-        ArrayList<T> getAll();
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Set;
 
-        void update(T t );
-        boolean delete (T t);
-//findby..
+public interface IService <T>{
+        public void ajouter(T p) throws SQLException;
+        public void modifier(T p) throws SQLException;
+        public void supprimer(int id) throws SQLException;
+        public T getOneById(int id) throws SQLException;
+        public List<T> getAll() throws SQLException;
 
-    //getby ...
 
 }
+

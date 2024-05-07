@@ -1,9 +1,3 @@
-<<<<<<< HEAD:src/main/java/tn/esprit/controllers/ModifierPanne.java
-package tn.esprit.controllers;
-
-public class ModifierPanne {
-}
-=======
 package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
@@ -12,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,7 +27,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class FactureIndex implements Initializable {
+public class FactureIndexAdmin implements Initializable {
     @FXML
     private Pagination pagination;
     @FXML
@@ -54,8 +47,8 @@ public class FactureIndex implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contrat.setOnAction(this::contrat);
-        contrat.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
-       facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+
+
         listContrat = new ArrayList<>();
 
         listView.setCellFactory(new Callback<ListView<Facture>, ListCell<Facture>>() {
@@ -169,13 +162,13 @@ public class FactureIndex implements Initializable {
 
 
     public void facture(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin , int prix , int tva,int tot) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureShow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureShowAdmin.fxml"));
         Parent root = null;
         try {
             Node source = (Node) event.getSource();
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
-            FactureShow controller = loader.getController();
+            FactureShowAdmin controller = loader.getController();
             controller.setId(id , cliente, couverture , engagement , debut, fin,prix , tva ,tot);
             Stage stage = (Stage) source.getScene().getWindow();
             stage.setTitle("facture");
@@ -189,19 +182,14 @@ public class FactureIndex implements Initializable {
 
     @FXML
     void search(KeyEvent event) {
-        String searched = search.getText().trim().toLowerCase(); // Get the text from the search field
-
+        String searched = search.getText().trim().toLowerCase();
         if (!searched.isEmpty()) {
-
             List<Facture> filteredContrats = listContrat.stream().filter(contrat ->
-                            contrat.getClient().toLowerCase().contains(searched) ||
+                                    String.valueOf(contrat.getClient()).toLowerCase().contains(searched) ||
                                     String.valueOf(contrat.getTotale()).contains(searched) ||
                                     String.valueOf(contrat.getId()).contains(searched)
-
                     )
                     .collect(Collectors.toList());
-
-
             listView.getItems().clear();
             listView.getItems().addAll(filteredContrats);
         } else {
@@ -213,13 +201,13 @@ public class FactureIndex implements Initializable {
 
 
     private void contrat(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndex.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndexAdmin.fxml"));
         Parent root = null;
         try {
             Node source = (Node) event.getSource();
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
-            ContratIndex controller = loader.getController();
+            ContratIndexAdmin controller = loader.getController();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.setTitle("Liste des Contrats");
             stage.setScene(new Scene(root));
@@ -246,4 +234,3 @@ public class FactureIndex implements Initializable {
         }
     }
 }
->>>>>>> 474f6cb87a762ac058f276e11f5430de2d750311:src/main/java/tn/esprit/controllers/FactureIndex.java

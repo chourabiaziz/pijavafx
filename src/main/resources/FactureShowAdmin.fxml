@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorpane" prefHeight="654.0" prefWidth="1330.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureShowAdmin">
+    <children>
+
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="1060.0" stroke="#fa000000" strokeType="INSIDE" width="210.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <fill>
+                <LinearGradient endX="0.8333333379727746" endY="0.7564102649217728" startX="0.11725427605148052" startY="0.9059829057153692">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color green="0.48235294222831726" blue="1.0" opacity="0.8100000023841858" />
+                            </color>
+                        </Stop>
+                        <Stop offset="0.8230027561345378">
+                            <color>
+                                <Color red="0.7900000214576721" green="0.7900000214576721" blue="0.7900000214576721" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color green="0.48235294222831726" blue="1.0" opacity="0.8100000023841858" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+
+
+
+        <Button layoutX="29.0" layoutY="96.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Offre" />
+        <Button layoutX="29.0" layoutY="164.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Devis" />
+        <Button fx:id="contrat" layoutX="29.0" layoutY="236.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Contrat" />
+
+        <Button fx:id="facture" layoutX="29.0" layoutY="305.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Facture" textFill="#1500ff">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Button layoutX="29.0" layoutY="603.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Utulisateurs" />
+        <Button layoutX="29.0" layoutY="375.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Constat" />
+        <Button layoutX="29.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Dashboard" />
+        <Text layoutX="363.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client(e) :">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Text>
+        <Text fx:id="couverture" layoutX="504.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Text>
+        <Text layoutX="366.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contrat">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Text>
+        <Button fx:id="pdf" layoutX="1248.0" layoutY="782.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="99.0" text="Telecharger pdf" />
+              <Text layoutX="403.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ref°" textAlignment="CENTER" wrappingWidth="95.07009887695312">
+                  <font>
+                      <Font name="System Italic" size="26.0" />
+                  </font>
+              </Text>
+              <Text fx:id="idc" layoutX="409.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="83.28363037109375">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text layoutX="515.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="couverture" textAlignment="CENTER" wrappingWidth="172.1859588623047">
+                  <font>
+                      <Font name="System Italic" size="26.0" />
+                  </font>
+              </Text>
+              <Text layoutX="736.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engagement" textAlignment="CENTER" wrappingWidth="147.7442626953125">
+                  <font>
+                      <Font name="System Italic" size="26.0" />
+                  </font>
+              </Text>
+                <Text layoutX="897.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de" textAlignment="CENTER" wrappingWidth="251.89520263671875">
+                    <font>
+                        <Font name="System Italic" size="26.0" />
+                    </font>
+                </Text>
+              <Text layoutX="1152.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'a" textAlignment="CENTER" wrappingWidth="217.25994110107422">
+                  <font>
+                      <Font name="System Italic" size="26.0" />
+                  </font>
+              </Text>
+              <Text layoutX="1383.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" textAlignment="CENTER" wrappingWidth="102.51880264282227">
+                  <font>
+                      <Font name="System Italic" size="26.0" />
+                  </font>
+              </Text>
+              <Text fx:id="client" layoutX="504.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="193.7741355895996">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+                <Text fx:id="engagement" layoutX="736.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="81.4722900390625">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Text>
+                <Text layoutX="828.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mois" textAlignment="CENTER" wrappingWidth="64.96673583984375">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Text>
+              <Text fx:id="debut" layoutX="897.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="259.88740158081055">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text fx:id="fin" layoutX="1152.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="234.52893948554993">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text fx:id="prix" layoutX="1362.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Text" textAlignment="CENTER" wrappingWidth="145.77428817749023">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+            <Text layoutX="1498.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TND" textAlignment="CENTER">
+                <font>
+                    <Font size="26.0" />
+                </font>
+            </Text>
+              <Text layoutX="1221.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TVA" textAlignment="CENTER" wrappingWidth="96.3521728515625">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text layoutX="1307.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19%" textAlignment="CENTER" wrappingWidth="260.3275146484375">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text layoutX="1188.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promotion" textAlignment="CENTER" wrappingWidth="184.9158172607422">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text fx:id="tva" layoutX="1387.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="100.5116081237793">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+            <Text layoutX="1497.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" textAlignment="CENTER" wrappingWidth="85.57922554016113">
+                <font>
+                    <Font size="26.0" />
+                </font>
+            </Text>
+              <Text layoutX="1200.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totale" textAlignment="CENTER" wrappingWidth="160.44965147972107">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+              <Text fx:id="tot" layoutX="1389.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="96.86852979660034">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Text>
+            <Text layoutX="1508.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TND">
+                <font>
+                    <Font size="26.0" />
+                </font>
+            </Text>
+      <Line endX="1041.2264404296875" layoutX="498.0" layoutY="278.0" startX="-100.0" />
+      <Line endX="1041.2264404296875" layoutX="498.0" layoutY="357.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="1437.0" layoutY="441.0" startX="-298.4150390625" />
+      <Line endX="100.0" layoutX="1437.0" layoutY="519.0" startX="-298.4150390625" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff1e" height="589.0" layoutX="350.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="1217.0" />
+      <ImageView fitHeight="150.0" fitWidth="160.0" layoutX="1448.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assure.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="160.0" layoutX="1448.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assure.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="pay" layoutX="1082.0" layoutY="782.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="99.0" text="E-paiement" />
+
+    </children>
+</AnchorPane>
