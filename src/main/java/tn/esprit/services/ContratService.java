@@ -21,12 +21,14 @@ public class ContratService implements IContrat<Contrat> {
     @Override
     public boolean add(Contrat c) {
 
-        String sql = "INSERT INTO `contrat`(`id`, `couverture`, `prix`, `debut`, `fin`, `engagement`) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO `contrat`(`id`, `couverture`, `prix`, `debut`, `fin`, `engagement`, `client`) VALUES (?, ?, ?, ?,?,?,?)";
 
         try (PreparedStatement pstmt = cnx.prepareStatement(sql)) {
 
             pstmt.setInt(1, c.getId());
+
             pstmt.setString(2, c.getCouverture());
+            pstmt.setString(7, c.getClient());
             pstmt.setInt(3, c.getPrix());
             pstmt.setDate(4, c.getDebut());
             pstmt.setDate(5, c.getFin());
@@ -50,14 +52,16 @@ public class ContratService implements IContrat<Contrat> {
 
     @Override
     public void edit(Contrat c) {
-        String req = "UPDATE contrat SET couverture=?, prix=?, debut=?, fin=?, engagement=? WHERE id=?";
+        String req = "UPDATE contrat SET couverture=?, prix=?, debut=?, fin=?, engagement=? , client=? WHERE id=?";
         try (PreparedStatement pstmt = cnx.prepareStatement(req)) {
             pstmt.setString(1, c.getCouverture());
+
             pstmt.setInt(2, c.getPrix());
             pstmt.setDate(3, c.getDebut());
             pstmt.setDate(4, c.getFin());
             pstmt.setInt(5, c.getEngagement());
-            pstmt.setInt(6, c.getId());
+            pstmt.setString(6, c.getClient());
+            pstmt.setInt(7, c.getId());
 
             int rowsUpdated = pstmt.executeUpdate();
 
@@ -101,11 +105,14 @@ public class ContratService implements IContrat<Contrat> {
                 int id = res.getInt("id");
                 int prix = res.getInt("prix");
                 int engagement = res.getInt("engagement");
+
                 String couverture = res.getString("couverture");
+
                 Date debut = res.getDate("debut");
                 Date fin = res.getDate("fin");
 
-                Contrat c = new Contrat(id, prix, engagement, couverture, debut, fin);
+                String client = res.getString("client");
+                Contrat c = new Contrat(id, prix, client ,engagement, couverture, debut, fin  );
                 contrats.add(c);
             }
 
@@ -133,8 +140,9 @@ public class ContratService implements IContrat<Contrat> {
                 String couverture = rs.getString("couverture");
                 Date debut = rs.getDate("debut");
                 Date fin = rs.getDate("fin");
+                String client = rs.getString("client");
 
-                contrat = new Contrat(contratId, prix, engagement, couverture, debut, fin);
+                contrat = new Contrat(contratId, prix, client,engagement, couverture, debut, fin );
                 return contrat;
             }
         } catch (SQLException e) {
