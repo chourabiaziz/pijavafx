@@ -206,3 +206,118 @@
     -fx-text-fill: #666;
 }
 
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+.header-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);
+}
+
+.search-field {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 30px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-background-color: #ecf0f1;
+}
+
+.search-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 15px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, black, 5, 0.5, 0, 1);
+}
+
+.tile-pane {
+    -fx-background-color: #ecf0f1;
+}
+
+.action-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, black, 5, 0.5, 0, 1);
+}
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: "Roboto", sans-serif;
+}
+
+.header-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.chart-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 0 0 10 0;
+}
+
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.chart-legend {
+    -fx-font-size: 12px;
+    -fx-text-fill: #666666;
+}
+
+.chart-series-line {
+    -fx-stroke-width: 2px;
+}
+
+.chart-bar {
+    -fx-bar-fill: #4CAF50;
+}
+
+.chart-pie-label {
+    -fx-font-size: 12px;
+    -fx-fill: #666666;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #666666;
+    -fx-stroke-width: 1px;
+}
+
+
+.vbox {
+    -fx-padding: 10;
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #333;
+    -fx-border-width: 2;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.atelier-box {
+    -fx-padding: 10;
+    -fx-spacing: 5;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);
+}

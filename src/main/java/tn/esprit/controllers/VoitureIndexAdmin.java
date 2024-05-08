@@ -3,29 +3,32 @@ package tn.esprit.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Voiture;
-
 import tn.esprit.services.ServiceVoiture;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
-public class VoitureIndex implements Initializable {
+public class VoitureIndexAdmin implements Initializable {
 
 
     @FXML
@@ -86,6 +89,7 @@ public class VoitureIndex implements Initializable {
             }
         });
         ajouterButton.setOnAction(this::handle);
+
         loadData();
     }
 
@@ -269,29 +273,25 @@ public class VoitureIndex implements Initializable {
             alert.showAndWait();
         }
     }
-    public void retourner(javafx.event.ActionEvent actionEvent) {
-        try {
-            // Charger le fichier FXML de la page AfficherAssurance.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterVoiture.fxml"));
-            Parent root = loader.load();
-
-            // Créer une nouvelle scène avec le contenu chargé
-            Scene scene = new Scene(root);
-
-            // Obtenir la fenêtre actuelle et la fermer
-            Stage stage = (Stage) retourButton.getScene().getWindow();
-            stage.close();
-            // Afficher la nouvelle scène
-            Stage primaryStage = new Stage();
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
+//    public void retourner(javafx.event.ActionEvent actionEvent) {
+//        try {
+//            // Charger le fichier FXML de la page AfficherAssurance.fxml
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterVoiture.fxml"));
+//            Parent root = loader.load();
+//
+//            // Créer une nouvelle scène avec le contenu chargé
+//            Scene scene = new Scene(root);
+//
+//            // Obtenir la fenêtre actuelle et la fermer
+//            Stage stage = (Stage) retourButton.getScene().getWindow();
+//            stage.close();
+//            // Afficher la nouvelle scène
+//            Stage primaryStage = new Stage();
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }

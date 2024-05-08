@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoiture" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" prefHeight="793.0" prefWidth="1170.0">
     <children>
         <!-- Navigation Bar -->
         <HBox prefHeight="50.0" style="-fx-background-color: #333; -fx-padding: 15px;" alignment="CENTER_LEFT" prefWidth="1170.0">
-            <prefHeight>793.0</prefHeight>
-            <Button text="Accueil" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#calculateMean" />
- 
-            <Button text="Liste des Voitures" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToVoitureList" />
-            <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouteVoiture" />
-            <Button text="Gestion des Pannes" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToPanneList" />
-            <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouterPanne" />
-            <Button text="Gestion des Ateliers" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAtelierList" />
-            <Button text="Chatbot" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#handleRequest" />
-           <Button text="stat" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#showStatistics" />-->
-
- 
+<!--            <Button text="Accueil" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#calculateMean"/>-->
+            <Button text="Liste des Voitures" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToVoitureList"/>
+            <Button text="Ajouter une Voiture" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToAjouteVoiture"/>
+            <Button text="Gestion des Pannes" style="-fx-background-color: transparent; -fx-text-fill: white;" onAction="#goToPanneList"/>
+            <Button text="Chatbot" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#handleRequest"/>
+<!--            <Button text="stat" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-margin-left: 20px;" onAction="#showStatistics"/>-->
         </HBox>
 
-        <!-- Centered Form -->
+        <!-- Centre Form -->
         <VBox layoutY="75.0" alignment="CENTER" spacing="20" prefWidth="900.0">
             <children>
                 <VBox alignment="CENTER" spacing="10.0" style="-fx-padding: 20px; -fx-background-color: rgba(255, 255, 255, 0.85); -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);">
                     <children>
-                        <Label text="Informations sur la voiture" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+                        <Label text="Informations sur la voiture" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
                         <GridPane hgap="20.0" vgap="20.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
@@ -71,11 +63,10 @@
                                 <TextField fx:id="nom_image" GridPane.rowIndex="11" GridPane.columnIndex="1" />
                             </children>
                         </GridPane>
-
-                        <!-- Buttons -->
+                        <!-- Boutons -->
                         <HBox spacing="20" alignment="CENTER">
-                            <Button fx:id="submit" text="Ajouter" style="-fx-background-color: #3498DB; -fx-text-fill: white;" onAction="#submit" />
-                            <Button fx:id="btnReset" text="Réinitialiser" style="-fx-background-color: #E74C3C; -fx-text-fill: white;" onAction="#reset" />
+                            <Button fx:id="submit" text="Ajouter" style="-fx-background-color: #3498DB; -fx-text-fill: white;" onAction="#submit"/>
+                            <Button fx:id="btnReset" text="Réinitialiser" style="-fx-background-color: #E74C3C; -fx-text-fill: white;" onAction="#reset"/>
                         </HBox>
                     </children>
                 </VBox>

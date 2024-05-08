@@ -2,13 +2,18 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import tn.esprit.models.Panne;
 import tn.esprit.services.ServicePanne;
 
+import java.io.IOException;
 import java.util.Date;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -83,5 +88,20 @@ public class AjouterPanne implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(contentText);
         alert.showAndWait();
+    }
+    public void handleRequest(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML de la liste des pannes (PanneIndex.fxml)
+            //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChatBot.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chatbotPage.fxml"));
+            Parent root = loader.load();
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

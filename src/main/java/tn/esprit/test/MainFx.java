@@ -19,7 +19,7 @@ public class MainFx extends Application {
     public void start(Stage primaryStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndex.fxml"));
         try {
-
+// ajoutervoiture -> client // admin -> VoitureIndex
 
             Parent root = loader.load();
             Scene scene = new Scene(root );

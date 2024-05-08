@@ -1,28 +1,22 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import javafx.scene.layout.VBox?>-->
-<!--<?import javafx.scene.chart.PieChart?>-->
-<!--<?import javafx.scene.chart.BarChart?>-->
-<!--<?import javafx.scene.chart.LineChart?>-->
-<!--<?import javafx.scene.control.Label?>-->
-<!--<?import javafx.geometry.Insets?>-->
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<!--<VBox xmlns="http://javafx.com/javafx"-->
-<!--      xmlns:fx="http://javafx.com/fxml"-->
-<!--      fx:controller="tn.esprit.controllers.WorkshopStatisticsDashboard"-->
-<!--      spacing="10"-->
-<!--      padding="10">-->
 
-<!--&lt;!&ndash;    <Label text="Breakdown by Type"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    <PieChart fx:id="breakdownPieChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+<VBox alignment="CENTER" prefHeight="600" prefWidth="681.0" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.WorkshopStatisticsDashboard">
 
-<!--&lt;!&ndash;    <Label text="Car Availability by Model"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    <BarChart fx:id="availabilityBarChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+    <Label text="Utilisateur  Constats Statistics">
+        <font>
+            <Font size="20" />
+        </font>
+    </Label>
 
-<!--&lt;!&ndash;    <Label text="Monthly Repair Trends"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    <LineChart fx:id="repairTrendLineChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+    <PieChart fx:id="pieChart" prefHeight="500.0" prefWidth="682.0">
 
-<!--&lt;!&ndash;    <Label text="Average Repair Costs by Type"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    <BarChart fx:id="costBarChart" prefWidth="600" prefHeight="400"/>&ndash;&gt;-->
+    </PieChart>
 
-<!--</VBox>-->
+
+</VBox>

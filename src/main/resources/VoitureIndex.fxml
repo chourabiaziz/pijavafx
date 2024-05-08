@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane fx:id="mainAnchorPane" prefHeight="715.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.VoitureIndex">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="715.0" prefWidth="600.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.VoitureIndex">
     <children>
         <!-- En-tête -->
-        <Text layoutX="194.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Voitures" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #333;">
+        <Text layoutX="194.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Voitures" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white;">
             <font>
-                <Font name="Arial" size="24.0" />
+                <Font name="Arial" size="28.0" />
             </font>
         </Text>
 
         <!-- Champ de recherche -->
-        <TextField fx:id="searchField" layoutX="10.0" layoutY="40.0" prefWidth="580.0" promptText="Recherche..." style="-fx-font-size: 14px; -fx-padding: 10;"/>
+        <TextField fx:id="searchField" layoutX="10.0" layoutY="70.0" prefWidth="580.0" promptText="Recherche..." style="-fx-font-size: 16px; -fx-padding: 10; -fx-background-color: rgba(255, 255, 255, 0.8);" />
 
         <!-- Grille pour la disposition des éléments -->
-        <GridPane layoutX="10" layoutY="100.0" prefHeight="585.0" prefWidth="580.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+        <GridPane layoutX="10.0" layoutY="120.0" prefHeight="525.0" prefWidth="580.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="120.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints vgrow="SOMETIMES" minHeight="10.0" prefHeight="100.0" />
+                <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="100.0" />
             </rowConstraints>
-            <!-- Conteneur pour les cartes de voitures -->
-            <TilePane fx:id="tilePane" GridPane.columnIndex="0" GridPane.rowIndex="0" prefColumns="2" style="-fx-padding: 10;" vgap="20" hgap="20">
-                <padding>
-                    <Insets top="10" right="10" bottom="10" left="10"/>
-                </padding>
-            </TilePane>
 
-            <!-- Espace réservé pour d'autres éléments -->
-            <VBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-padding: 20;" />
+            <!-- Conteneur pour les cartes de voitures -->
+            <TilePane fx:id="tilePane" GridPane.columnIndex="0" GridPane.rowIndex="0" prefColumns="2" style="-fx-padding: 10;" vgap="15" hgap="15">
+                <!-- Exemple de carte de voiture -->
+                <VBox style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-padding: 10; -fx-border-color: white; -fx-border-width: 2;">
+                    <Text text="Model A" style="-fx-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <Text text="Details: 4 Doors, Automatic" style="-fx-fill: white; -fx-font-size: 14px;" />
+                </VBox>
+                <VBox style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-padding: 10; -fx-border-color: white; -fx-border-width: 2;">
+                    <Text text="Model B" style="-fx-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <Text text="Details: 2 Doors, Manual" style="-fx-fill: white; -fx-font-size: 14px;" />
+                </VBox>
+                <!-- Add additional car cards as needed -->
+            </TilePane>
         </GridPane>
 
-        <!-- Bouton d'ajout -->
-        <Button fx:id="ajouterButton" layoutX="10.0" layoutY="660.0" mnemonicParsing="false" onAction="#goToAjouterVoiture" text="Ajouter une nouvelle voiture" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10;"/>
+        <!-- Boutons d'ajout et de retour -->
+        <HBox layoutX="10.0" layoutY="660.0" spacing="20">
+            <Button fx:id="ajouterButton" mnemonicParsing="false" onAction="#goToAjouterVoiture" text="Ajouter une nouvelle voiture" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10;" />
+            <Button fx:id="retourButton" mnemonicParsing="false" text="Retour" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10;" />
+        </HBox>
     </children>
 </AnchorPane>
