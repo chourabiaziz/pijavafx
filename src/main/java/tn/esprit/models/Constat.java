@@ -4,7 +4,6 @@ package tn.esprit.models;
 public class Constat {
     private  String a_preneur_nom, a_preneur_prenom, a_preneur_tel, a_vehicule_moteur_marque, a_vehicule_moteur_num_immatriculation , a_societe_assurance_agence_nom , a_societe_assurance_agence_adresse ;
     private  String b_preneur_nom, b_preneur_prenom, b_preneur_tel, b_vehicule_moteur_marque, b_vehicule_moteur_num_immatriculation , b_societe_assurance_agence_nom ,b_societe_assurance_agence_adresse;
-    private String heure ;
     private String localisation ,temoins ;
     private boolean stationnement_arret ,quittait_stationnement_arret ,prenait_stationnement,sortait_dun_parking_lieu,doublait,virait_droite,virait_gauche ;
     private String image;
@@ -123,14 +122,6 @@ public class Constat {
 
     public void setB_societe_assurance_agence_adresse(String b_societe_assurance_agence_adresse) {
         this.b_societe_assurance_agence_adresse = b_societe_assurance_agence_adresse;
-    }
-
-    public String getHeure() {
-        return heure;
-    }
-
-    public void setHeure(String date) {
-        this.heure = date;
     }
 
     public String getLocalisation() {

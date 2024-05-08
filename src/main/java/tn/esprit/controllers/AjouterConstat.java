@@ -21,6 +21,7 @@ import tn.esprit.models.Constat;
 import tn.esprit.services.ServiceAssurance;
 import tn.esprit.services.ServiceConstat;
  import tn.esprit.utils.OCRManager;
+ import tn.esprit.utils.SMSManager;
 
  import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -112,11 +113,6 @@ public class AjouterConstat {
     private String selectedImagePath; // Variable pour stocker le chemin de l'image sélectionnée
 
 
-
-
-
-
-
     private void copyImageToStorage(String sourcePath, String destinationDirectory) throws IOException {
         File sourceFile = new File(sourcePath);
         File destinationFile = new File(destinationDirectory, sourceFile.getName());
@@ -180,19 +176,6 @@ public class AjouterConstat {
                 return; // Sortir de la méthode sans ajouter le constat
             }
 
-
-
-            // Vérifier le format du numéro de téléphone
-            if (!telPreneurA.matches("\\d{8}") || !telPreneurB.matches("\\d{8}") )  {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText(null);
-                alert.setContentText("Le numéro de téléphone doit contenir 8 chiffres !");
-                alert.showAndWait();
-                return; // Sortir de la méthode sans ajouter l'assurance
-            }
-
-
             Constat c = new Constat();
 
             c.setA_preneur_nom(tfNomPreneurA.getText());
@@ -239,9 +222,9 @@ public class AjouterConstat {
                 e.printStackTrace();
             }
 
-
             sp.add(c);
             System.out.println("Constat ajoutée avec succès !");
+
 
             // Afficher une boîte de dialogue de succès
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -249,6 +232,8 @@ public class AjouterConstat {
             alert.setHeaderText(null);
             alert.setContentText("L'ajout s'est fait avec succès !");
             alert.showAndWait();
+
+
 
         } catch (Exception e) {
             System.err.println("Erreur lors de l'ajout de constat: " + e.getMessage());
@@ -342,14 +327,23 @@ public class AjouterConstat {
               //  String texteExtrait = ocrManager.getTextFromImage(selectedFile); // pass the selectedFile instead of image
                 // Extraire le nom de l'image
                 String nom = ocrManager.getNomFromImage(selectedFile);
+                String prenom = ocrManager.getPrenomFromImage(selectedFile);
+               String CNI = ocrManager.getCinFromImage(selectedFile);
 
 
                 // Afficher le texte extrait dans une boîte de dialogue
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Texte extrait");
                 alert.setHeaderText(null);
-                alert.setContentText("Nom extrait : " + nom);
+                alert.setContentText("Nom : " + nom + "\nPrénom(s) : " + prenom + "\nCARTE NATIONALE D'IDENTITÉ N° : " + CNI);
+
+
                 alert.showAndWait();
+
+                // Mettre à jour les champs de texte avec les valeurs extraites
+                tfNomPreneurA.setText(nom);
+                tfPrenomPreneurA.setText(prenom);
+                tfTelPreneurA.setText(CNI) ;
             } catch (IOException e) {
                 e.printStackTrace();
                 // Gérer les erreurs d'extraction du texte

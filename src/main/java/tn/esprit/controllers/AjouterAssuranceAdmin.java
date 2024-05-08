@@ -1,31 +1,22 @@
 package tn.esprit.controllers;
 
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import tn.esprit.models.Assurance;
 import tn.esprit.services.ServiceAssurance;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import static javafx.application.Application.launch;
 
 
-public class AjouterAssurance  {
+public class AjouterAssuranceAdmin {
     ServiceAssurance sp  = new ServiceAssurance();
 
     @FXML
@@ -49,11 +40,11 @@ public class AjouterAssurance  {
 
     @FXML
     void AfficherAssurance(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssurance.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssuranceAdmin.fxml"));
 
         try {
             Parent root = loader.load();
-            AfficherAssurance ap = loader.getController();
+            AfficherAssuranceAdmin ap = loader.getController();
             List<Assurance> assurancesList = sp.getAll();
             ap.setAssurances(assurancesList);
 

@@ -138,7 +138,7 @@ public class AfficherConstat  implements Initializable {
 
 
     public void afficherTousLesConstats(ArrayList<Constat> constats) {
-        constatsContainer.getChildren().clear();
+      //  constatsContainer.getChildren().clear();
 
         for (Constat constat : constats) {
             try {
@@ -148,7 +148,7 @@ public class AfficherConstat  implements Initializable {
                 controller.afficherConstat(constat);
 
                 // Créer le bouton Supprimer
-                Button supprimerButton = new Button("Supprimer");
+              /*  Button supprimerButton = new Button("Supprimer");
                 supprimerButton.setOnAction(event -> {
                     Constat constatToDelete = constat;
 
@@ -163,8 +163,7 @@ public class AfficherConstat  implements Initializable {
                         showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la suppression", "La suppression du constat a échoué.");
                     }
                 });
-                constatsContainer.getChildren().add(supprimerButton);
-
+                constatsContainer.getChildren().add(supprimerButton);*/
                 constatsContainer.getChildren().add(root);
 
             } catch (IOException e) {
@@ -199,7 +198,7 @@ public class AfficherConstat  implements Initializable {
             EnvoieConstatButton.setOnAction(event -> {
                 try {
                     // Charger le fichier FXML de la page ModifierAssurance.fxml
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssurance.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssuranceAdmin.fxml"));
                     Parent root = loader.load();
 
                     // Afficher la nouvelle scène

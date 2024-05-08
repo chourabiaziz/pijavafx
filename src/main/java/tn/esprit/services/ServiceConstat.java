@@ -9,6 +9,8 @@ import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ServiceConstat implements IService<Constat> {
@@ -32,7 +34,7 @@ public class ServiceConstat implements IService<Constat> {
                 "b_preneur_nom, b_preneur_prenom, b_preneur_tel, b_vehicule_moteur_marque, b_vehicule_moteur_num_immatriculation ,b_societe_assurance_agence_nom, b_societe_assurance_agence_adresse, " + // Ajout de la virgule ici
                 "localisation ,temoins, " + // Ajout de la virgule ici
                 "stationnement_arret, quittait_stationnement_arret, prenait_stationnement, sortait_dun_parking_lieu, doublait ,virait_droite ,virait_gauche)" +
-                "  , VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,? ,?,?,?,?,?,?,?,?,?)";
+                "   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement pstm =cnx.prepareStatement(qry);
@@ -254,6 +256,28 @@ public class ServiceConstat implements IService<Constat> {
             return false; // Deletion failed
         }
     }
+
+    public Map<String, Integer> getConstatsPerUser() {
+        Map<String, Integer> stats = new HashMap<>();
+        String query = "SELECT COUNT(*) AS num_constats \n" +
+                "FROM constat c \n" +
+                "JOIN user u ON c.id = u.id \n" +
+                "WHERE u.email = 'user@example.com' \n" +
+                "AND u.email != 'admin@admin'\n";
+        try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String userEmail = rs.getString("email");
+                int numConstats = rs.getInt("num_constats");
+                stats.put(userEmail, numConstats);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return stats;
+    }
+
+
 
 
 

@@ -42,10 +42,10 @@
 
                         <Label layoutX="42.0" layoutY="72.0" text="Nom" />
                         <Label layoutX="34.0" layoutY="108.0" text="Prenom" />
-                        <Label layoutX="46.0" layoutY="142.0" text="Tel " />
+                        <Label layoutX="34.0" layoutY="141.0" text="CNI" />
                         <TextField fx:id="tfNomPreneurA" layoutX="99.0" layoutY="68.0" prefHeight="26.0" prefWidth="132.0" />
                         <TextField fx:id="tfPrenomPreneurA" layoutX="99.0" layoutY="104.0" prefHeight="26.0" prefWidth="132.0" />
-                        <TextField fx:id="tfTelPreneurA" layoutX="99.0" layoutY="138.0" prefHeight="26.0" prefWidth="132.0" />
+                        <TextField fx:id="tfTelPreneurA" layoutX="99.0" layoutY="137.0" prefHeight="26.0" prefWidth="132.0" />
 
                         <Text layoutX="8.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOTEUR">
                             <font>
@@ -81,7 +81,7 @@
                         <CheckBox fx:id="viraitGauche" layoutX="8.0" layoutY="224.0" mnemonicParsing="false" text="virait a gauche" />
 
                         <Button fx:id="addImageButton" contentDisplay="RIGHT" layoutX="38.0" layoutY="257.0" mnemonicParsing="false" onAction="#addImage" text="Ajouter l'image de l'accident " />
-                        <ImageView fx:id="imageView" fitHeight="158.0" fitWidth="332.0" layoutY="344.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView" fitHeight="116.0" fitWidth="246.0" layoutX="-1.0" layoutY="293.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
 
                             <cursor>
                                 <Cursor fx:constant="MOVE" />

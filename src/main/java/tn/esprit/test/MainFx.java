@@ -14,19 +14,17 @@ public class MainFx extends Application {
         launch(args);
     }
 
-  @Override
+    @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssuranceAdmin.fxml"));
 
-       try {
+        try {
             Parent root = loader.load();
-            Scene scene = new Scene(root );
+            Scene scene = new Scene(root);
 
-            primaryStage.setTitle("Gestion Assurance");
+            primaryStage.setTitle("Bienvenue");
             primaryStage.setScene(scene);
             primaryStage.show();
-
-
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -34,25 +32,26 @@ public class MainFx extends Application {
     }
 
 
-//    @Override
-//    public void start(Stage primaryStage) {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
-//
-//        try {
-//            Parent root = loader.load();
-//            Scene scene = new Scene(root );
-//
-//            primaryStage.setTitle("Gestion Constat");
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
-//
-//
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
+/*    @Override
+    public void start(Stage primaryStage) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DashboardConstatAdmin.fxml"));
+
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root );
+
+            primaryStage.setTitle("Gestion Constat");
+            primaryStage.setScene(scene);
+            primaryStage.show();
 
 
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }*/
 
 
 }
+
+

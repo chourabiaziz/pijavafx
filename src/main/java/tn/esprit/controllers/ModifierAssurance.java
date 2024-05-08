@@ -96,7 +96,7 @@ public class ModifierAssurance {
     void retourner(ActionEvent event) {
         try {
             // Charger le fichier FXML de la page AfficherAssurance.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssuranceAdmin.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène avec le contenu chargé

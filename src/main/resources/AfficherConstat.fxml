@@ -13,14 +13,13 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="rootAnchorPane" prefHeight="668.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherConstat">
-
-    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="666.0" prefWidth="1530.0" vbarPolicy="ALWAYS"> <!-- Toujours autoriser le défilement vertical -->
-
-        <VBox fx:id="constatsContainer" layoutX="10.0" layoutY="10.0" prefHeight="670.0" prefWidth="1530.0">
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="666.0" prefWidth="1400.0" vbarPolicy="ALWAYS"> <!-- Toujours autoriser le défilement vertical -->
+        <VBox fx:id="constatsContainer" layoutX="10.0" layoutY="10.0" prefHeight="670.0" prefWidth="1400.0">
 
             <children>
                 <Text fill="#3457ad" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="790.0">
                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
                         <Font name="System Bold Italic" size="32.0" />
                     </font>
                 </Text>
@@ -40,7 +39,7 @@
                                 </Text>
                                 <Label layoutX="42.0" layoutY="72.0" text="Nom" />
                                 <Label layoutX="34.0" layoutY="108.0" text="Prenom" />
-                                <Label layoutX="46.0" layoutY="142.0" text="Tel " />
+                                <Label layoutX="46.0" layoutY="142.0" text="CNI" />
                                 <Text layoutX="8.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOTEUR">
                                     <font>
                                         <Font size="15.0" />
@@ -183,7 +182,6 @@
                 <Label fx:id="temoinsLabel" text="temoinsLabel" />
                 <!--            <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#handleModifierButtonAction" text="Modifier" />-->
                 <!--            <Button fx:id="supprimerButton" onAction="#handleSupprimerButtonAction" text="Supprimer" />-->
-
                 <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="263.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                     <cursor>
                         <Cursor fx:constant="MOVE" />
@@ -191,7 +189,6 @@
                 </ImageView>
                 <Button fx:id="ajouterConstatButton" mnemonicParsing="false" onAction="#handleAjouterConstatButtonAction" prefHeight="81.0" prefWidth="107.0" text="Ajouter Constat" />
             </children>
-
         </VBox>
     </ScrollPane>
 </AnchorPane>

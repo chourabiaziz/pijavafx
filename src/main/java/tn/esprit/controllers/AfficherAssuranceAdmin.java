@@ -36,10 +36,8 @@ package tn.esprit.controllers;
         import javafx.geometry.Insets;
         import tn.esprit.utils.SMSManager;
 
-        import javax.swing.text.html.ImageView;
 
-
-public class AfficherAssurance implements Initializable {
+public class AfficherAssuranceAdmin implements Initializable {
 
 
     @FXML
@@ -160,7 +158,7 @@ public class AfficherAssurance implements Initializable {
         ajouterButton.setOnAction(event -> {
             try {
                 // Charger le fichier FXML de la page AjouterAssurance.fxml
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssurance.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAssuranceAdmin.fxml"));
                 Parent root = loader.load();
 
                 // Afficher la nouvelle scène
@@ -182,6 +180,9 @@ public class AfficherAssurance implements Initializable {
                 Platform.runLater(() -> showEmailListWindow(emailAddresses));
             });
             emailListThread.start();
+
+
+
 
         });
 
