@@ -1,5 +1,7 @@
 package tn.esprit.controllers;
 
+import com.example.ramzi.controllers.admin.ListeDivis;
+import com.example.ramzi.controllers.admin.ListeOffreController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,9 +35,15 @@ public class ContratIndexAdmin implements Initializable {
     @FXML
     private ListView<Contrat> listView;
 
+
     private ContratService contratService;
     private List<Contrat> listContrat;
 
+
+    @FXML
+    private Button offre;
+    @FXML
+    private Button devis;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -43,6 +51,8 @@ public class ContratIndexAdmin implements Initializable {
         listContrat = new ArrayList<>();
 
         facture.setOnAction(this::factureindex);
+        offre.setOnAction(this::offre);
+        devis.setOnAction(this::devis);
         add.setOnAction(this::changeroute);
         listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
             @Override
@@ -72,6 +82,40 @@ public class ContratIndexAdmin implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    public void offre(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/ListeOffre.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ListeOffreController controller = loader.getController();
+
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void devis(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/ListDvis.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ListeDivis controller = loader.getController();
+
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     private TextField search;
@@ -82,6 +126,7 @@ public class ContratIndexAdmin implements Initializable {
     private static final int TOTAL_ITEMS = 100;
     @FXML
     private Button facture;
+
 
     private class ContratListCell extends ListCell<Contrat> {
         public void xxx(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin, int prix) {

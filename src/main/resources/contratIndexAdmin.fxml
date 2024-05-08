@@ -41,8 +41,8 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Button layoutX="29.0" layoutY="96.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Offre" />
-      <Button layoutX="29.0" layoutY="164.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Devis" />
+      <Button fx:id="offre" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Offre" />
+      <Button fx:id="devis" layoutX="29.0" layoutY="164.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Devis" />
       <Button layoutX="29.0" layoutY="236.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Contrat" textFill="#1500ff">
          <font>
             <Font size="17.0" />

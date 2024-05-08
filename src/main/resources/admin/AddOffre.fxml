@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" stylesheets="@../style.css" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ramzi.controllers.admin.AddOffre">
+   <children>
+      <Label layoutX="102.0" layoutY="66.0" prefHeight="18.0" prefWidth="77.0" text="Titre" />
+      <TextField fx:id="titreF" layoutX="228.0" layoutY="63.0" prefHeight="26.0" prefWidth="233.0" />
+      <Label fx:id="checktitre" layoutX="235.0" layoutY="89.0" prefHeight="18.0" prefWidth="146.0" text="*Inserer un titre valide" textFill="RED" visible="false" />
+      <Label layoutX="102.0" layoutY="130.0" prefHeight="18.0" prefWidth="77.0" text="Description" />
+      <TextField fx:id="DescriptionF" layoutX="228.0" layoutY="127.0" prefHeight="26.0" prefWidth="233.0" />
+      <Label fx:id="checkdescription" layoutX="235.0" layoutY="153.0" prefHeight="18.0" prefWidth="192.0" text="*Inserer une Description valide" textFill="RED" visible="false" />
+      <Label layoutX="102.0" layoutY="192.0" prefHeight="18.0" prefWidth="77.0" text="Assurance" />
+      <TextField fx:id="AssuranceF" layoutX="228.0" layoutY="189.0" prefHeight="26.0" prefWidth="233.0" />
+      <Label fx:id="checkAssurance" layoutX="235.0" layoutY="215.0" prefHeight="18.0" prefWidth="192.0" text="*Inserer une Assurance valide" textFill="RED" visible="false" />
+      <Label layoutX="102.0" layoutY="253.0" prefHeight="18.0" prefWidth="77.0" text="Email" />
+      <TextField fx:id="EmailF" layoutX="228.0" layoutY="250.0" prefHeight="26.0" prefWidth="233.0" />
+      <Label fx:id="checkEmail" layoutX="235.0" layoutY="276.0" prefHeight="18.0" prefWidth="192.0" text="*Inserer un Email valide" textFill="RED" visible="false" />
+      <Label layoutX="102.0" layoutY="313.0" prefHeight="18.0" prefWidth="77.0" text="Num" />
+      <TextField fx:id="NumF" layoutX="228.0" layoutY="310.0" prefHeight="26.0" prefWidth="233.0" />
+      <Label fx:id="checkNum" layoutX="235.0" layoutY="336.0" prefHeight="18.0" prefWidth="207.0" text="*Inserer un numero valide" textFill="RED" visible="false" />
+      <Button layoutX="486.0" layoutY="412.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="26.0" prefWidth="145.0" text="Ajouter" />
+      <Button layoutX="303.0" layoutY="412.0" mnemonicParsing="false" onAction="#annuler" prefHeight="26.0" prefWidth="145.0" text="Annuler" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="820.0" prefWidth="1196.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.FactureAdd">
+    <children>
+        <Button fx:id="retour" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" style=" -fx-padding: 10px; -fx-border-radius: 50px;;-fx-background-color: #cacaca;" text="Retour">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Text layoutX="47.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client(e) :">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Text>
+        <Text fx:id="couverture" layoutX="274.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Text>
+        <Text layoutX="44.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contrat">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Text>
+        <Button fx:id="send" layoutX="866.0" layoutY="735.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: #cacaca;" text="Confirmer" />
+        <Text layoutX="161.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mr/MMe">
+            <font>
+                <Font name="System Italic" size="26.0" />
+            </font>
+        </Text>
+        <VBox fx:id="fafa" layoutX="47.0" layoutY="179.0" prefHeight="322.0" prefWidth="1024.0" style="-fx-background-color: white; -fx-padding: 20;">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ref°" textAlignment="CENTER" wrappingWidth="95.07009887695312">
+                                    <font>
+                                        <Font name="System Italic" size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="couverture" textAlignment="CENTER" wrappingWidth="172.1859588623047">
+                                    <font>
+                                        <Font name="System Italic" size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Engagement" textAlignment="CENTER" wrappingWidth="147.7442626953125">
+                                    <font>
+                                        <Font name="System Italic" size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="40.0" prefWidth="250.0" style="-fx-alignment: center;">
+                            <children>
+                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="de" textAlignment="CENTER" wrappingWidth="251.89520263671875">
+                                            <font>
+                                                <Font name="System Italic" size="26.0" />
+                                            </font>
+                                        </Text>
+                                        <Line endX="151.9721221923828" endY="-0.2071077525615692" startX="-100.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'a" textAlignment="CENTER" wrappingWidth="217.25994110107422">
+                                    <font>
+                                        <Font name="System Italic" size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="116.55279541015625" endY="-12.602068901062012" startX="333.1055908203125" startY="-12.60205364227295" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" textAlignment="CENTER" wrappingWidth="102.51880264282227">
+                                    <font>
+                                        <Font name="System Italic" size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="64.14190673828125" endY="-21.077743530273438" startX="181.189453125" startY="-21.077730178833008" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text fx:id="idc" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="83.28363037109375">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text fx:id="client" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="193.7741355895996">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <HBox prefHeight="24.0" prefWidth="154.0">
+                                    <children>
+                                        <Text fx:id="engagement" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="81.4722900390625">
+                                            <font>
+                                                <Font size="26.0" />
+                                            </font>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mois" textAlignment="CENTER" wrappingWidth="64.96673583984375">
+                                            <font>
+                                                <Font size="26.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Line endX="389.9497985839844" endY="-95.11827087402344" startX="245.7323455810547" startY="-95.11825561523438" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="22.0" prefWidth="259.0">
+                            <children>
+                                <Text fx:id="debut" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="259.88740158081055">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="792.9520874023438" endY="-117.41353607177734" startX="1052.1883544921875" startY="-117.4144287109375" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text fx:id="fin" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="234.52893948554993">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="133.85888671875" endY="-0.20712682604789734" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text fx:id="prix" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Text" textAlignment="CENTER" wrappingWidth="145.77428817749023">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="38.783416748046875" endY="-1.4498878717422485" startX="177.56683349609375" startY="-1.4499201774597168" />
+                            </children>
+                        </VBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TND" textAlignment="CENTER">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="56.0" prefWidth="627.0" />
+                        <VBox prefHeight="40.0" prefWidth="96.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TVA" textAlignment="CENTER" wrappingWidth="96.3521728515625">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="-2.8769683837890625" endY="-0.2071344554424286" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="19%" textAlignment="CENTER" wrappingWidth="260.3275146484375">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="-100.0" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="57.0" prefWidth="588.0">
+                            <children>
+                                <Text fx:id="errpromo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="491.7567939758301">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="97.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Promotion" wrappingWidth="184.9158172607422">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="100.0" startX="284.9532775878906" startY="1.505043837823905E-5" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <TextField fx:id="tva" onKeyReleased="#handleTvaKeyReleased" prefHeight="19.0" prefWidth="201.0" text="0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </TextField>
+                                <Line endX="100.0" startX="195.3117218017578" startY="-0.4142570495605469" />
+                            </children>
+                        </VBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\%" textAlignment="CENTER" wrappingWidth="85.57922554016113">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="57.0" prefWidth="594.0" />
+                        <VBox prefHeight="57.0" prefWidth="105.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Totale" textAlignment="CENTER" wrappingWidth="160.44965147972107">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="59.74256896972656" endY="0.4142644703388214" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="126.0">
+                            <children>
+                                <Text fx:id="tot" onKeyReleased="#updateTotale" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="96.86852979660034">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Text>
+                                <Line endX="-3.7826309204101562" endY="0.6214178204536438" startX="-100.0" />
+                            </children>
+                        </VBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TND">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+
+</AnchorPane>

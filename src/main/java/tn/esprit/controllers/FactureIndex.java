@@ -1,4 +1,3 @@
-
 package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
@@ -7,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,8 +47,8 @@ public class FactureIndex implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contrat.setOnAction(this::contrat);
-        contrat.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
-       facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+
+
         listContrat = new ArrayList<>();
 
         listView.setCellFactory(new Callback<ListView<Facture>, ListCell<Facture>>() {
@@ -87,12 +85,11 @@ public class FactureIndex implements Initializable {
                 totale.setStyle("-fx-font-weight: bold;");
                 createdat.setStyle("-fx-font-weight: bold;");
                 Button button0 = new Button("Consulter");
-                Button button1 = new Button("archiver");Button button2 = new Button("Supprimer");
-                HBox buttonBox = new HBox(button0 , button1, button2);
+                Button button1 = new Button("archiver");
+                 HBox buttonBox = new HBox(button0 , button1);
                 button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
                 button1.setStyle("-fx-background-color: #6e6e6e; -fx-padding: 10px; -fx-border-radius: 50px;");
-                button2.setStyle("-fx-background-color: #ef1a1a; -fx-padding: 10px; -fx-border-radius: 50px;");
-                buttonBox.setStyle("-fx-spacing: 10px;");
+                 buttonBox.setStyle("-fx-spacing: 10px;");
                 card.getChildren().addAll(idLabel, totale, contrat, createdat, buttonBox);
 //buttons actions
                 button1.setOnAction(event -> {
@@ -106,21 +103,11 @@ public class FactureIndex implements Initializable {
                     System.out.println("archiver");
 
                 });
-                button2.setOnAction(event -> {
 
-
-
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Succès");
-                    alert.setHeaderText("facture Supprimer avec succès");
-                    alert.showAndWait();
-                    factureService.delete(facture.getId());
-                    refreshContrats();
-                });
                 button0.setOnAction(event -> {
                     ContratService cs = new ContratService();
                     Contrat c = cs.getById(facture.getContrat());
-                  facture(event, facture.getId() , c.getClient(), c.getCouverture(),c.getEngagement(), c.getDebut()+"",c.getFin()+"",c.getPrix() , facture.getTva() , facture.getTotale());
+                    facture(event, facture.getId() , c.getClient(), c.getCouverture(),c.getEngagement(), c.getDebut()+"",c.getFin()+"",c.getPrix() , facture.getTva() , facture.getTotale());
 
                 });
 
@@ -132,7 +119,7 @@ public class FactureIndex implements Initializable {
     private void refreshContrats() {
         listView.getItems().clear(); // Clear the existing items
         listContrat.clear(); // Clear the list of contracts
-         afficherContrats();
+        afficherContrats();
     }
 //    private void afficherContrats() {
 //        FactureService fs = new FactureService() ;
@@ -184,19 +171,14 @@ public class FactureIndex implements Initializable {
 
     @FXML
     void search(KeyEvent event) {
-        String searched = search.getText().trim().toLowerCase(); // Get the text from the search field
-
+        String searched = search.getText().trim().toLowerCase();
         if (!searched.isEmpty()) {
-
             List<Facture> filteredContrats = listContrat.stream().filter(contrat ->
-                            contrat.getClient().toLowerCase().contains(searched) ||
+                            String.valueOf(contrat.getClient()).toLowerCase().contains(searched) ||
                                     String.valueOf(contrat.getTotale()).contains(searched) ||
                                     String.valueOf(contrat.getId()).contains(searched)
-
                     )
                     .collect(Collectors.toList());
-
-
             listView.getItems().clear();
             listView.getItems().addAll(filteredContrats);
         } else {
@@ -224,20 +206,5 @@ public class FactureIndex implements Initializable {
         }
     }
 
-    private void edit(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureAdd.fxml"));
-        Parent root = null;
-        try {
-            Node source = (Node) event.getSource();
-            root = loader.load();
-            System.out.println("FXML file loaded successfully.");
-            FactureAdd controller = loader.getController();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Liste des Contrats");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }

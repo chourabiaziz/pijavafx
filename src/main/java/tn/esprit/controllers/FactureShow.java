@@ -52,9 +52,11 @@ public class FactureShow implements Initializable {
     private Text client;
 
     @FXML
-    private Button contrat;
+    private Button contrate;
     @FXML
-    private Button send;
+    private Button facturee;
+    @FXML
+    private Button pay;
 
 
     @FXML
@@ -106,8 +108,7 @@ public class FactureShow implements Initializable {
     @FXML
     private AnchorPane anchorPane;
 
-    @FXML
-    private Button pay;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -116,8 +117,9 @@ public class FactureShow implements Initializable {
             Pdf pdfInstance = new Pdf();
             pdfInstance.download(String.valueOf(idee),cl,cv,db,fn,String.valueOf(eng),String.valueOf(pr),String.valueOf(tvae),String.valueOf(tote));
         });
-        facture.setOnAction(this::processPayment);
-
+        pay.setOnAction(this::processPayment);
+        facturee.setOnAction(this::goToFactureIndex);
+        contrate.setOnAction(this::contrat);
 
     }
 

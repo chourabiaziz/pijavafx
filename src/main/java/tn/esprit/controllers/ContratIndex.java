@@ -1,19 +1,19 @@
 package tn.esprit.controllers;
 
+import com.example.ramzi.controllers.user.ListeDvis;
+import com.example.ramzi.controllers.user.ListeOffre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
@@ -22,11 +22,9 @@ import javafx.util.Callback;
 import tn.esprit.models.Contrat;
 import tn.esprit.navigation.Navigation;
 import tn.esprit.services.ContratService;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,16 +44,81 @@ public class ContratIndex implements Initializable {
         contratService = new ContratService();
         listContrat = new ArrayList<>();
 
-        facture.setOnAction(n::goToFactureIndex);
-         listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
+        facture.setOnAction(this::factureindex);
+        offre.setOnAction(this::offre);
+        devis.setOnAction(this::devis);
+
+        listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
             @Override
             public ListCell<Contrat> call(ListView<Contrat> contratListView) {
-                return new ContratListCell();
+                return new ContratIndex.ContratListCell();
             }
         });
 
 
         afficherContrats();
+    }
+
+    public void devis(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/ListDevis.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ListeDvis controller = loader.getController();
+
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void offre(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/ListeOffre.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ListeOffre controller = loader.getController();
+
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+
+
+
+
+    public void factureindex(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureIndex.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            FactureIndex controller = loader.getController();
+
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -68,12 +131,30 @@ public class ContratIndex implements Initializable {
     @FXML
     private Button facture;
     @FXML
-    private Button ccc;
-    ////class one cell
+    private Button offre;
+    @FXML
+    private Button devis;
 
     private class ContratListCell extends ListCell<Contrat> {
+        public void xxx(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin, int prix) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratShow.fxml"));
+            Parent root = null;
+            try {
+                Node source = (Node) event.getSource();
+                root = loader.load();
+                System.out.println("FXML file loaded successfully.");
+                ContratShow controller = loader.getController();
+                controller.setId(id , cliente, couverture , engagement , debut,fin ,prix);
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.setTitle("Contrat");
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
-   @Override
+        @Override
         protected void updateItem(Contrat contrat, boolean empty) {
             super.updateItem(contrat, empty);
 
@@ -94,7 +175,7 @@ public class ContratIndex implements Initializable {
                 Label finLabel = new Label("Jusqu'a " + finText);
                 Label prixLabel = new Label(contrat.getPrix() + " DT");
                 prixLabel.setStyle("-fx-font-weight: bold;");
-                Button button0 = new Button("Consulter");
+                 Button button0 = new Button("Consulter");
 
 
                 button0.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
@@ -121,13 +202,13 @@ public class ContratIndex implements Initializable {
                     int prix = contrat.getPrix() ; String cliente = contrat.getClient();
                     String debut= contrat.getDebut().toString();String fin= contrat.getFin().toString();
 
-                    n.gotoshow(event, id , cliente, couverture,engagement, debut,fin,prix);
+                    xxx(event, id , cliente, couverture,engagement, debut,fin,prix);
 
                 });
 
 
-ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
-    facture.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radius: 50px;");
+
+
 
                 card.setStyle("-fx-alignment: center ;-fx-background-color: #6d89ef; -fx-padding: 10px; -fx-spacing: 10px;");
                 setGraphic(card);
@@ -145,33 +226,33 @@ ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radiu
     @FXML
     public   void changeroute(ActionEvent event) {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
-            Parent root = null;
-            try {
-                Node source = (Node) event.getSource();
-                root = loader.load();
-                System.out.println("FXML file loaded successfully.");
-                AjouterContrat controller = loader.getController();
-                Stage stage = (Stage) source.getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setTitle("Ajouter Contrat");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterContrat.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            AjouterContrat controller = loader.getController();
+            Stage stage = (Stage) source.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Ajouter Contrat");
 
-                // Set stage to full screen
+            // Set stage to full screen
 
-                // Retrieve screen dimensions
-                Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+            // Retrieve screen dimensions
+            Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 
-                // Set stage width and height to screen dimensions
-                stage.setWidth(screenBounds.getWidth());
-                stage.setHeight(screenBounds.getHeight());
+            // Set stage width and height to screen dimensions
+            stage.setWidth(screenBounds.getWidth());
+            stage.setHeight(screenBounds.getHeight());
 
-                stage.show();
+            stage.show();
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
 
-            }
+        }
 
     }
 
@@ -216,8 +297,6 @@ ccc.setStyle("-fx-background-color: #cacaca; -fx-padding: 10px; -fx-border-radiu
 
         }
     }
-
-
 
 
 

@@ -6,6 +6,8 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -13,7 +15,7 @@
 
 <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.User.Login">
     <children>
-        <ImageView fitHeight="750.0" fitWidth="1051.0">
+        <ImageView fitHeight="750.0" fitWidth="1474.0">
             <image>
 
             </image>
@@ -35,11 +37,24 @@
         <ToggleButton fx:id="signup" layoutX="456.0" layoutY="639.0" mnemonicParsing="false" onAction="#handlesignup" opacity="0.0" prefHeight="54.0" prefWidth="171.0" text="sign-up" />
         <Hyperlink layoutX="493.0" layoutY="451.0" onAction="#OnForget" onDragDetected="#opt" text="forgot password?" />
       <Text layoutX="532.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ou" />
-      <Button fx:id="loginbtn" onAction="#loginbtnonaction"  layoutX="446.0" layoutY="330.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="191.0" text="Login" />
+      <Button fx:id="loginbtn" layoutX="446.0" layoutY="330.0" mnemonicParsing="false" onAction="#loginbtnonaction" prefHeight="41.0" prefWidth="191.0" text="Login" />
       <Text layoutX="63.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="368.3388786315918">
          <font>
             <Font name="Times New Roman Italic" size="64.0" />
          </font></Text>
+      <ImageView fitHeight="584.0" fitWidth="449.0" layoutX="934.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assure.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="584.0" fitWidth="449.0" layoutX="917.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assure.png" />
+         </image>
+      </ImageView>
 
     </children>
 </AnchorPane>
