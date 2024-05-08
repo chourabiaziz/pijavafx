@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="688.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterAssuranceAdmin">
+ 
+    <children>
+
+        <ImageView fitHeight="800.0" fitWidth="1700.0">
+            <image>
+                <Image url="@ImageMariem/background.png" />
+            </image>
+        </ImageView>
+
+        <Text boundsType="VISUAL" fill="WHITE" layoutX="255.0" layoutY="58.0" text="Ajouter une  Assurance">s
+            <font>
+                <Font name="Arial" size="52.0" />
+            </font>s
+        </Text>
+        <Label layoutX="150.0" layoutY="147.0" text="Nom" textFill="#d9e6ec">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+        <TextField fx:id="tfNom" layoutX="277.0" layoutY="146.0" prefHeight="34.0" prefWidth="338.0" />
+
+        <Label layoutX="144.0" layoutY="207.0" text="Adresse" textFill="#d9e6ec">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+        <TextField fx:id="tfAdresse" layoutX="277.0" layoutY="206.0" prefHeight="34.0" prefWidth="338.0" />
+
+        <Label layoutX="138.0" layoutY="277.0" text="Code postal" textFill="#d9e6ec">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+        <TextField fx:id="tfCodePostal" layoutX="277.0" layoutY="276.0" prefHeight="34.0" prefWidth="338.0" />
+
+        <Label layoutX="132.0" layoutY="346.0" text="Téléphone" textFill="#d9e6ec">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+        <TextField fx:id="tfTelephone" layoutX="277.0" layoutY="345.0" prefHeight="34.0" prefWidth="338.0" />
+
+        <Label layoutX="156.0" layoutY="422.0" text="Email" textFill="#d9e6ec">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+        <TextField fx:id="tfEmail" layoutX="277.0" layoutY="421.0" prefHeight="34.0" prefWidth="338.0" />
+
+        <Button layoutX="306.0" layoutY="523.0" mnemonicParsing="false" onAction="#ajouterAssurance" prefHeight="34.0" prefWidth="83.0" text="Ajouter" />
+        <Button layoutX="542.0" layoutY="523.0" mnemonicParsing="false" onAction="#AfficherAssurance" prefHeight="34.0" prefWidth="83.0" text="Afficher" />
+    </children>
+
+    <ImageView fitHeight="621.0" fitWidth="480.0" layoutX="476.0" layoutY="60.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="60.0">
+        <image>
+            <Image url="@ImageMariem/logo.png" />
+        </image>
+    </ImageView>
+</AnchorPane>

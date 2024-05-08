@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="CENTER" prefHeight="600" prefWidth="681.0" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DashboardConstatAdmin">
+
+    <Label text="Utilisateur  Constats Statistics">
+        <font>
+            <Font size="20" />
+        </font>
+    </Label>
+
+    <PieChart fx:id="pieChart" prefHeight="500.0" prefWidth="682.0">
+
+</PieChart>
+
+
+</VBox>

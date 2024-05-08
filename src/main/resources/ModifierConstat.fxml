@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="623.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierConstat">
+    <Text fill="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSTAT AMIABLE D'ACCIDENT AUTOMOBILE" textAlignment="CENTER" wrappingWidth="666.1367073059082">
+        <font>
+            <Font name="System Bold Italic" size="15.0" />
+        </font>
+    </Text>
+    <SplitPane dividerPositions="0.4, 0.6">
+        <AnchorPane style="-fx-background-color: #6093ff;">
+            <children>
+                <Text fill="WHITE" layoutX="52.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Véhicule A" textAlignment="CENTER">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+
+                <Text layoutX="11.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRENEUR ASSURANCE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+
+                <Label layoutX="42.0" layoutY="72.0" text="Nom" />
+                <Label layoutX="34.0" layoutY="108.0" text="Prenom" />
+                <Label layoutX="46.0" layoutY="142.0" text="Tel " />
+                <TextField fx:id="tfNomPreneurA" layoutX="99.0" layoutY="68.0" prefHeight="26.0" prefWidth="132.0" />
+                <TextField fx:id="tfPrenomPreneurA" layoutX="99.0" layoutY="104.0" prefHeight="26.0" prefWidth="132.0" />
+                <TextField fx:id="tfTelPreneurA" layoutX="99.0" layoutY="138.0" prefHeight="26.0" prefWidth="132.0" />
+
+                <Text layoutX="8.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOTEUR">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+
+                <Label layoutX="42.0" layoutY="189.0" text="marque" />
+                <Label layoutX="3.0" layoutY="222.0" text="N immatricularion" />
+                <TextField fx:id="tfMarquePreneurA" layoutX="97.0" layoutY="185.0" prefHeight="26.0" prefWidth="132.0" />
+                <TextField fx:id="tfImmatriculationPreneurA" layoutX="98.0" layoutY="217.0" prefHeight="26.0" prefWidth="132.0" />
+
+                <Text layoutX="4.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOCIETE D'ASSURANCE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+
+                <Label layoutX="18.0" layoutY="285.0" text="Nom" />
+                <Label layoutX="8.0" layoutY="318.0" text="adresse" />
+                <TextField fx:id="tfNomSocieteA" layoutX="94.0" layoutY="281.0" prefHeight="26.0" prefWidth="132.0" />
+                <TextField fx:id="tfAdresseSocieteA" layoutX="94.0" layoutY="314.0" prefHeight="26.0" prefWidth="132.0" />
+            </children></AnchorPane>
+
+        <AnchorPane prefHeight="351.0" prefWidth="197.0">
+            <children>
+                <CheckBox fx:id="enStationnement" layoutX="8.0" layoutY="22.0" mnemonicParsing="false" text="en stationnement" />
+                <CheckBox fx:id="quittaitStationnement" layoutX="7.0" layoutY="62.0" mnemonicParsing="false" text="quittait un stationnement" />
+                <CheckBox fx:id="prenaitStationnement" layoutX="8.0" layoutY="104.0" mnemonicParsing="false" text="prenait un stationnement" />
+                <CheckBox fx:id="sortaitParking" layoutX="10.0" layoutY="145.0" mnemonicParsing="false" text="sortait d'un parking,lieu privée " />
+                <CheckBox fx:id="doublait" layoutX="10.0" layoutY="188.0" mnemonicParsing="false" text="doublait" />
+                <CheckBox fx:id="viraitDroite" layoutX="8.0" layoutY="228.0" mnemonicParsing="false" text="virait a droite" />
+                <CheckBox fx:id="viraitGauche" layoutX="8.0" layoutY="264.0" mnemonicParsing="false" text="virait a gauche" />
+            </children></AnchorPane>
+
+        <AnchorPane prefHeight="302.0" prefWidth="244.0" style="-fx-background-color:#e0e85b;">
+            <children>
+                <Text fill="WHITE" layoutX="74.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Véhicule B">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="10.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRENEUR ASSURANCE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <Label layoutX="32.0" layoutY="73.0" text="Nom" />
+                <Label layoutX="22.0" layoutY="101.0" text="Prenom" />
+                <Label layoutX="32.0" layoutY="135.0" text="Tel " />
+                <TextField fx:id="tfNomPreneurB" layoutX="100.0" layoutY="69.0" prefHeight="26.0" prefWidth="124.0" />
+                <TextField fx:id="tfPrenomPreneurB" layoutX="100.0" layoutY="97.0" prefHeight="26.0" prefWidth="124.0" />
+                <TextField fx:id="tfTelPreneurB" layoutX="100.0" layoutY="131.0" prefHeight="26.0" prefWidth="124.0" />
+                <Text layoutX="8.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOTEUR">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="tfMarquePreneurB" layoutX="100.0" layoutY="187.0" prefHeight="26.0" prefWidth="124.0" />
+                <TextField fx:id="tfImmatriculationPreneurB" layoutX="100.0" layoutY="221.0" prefHeight="26.0" prefWidth="124.0" />
+                <Label layoutX="37.0" layoutY="191.0" text="marque" />
+                <Label layoutX="7.0" layoutY="225.0" text="N immatricularion" />
+                <Text layoutX="11.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOCIETE D'ASSURANCE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <Label layoutX="32.0" layoutY="286.0" text="Nom" />
+                <Label layoutX="17.0" layoutY="321.0" text="adresse" />
+                <TextField fx:id="tfNomSocieteB" layoutX="100.0" layoutY="282.0" prefHeight="26.0" prefWidth="124.0" />
+                <TextField fx:id="tfAdresseSocieteB" layoutX="100.0" layoutY="317.0" prefHeight="26.0" prefWidth="124.0" />
+            </children></AnchorPane>
+    </SplitPane>
+    <Label text="localisation" />
+    <TextField fx:id="tfLocalisation" />
+    <Label text="Témoins: nom,adresse,tel" />
+    <TextField fx:id="tfTemoins" />
+    <Button fx:id="enregistrerButton" text="Enregistrer" onAction="#handleEnregistrerButtonAction" />
+
+    <Button fx:id="retourButton" layoutX="330.0" layoutY="370.0" mnemonicParsing="false" onAction="#retourner" text="retourner" />
+
+
+    <!-- Add this Button to allow users to select an image -->
+    <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="263.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+        <cursor>
+            <Cursor fx:constant="MOVE" />
+        </cursor></ImageView>
+
+
+</VBox>
