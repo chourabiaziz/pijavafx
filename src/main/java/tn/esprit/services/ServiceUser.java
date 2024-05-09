@@ -44,13 +44,14 @@ public class ServiceUser implements IService<User> {
     @Override
     public  void modifier(User r)throws SQLException {
         try {
-            String requete = "UPDATE utilisateurs SET nom=?, prenom=?, mot_de_passe=?, email=?  WHERE id=?";
+            String requete = "UPDATE user SET nom=?, prenom=?, password=?, email=? , number=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, r.getNom());
             pst.setString(2, r.getPrenom());
             pst.setString(3, r.getPassword());
             pst.setString(4, r.getMail());
-            pst.setInt(5, r.getId());  // Utilisation de l'ID pour identifier l'utilisateur à mettre à jour
+            pst.setInt(5, r.getNumber());
+            pst.setInt(6, r.getId());  // Utilisation de l'ID pour identifier l'utilisateur à mettre à jour
             pst.executeUpdate();
             System.out.println("Mise à jour avec succès");
         } catch (SQLException ex) {

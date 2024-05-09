@@ -17,8 +17,9 @@ public class MainFx extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndex.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DashbordAdmin.fxml"));
         try {
+
 // ajoutervoiture -> client // admin -> VoitureIndex
 
             Parent root = loader.load();

@@ -68,7 +68,7 @@ public class VoitureIndexAdmin implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Ajouter le gestionnaire d'événements pour le bouton "Ajouter"
         // Gestionnaire d'événements pour le bouton "Ajouter"
-
+        retourButton.setOnAction(this::retour);
         ajouterButton.setOnAction(event -> {
             try {
                 // Charger le fichier FXML de la page d'ajout de voiture
@@ -103,7 +103,23 @@ public class VoitureIndexAdmin implements Initializable {
         // Afficher toutes les voitures initialement
         displayVoitures(filteredData);
     }
+    private void retour(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndexAdmin.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ContratIndexAdmin controller = loader.getController();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("contrat");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
     private void displayVoitures(ObservableList<Voiture> voitures) {
         // Clear the current content of the TilePane
         tilePane.getChildren().clear();

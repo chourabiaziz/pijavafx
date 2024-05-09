@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="500.0" stylesheets="@../style.css" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ramzi.controllers.admin.AddOffre">
+<AnchorPane style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;"  prefHeight="500.0" stylesheets="@../style.css" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ramzi.controllers.admin.AddOffre">
    <children>
       <Label layoutX="102.0" layoutY="66.0" prefHeight="18.0" prefWidth="77.0" text="Titre" />
       <TextField fx:id="titreF" layoutX="228.0" layoutY="63.0" prefHeight="26.0" prefWidth="233.0" />

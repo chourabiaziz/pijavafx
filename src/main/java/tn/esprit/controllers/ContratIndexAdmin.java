@@ -19,6 +19,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import tn.esprit.controllers.User.DashbordAdmin;
+import tn.esprit.controllers.User.ModifyUser;
 import tn.esprit.models.Contrat;
 import tn.esprit.navigation.Navigation;
 import tn.esprit.services.ContratService;
@@ -43,7 +45,19 @@ public class ContratIndexAdmin implements Initializable {
     @FXML
     private Button offre;
     @FXML
+    private Button constat;
+    @FXML
     private Button devis;
+    @FXML
+    private Button dash;
+    @FXML
+    private Button panne;
+    @FXML
+    private Button atelier;
+    @FXML
+    private Button voiture;
+    @FXML
+    private Button profile;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -52,18 +66,120 @@ public class ContratIndexAdmin implements Initializable {
 
         facture.setOnAction(this::factureindex);
         offre.setOnAction(this::offre);
+        constat.setOnAction(this::constat);
+        dash.setOnAction(this::x);
+
         devis.setOnAction(this::devis);
         add.setOnAction(this::changeroute);
+      //  panne.setOnAction(this::panne);
+      atelier.setOnAction(this::assurance);
+//
+        voiture.setOnAction(this::voiture);
+       profile.setOnAction(this::profil);
+
+
+
+
         listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
             @Override
             public ListCell<Contrat> call(ListView<Contrat> contratListView) {
                 return new ContratIndexAdmin.ContratListCell();
             }
         });
-
-
         afficherContrats();
     }
+
+    private void voiture(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/VoitureIndexAdmin.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            VoitureIndexAdmin controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    private void assurance(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssuranceAdmin.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            AfficherAssuranceAdmin controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void constat(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherConstat.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            AfficherConstat controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void x(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashbordAdmin.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            DashbordAdmin controller = loader.getController();
+
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void profil(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserEdit.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ModifyUser controller = loader.getController();
+
+
+            Stage stage =new Stage() ;
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void factureindex(ActionEvent event ) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FactureIndexAdmin.fxml"));
@@ -128,7 +244,7 @@ public class ContratIndexAdmin implements Initializable {
     private Button facture;
 
 
-    private class ContratListCell extends ListCell<Contrat> {
+    public class ContratListCell extends ListCell<Contrat> {
         public void xxx(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin, int prix) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratShowAdmin.fxml"));
             Parent root = null;

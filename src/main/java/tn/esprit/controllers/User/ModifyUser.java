@@ -3,6 +3,7 @@ package tn.esprit.controllers.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,10 +16,12 @@ import tn.esprit.utils.MyDataBase;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ModifyUser {
+public class ModifyUser implements Initializable {
 
     @FXML
     private TextField ftemail;
@@ -35,16 +38,17 @@ public class ModifyUser {
     private TextField ftnumber;
     File selectedFile;
 
-    private User user; // Added to receive the selected user
+   // private User user; // Added to receive the selected user
 
-    public void setUser(User user) {
-        this.user = user;
+
+    public void setUser() {
+        String currentUser = System.getProperty("user.name");
         // Set the text fields with the user's data
-        ftnom.setText(user.getNom());
-        ftprenom.setText(user.getPrenom());
-        ftmot_de_passe.setText(user.getPassword());
-        ftemail.setText(user.getMail());
-        ftnumber.setText(String.valueOf(user.getNumber()));
+        ftnom.setText(System.getProperty("user.name") );
+        ftprenom.setText(System.getProperty("user.prenom"));
+        ftmot_de_passe.setText(System.getProperty("user.password"));
+       ftemail.setText(System.getProperty("user.email"));
+        ftnumber.setText(System.getProperty("user.number"));
     }
     @FXML
     void modifier(ActionEvent event) throws IOException {
@@ -106,6 +110,12 @@ public class ModifyUser {
     private boolean isValidEmail(String email) {
         // Vous pouvez implémenter une validation plus détaillée selon vos besoins
         return email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(System.getProperty("user"));
+        setUser();
     }
    /* @FXML
     void supprimer(ActionEvent event)  {

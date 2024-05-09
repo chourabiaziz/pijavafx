@@ -93,7 +93,7 @@
       <Button fx:id="panne" layoutX="799.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="86.0" style="-fx-background-color: #cacaca;" text="Panne" />
       <Button fx:id="constat" layoutX="700.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="86.0" style="-fx-background-color: #cacaca;" text="E-Constat" />
       <Button fx:id="voiture" layoutX="996.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="86.0" style="-fx-background-color: #cacaca;" text="Voiture" />
-      <Button fx:id="atelier" layoutX="895.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="86.0" style="-fx-background-color: #cacaca;" text="Atelier" />
+      <Button fx:id="atelier" layoutX="895.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="86.0" style="-fx-background-color: #cacaca;" text="Assurance" />
    </children>
 
 </AnchorPane>

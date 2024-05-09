@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<AnchorPane style="-fx-background-image: url('backhround.png'); -fx-background-size: cover; -fx-background-position: center;" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml" stylesheets="@../style.css"
             fx:controller="com.example.ramzi.controllers.user.ModiferDevi"
             prefHeight="521.0" prefWidth="900.0">

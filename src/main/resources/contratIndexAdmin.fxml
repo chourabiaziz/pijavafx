@@ -49,14 +49,18 @@
          </font>
       </Button>
       <Button fx:id="facture" layoutX="29.0" layoutY="305.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Facture" />
-      <Button layoutX="29.0" layoutY="603.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Utulisateurs" />
-      <Button layoutX="29.0" layoutY="375.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Constat" />
-      <Button layoutX="29.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Dashboard" />
+      <Button layoutX="29.0" layoutY="622.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Utulisateurs" />
+      <Button fx:id="constat" layoutX="29.0" layoutY="375.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="E-Constat" />
+      <Button fx:id="dash" layoutX="29.0" layoutY="34.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Dashboard" />
        <ListView fx:id="listView" layoutX="210.11321510866327" layoutY="167.54717584095994" prefHeight="604.0" prefWidth="1016.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent;" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="168.0">
            <stylesheets>
                <URL value="@TemplatesWindow.css" />
            </stylesheets>
        </ListView>
+      <Button fx:id="atelier" layoutX="29.0" layoutY="442.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Assurance" />
+      <Button fx:id="panne" layoutX="29.0" layoutY="504.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Panne" />
+      <Button fx:id="profile" layoutX="40.0" layoutY="987.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Profile" AnchorPane.bottomAnchor="35.867923192003474" />
+      <Button fx:id="voiture" layoutX="29.0" layoutY="561.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Voiture" />
 
       <Button fx:id="add" layoutX="232.0" layoutY="805.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #cacaca;" text="Ajouter un contrat" />
 

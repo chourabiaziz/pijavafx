@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import tn.esprit.controllers.User.ModifyUser;
 import tn.esprit.models.Contrat;
 import tn.esprit.navigation.Navigation;
 import tn.esprit.services.ContratService;
@@ -37,16 +38,51 @@ public class ContratIndex implements Initializable {
 
     private ContratService contratService;
     private List<Contrat> listContrat;
+    @FXML
+    private Button acceuil;
 
+    @FXML
+    private Button atelier;
+
+    @FXML
+    private Button constat;
+
+
+    @FXML
+    private Button facture;
+
+
+
+    @FXML
+    private Button offre;
+
+    @FXML
+    private Pagination pagination;
+
+    @FXML
+    private Button panne;
+
+    @FXML
+    private Button profil;
+
+    @FXML
+    private TextField search;
+
+    @FXML
+    private Button voiture;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         contratService = new ContratService();
         listContrat = new ArrayList<>();
 
-        facture.setOnAction(this::factureindex);
-        offre.setOnAction(this::offre);
-        devis.setOnAction(this::devis);
+        facture.setOnAction(this::factureindex);//
+        atelier.setOnAction(this::assurance);
+        voiture.setOnAction(this::voiture); //
+        profil.setOnAction(this::profile);//
+        constat.setOnAction(this::constat);//
+        offre.setOnAction(this::offre);//
+        panne.setOnAction(this::panne); //
 
         listView.setCellFactory(new Callback<ListView<Contrat>, ListCell<Contrat>>() {
             @Override
@@ -59,16 +95,24 @@ public class ContratIndex implements Initializable {
         afficherContrats();
     }
 
-    public void devis(ActionEvent event ) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/ListDevis.fxml"));
+
+
+
+
+
+
+
+
+    public void voiture(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/VoitureIndex.fxml"));
         Parent root = null;
         try {
             Node source = (Node) event.getSource();
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
-            ListeDvis controller = loader.getController();
+            VoitureIndex controller = loader.getController();
 
-            Stage stage = (Stage) source.getScene().getWindow();
+            Stage stage = new Stage();
             stage.setTitle("Facture");
             stage.setScene(new Scene(root));
             stage.show();
@@ -76,6 +120,118 @@ public class ContratIndex implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+
+
+    public void panne(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/PanneIndex.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            PanneIndex controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("Facture");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void profile(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserEdit.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            ModifyUser controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("constat");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void constat(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterConstat.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            AjouterConstat controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("constat");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+    public void assurance(ActionEvent event ) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAssuranceClient.fxml"));
+        Parent root = null;
+        try {
+            Node source = (Node) event.getSource();
+            root = loader.load();
+            System.out.println("FXML file loaded successfully.");
+            AfficherAssuranceClient controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("assurance");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public void offre(ActionEvent event ) {
@@ -86,9 +242,8 @@ public class ContratIndex implements Initializable {
             root = loader.load();
             System.out.println("FXML file loaded successfully.");
             ListeOffre controller = loader.getController();
-
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.setTitle("Facture");
+            Stage stage = new Stage();
+             stage.setTitle("offre");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
@@ -121,19 +276,10 @@ public class ContratIndex implements Initializable {
         }
     }
 
-    @FXML
-    private TextField search;
 
-    @FXML
-    private Pagination pagination;
     private static final int ITEMS_PER_PAGE = 1;
     private static final int TOTAL_ITEMS = 100;
-    @FXML
-    private Button facture;
-    @FXML
-    private Button offre;
-    @FXML
-    private Button devis;
+
 
     private class ContratListCell extends ListCell<Contrat> {
         public void xxx(ActionEvent event , int id ,String cliente , String couverture, int engagement , String debut , String fin, int prix) {

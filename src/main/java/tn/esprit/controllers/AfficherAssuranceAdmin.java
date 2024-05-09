@@ -4,9 +4,11 @@ package tn.esprit.controllers;
         import javafx.application.Platform;
         import javafx.collections.FXCollections;
         import javafx.collections.ObservableList;
+        import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
+        import javafx.geometry.Rectangle2D;
         import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
@@ -18,6 +20,7 @@ package tn.esprit.controllers;
         import javafx.scene.control.TextField;
         import javafx.scene.layout.*;
         import javafx.scene.paint.Color;
+        import javafx.stage.Screen;
         import javafx.stage.Stage;
         import tn.esprit.models.Assurance;
         import tn.esprit.services.ServiceAssurance;
@@ -45,7 +48,8 @@ public class AfficherAssuranceAdmin implements Initializable {
 
     @FXML
     private Button EvoieMail;
-
+    @FXML
+    private Button back;
 
     @FXML
     private TilePane tilePane;
@@ -150,6 +154,7 @@ public class AfficherAssuranceAdmin implements Initializable {
                     new BackgroundSize(100, 100, true, true, false, true)
             );
             mainAnchorPane.setBackground(new Background(backgroundImage));
+            back.setOnAction(this::back);
         }
 
         // Ajouter le gestionnaire d'événements pour le bouton "Ajouter"
@@ -181,6 +186,36 @@ public class AfficherAssuranceAdmin implements Initializable {
 
         loadData();
 
+
+    }
+
+    private void back(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContratIndexAdmin.fxml"));
+       // Parent root = null;
+        try {
+
+            Node source = (Node) event.getSource();
+
+// ajoutervoiture -> client // admin -> VoitureIndex
+            Stage primaryStage = (Stage) source.getScene().getWindow();
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root );
+            primaryStage.setTitle("AssureEase");
+            primaryStage.setScene(scene);
+            Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+            primaryStage.setWidth(screenBounds.getWidth());
+            primaryStage.setHeight(screenBounds.getHeight());
+
+
+
+            primaryStage.show();
+
+
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
